@@ -9,7 +9,7 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-BROWSER = google-chrome
+BROWSER = firefox
 SLIDESDIR = source/_static/slides
 GITHUBREPO = https://github.com/jaspock/dai2021
 GITHUBPAGES = https://jaspock.github.io/dai2021

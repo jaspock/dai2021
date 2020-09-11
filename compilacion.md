@@ -1,10 +1,10 @@
 
 # Generación de HTML
 
-## Compilación de la documentación
+## Compilación local de la documentación
 
-    conda activate dai
-    cd docs
+    [conda activate dai]
+    [cd docs]
     make
 
 or:
