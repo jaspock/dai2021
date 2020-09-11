@@ -29,7 +29,7 @@ Novedades
     * - 09 sep
       - Antes de las clases del 22 de septiembre e necesario haber leído el `capítulo sobre HTML`_ del libro "Client-Side Web Development".
     * - 08 sep
-      - Ya está publicado el enunciado de la práctica 1. Las clases de prácticas comienzan el 15 de septiembre.
+      - Ya está publicado el enunciado de la práctica 1. Las clases de prácticas comienzan el día 15 de septiembre.
 
 .. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
 

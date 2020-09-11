@@ -54,8 +54,7 @@ pages: slides html
 		git commit -m "Website en gh-pages actualizado" && git push origin gh-pages && \
 		git checkout master && git branch
 	$(BROWSER) $(GITHUBPAGES) &
-	cd .. && cd docs
-	@echo "move to the root of the repository before working on files!"
+	@echo "move to the parent folder before working on the repository!"
 
 push: clean
 	git add -u -v && git commit && git push origin master

@@ -3,13 +3,21 @@
 
 ## Compilación local de la documentación
 
+Documentación y dispositivas:
+
     [conda activate dai]
     [cd docs]
     make
 
-or:
+Sin diapositivas:
 
-    conda activate dai
+    [conda activate dai]
+    [cd docs]
+    make html & make open
+
+Paso a paso:
+
+    [conda activate dai]
     cd slides
     make
     cd ../docs
