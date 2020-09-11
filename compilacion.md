@@ -27,6 +27,7 @@ or:
 
     [cd docs]
     make clean && make push && make && make pages
+    [git checkout master]
 
 ## Instalación de miniconda
 
