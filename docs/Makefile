@@ -9,11 +9,13 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
+BROWSER = google-chrome
 SLIDESDIR = source/_static/slides
+GITHUBREPO = https://github.com/jaspock/dai2021
 
 .PHONY: help Makefile clean push pages slides all open
 
-all: slides html
+all: slides html open
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -40,9 +42,9 @@ slides:
 	echo "slides copied to $(SLIDESDIR)"; \
 	
 open:
-	google-chrome build/html/index.html
+	$(BROWSER) build/html/index.html
 
-pages:
+pages: slides html
 	rm -rf /tmp/gh-pages 
 	cp -r $(BUILDDIR)/html /tmp/gh-pages
 	touch /tmp/gh-pages/.nojekyll
@@ -52,8 +54,9 @@ pages:
 		git checkout master && git branch
 	@echo "move to the root of the repository before working on files!"
 
-push:
+push: clean
 	git add -u -v && git commit && git push origin master
+	$(BROWSER) $(GITHUBREPO)
 
 clean:
 	rm -rf build $(SLIDESDIR) ../slides/build
