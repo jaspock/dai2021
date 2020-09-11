@@ -24,7 +24,7 @@ or:
 
 ## Subir páginas estáticas
 
-    make pages
+    make clean && make push && make && make pages
 
 ## Instalación de miniconda
 
