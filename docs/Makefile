@@ -43,7 +43,7 @@ slides:
 	echo "slides copied to $(SLIDESDIR)"; \
 	
 open:
-	$(BROWSER) build/html/index.html
+	$(BROWSER) build/html/index.html &
 
 pages: slides html
 	rm -rf /tmp/gh-pages 
@@ -53,13 +53,13 @@ pages: slides html
 	cd .. && rm -rf * && cp -r /tmp/gh-pages/* . && git add . && \
 		git commit -m "Website en gh-pages actualizado" && git push origin gh-pages && \
 		git checkout master && git branch
-	$(BROWSER) $(GITHUBPAGES)
-	cd ..
+	$(BROWSER) $(GITHUBPAGES) &
+	cd .. && cd docs
 	@echo "move to the root of the repository before working on files!"
 
 push: clean
 	git add -u -v && git commit && git push origin master
-	$(BROWSER) $(GITHUBREPO)
+	$(BROWSER) $(GITHUBREPO) &
 
 clean:
 	rm -rf build $(SLIDESDIR) ../slides/build
