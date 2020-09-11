@@ -19,11 +19,13 @@ or:
 
 ## Subir al repo
 
-    git add newfiles
+    [git add newfiles]
+    [cd docs]
     make push
 
 ## Subir páginas estáticas
 
+    [cd docs]
     make clean && make push && make && make pages
 
 ## Instalación de miniconda
