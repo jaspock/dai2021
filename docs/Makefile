@@ -12,6 +12,7 @@ BUILDDIR      = build
 BROWSER = google-chrome
 SLIDESDIR = source/_static/slides
 GITHUBREPO = https://github.com/jaspock/dai2021
+GITHUBPAGES = https://jaspock.github.io/dai2021
 
 .PHONY: help Makefile clean push pages slides all open
 
@@ -52,6 +53,7 @@ pages: slides html
 	cd .. && rm -rf * && cp -r /tmp/gh-pages/* . && git add . && \
 		git commit -m "Website en gh-pages actualizado" && git push origin gh-pages && \
 		git checkout master && git branch
+	$(BROWSE) $(GITHUBPAGES)
 	@echo "move to the root of the repository before working on files!"
 
 push: clean
