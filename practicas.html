@@ -173,31 +173,49 @@
 <table class="colwidths-given tablita docutils align-default">
 <colgroup>
 <col style="width: 15%" />
-<col style="width: 60%" />
-<col style="width: 25%" />
+<col style="width: 40%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Entregable</p></th>
 <th class="head"><p>Título</p></th>
 <th class="head"><p>Fecha límite de entrega</p></th>
+<th class="head"><p>Tiempo medio estimado de realización</p></th>
+<th class="head"><p>Porcentaje en la nota de prácticas</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Práctica #1</p></td>
 <td><p><a class="reference internal" href="#una-pagina-web-con-html5">Una página web con HTML5</a></p></td>
-<td><p>8 octubre 2019</p></td>
+<td><p>8 octubre 2020</p></td>
+<td><p>8 horas</p></td>
+<td><p>20%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Práctica #2</p></td>
 <td><p>Una aplicación web local</p></td>
-<td><p>6 noviembre 2019 (provisional)</p></td>
+<td><p>29 octubre 2020 (provisional)</p></td>
+<td><p>12 horas</p></td>
+<td><p>25%</p></td>
 </tr>
 <tr class="row-even"><td><p>Práctica #3</p></td>
 <td><p>Una aplicación con acceso a servicios web de terceros y con componentes web</p></td>
-<td><p>27 noviembre 2019 (provisional)</p></td>
+<td><p>19 noviembre 2020 (provisional)</p></td>
+<td><p>8 horas</p></td>
+<td><p>15%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Práctica #4</p></td>
+<td><p>Una aplicación con componentes web</p></td>
+<td><p>3 diciembre 2020 (provisional)</p></td>
+<td><p>4 horas</p></td>
+<td><p>10%</p></td>
+</tr>
+<tr class="row-even"><td><p>Práctica #5</p></td>
 <td><p>Una aplicación en la nube</p></td>
-<td><p>22 diciembre 2019 (provisional)</p></td>
+<td><p>23 diciembre 2020 (provisional)</p></td>
+<td><p>18 horas</p></td>
+<td><p>30%</p></td>
 </tr>
 </tbody>
 </table>
@@ -238,7 +256,7 @@
 <ul class="simple">
 <li><p>una cabecera (elemento <code class="docutils literal notranslate"><span class="pre">header</span></code>) que incluya el título (elemento <code class="docutils literal notranslate"><span class="pre">h1</span></code>), el párrafo descriptivo y el índice (el índice será un elemento de tipo <code class="docutils literal notranslate"><span class="pre">nav</span></code> que incluirá una lista no numerada, <code class="docutils literal notranslate"><span class="pre">ul</span></code>), los tres como descendientes inmediatos (hijos) del elemento <code class="docutils literal notranslate"><span class="pre">header</span></code>;</p></li>
 <li><p>la cabecera irá seguida de un fragmento principal (encerrado en el elemento <code class="docutils literal notranslate"><span class="pre">main</span></code>) que incluirá ambos cuestionarios;</p></li>
-<li><p>la página acabará con un pie de página (elemento <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con tus datos y los enlaces para cambiar la vista; encierra tu nombre completo (nombre y apellidos, en este orden) en un <code class="docutils literal notranslate"><span class="pre">span</span></code> (hijo de <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con identificador <code class="docutils literal notranslate"><span class="pre">nombre</span></code> y el DNI en otro elemento <code class="docutils literal notranslate"><span class="pre">span</span></code> (también hijo de <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con identificador <code class="docutils literal notranslate"><span class="pre">dni</span></code>; utiliza el carácter <code class="docutils literal notranslate"><span class="pre">'|'</span></code> en el documento HTML para separar los diferentes contenidos del pie de página.</p></li>
+<li><p>la página acabará con un pie de página (elemento <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con tus datos y los enlaces para cambiar la vista; encierra tu nombre de usuario de <code class="docutils literal notranslate"><span class="pre">alu.ua.es</span></code> (por ejemplo, <code class="docutils literal notranslate"><span class="pre">zawm</span></code>) en un <code class="docutils literal notranslate"><span class="pre">span</span></code> (hijo de <code class="docutils literal notranslate"><span class="pre">footer</span></code>) con identificador <code class="docutils literal notranslate"><span class="pre">nombre</span></code>; utiliza el carácter <code class="docutils literal notranslate"><span class="pre">'|'</span></code> en el documento HTML para separar los diferentes contenidos del pie de página.</p></li>
 </ul>
 <p>Cada cuestionario estará incluido en su propia sección (mediante sendos elementos <code class="docutils literal notranslate"><span class="pre">section</span></code>, que han de incluir atributos <code class="docutils literal notranslate"><span class="pre">id</span></code>, con valores <code class="docutils literal notranslate"><span class="pre">paris</span></code>, sin tilde y todo en minúsculas, y <code class="docutils literal notranslate"><span class="pre">londres</span></code>, todo en minúsculas, que serán referenciados desde el índice) y tendrá un título de segundo nivel (un elemento <code class="docutils literal notranslate"><span class="pre">h2</span></code>, que será hijo de <code class="docutils literal notranslate"><span class="pre">section</span></code>) que incluirá una imagen (que no ha de coincidir necesariamente en tu solución con la de este enunciado, pero no ha de tener tamaño superior a 512x512 píxeles) seguida del texto del título tal como sigue:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">section</span> <span class="o">...&gt;</span>
@@ -304,7 +322,7 @@
 <div class="section" id="recomendaciones-finales">
 <h3><span class="section-number">3.3.3. </span>Recomendaciones finales<a class="headerlink" href="#recomendaciones-finales" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Asegúrate de que tus ficheros se validan correctamente con los validadores HTML5 y CSS del W3C (usando la pestaña <span class="guilabel">Validate by File Upload</span> en ambos casos). Además, usa Chrome DevTools para comprobar que el estilo aplicado en cada punto del documento es correcto. Finalmente, asegúrate de que cumple con todas las especificaciones de este enunciado (por ejemplo, los nombres o valores de atributos, elementos o ficheros).</p>
-<p>Recuerda poner tu nombre completo y DNI en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p1-dai.zip</span></code> a través del <a class="reference external" href="https://pracdlsi.dlsi.ua.es/index.cgi?id=val">servidor web del Departamento</a>. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">css</span></code> con los ficheros con las hojas de estilo que hayas usado y una carpeta <code class="docutils literal notranslate"><span class="pre">img</span></code> con las imágenes.</p>
+<p>Recuerda poner tu usuario de la cuenta de <code class="docutils literal notranslate"><span class="pre">alu.ua.es</span></code> en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado <code class="docutils literal notranslate"><span class="pre">p1-dai.zip</span></code> a través del <a class="reference external" href="https://pracdlsi.dlsi.ua.es/index.cgi?id=val">servidor web del Departamento</a>. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, una carpeta <code class="docutils literal notranslate"><span class="pre">css</span></code> con los ficheros con las hojas de estilo que hayas usado y una carpeta <code class="docutils literal notranslate"><span class="pre">img</span></code> con las imágenes.</p>
 <p>Por último, coloca en algún punto del pie de la página un fragmento de HTML como <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">id=&quot;tiempo&quot;&gt;[5</span> <span class="pre">horas]&lt;/span&gt;</span></code> donde has de sustituir el 5 por el número de horas aproximadas que te haya llevado hacer esta prática.</p>
 </div>
 </div>

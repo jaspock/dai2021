@@ -8,25 +8,40 @@ Calendario
 Este es el calendario de cada uno de los entregables de la asignatura. No se admitirán entregas fuera de plazo.
 
 .. list-table::
-    :widths: 15 60 25
+    :widths: 15 40 15 15 15
     :header-rows: 1
     :class: tablita
 
     * - Entregable
       - Título
       - Fecha límite de entrega
+      - Tiempo medio estimado de realización
+      - Porcentaje en la nota de prácticas
     * - Práctica #1
       - `Una página web con HTML5`_
-      - 8 octubre 2019
+      - 8 octubre 2020
+      - 8 horas
+      - 20%
     * - Práctica #2
       - Una aplicación web local
-      - 6 noviembre 2019 (provisional)
+      - 29 octubre 2020 (provisional)
+      - 12 horas
+      - 25%
     * - Práctica #3
       - Una aplicación con acceso a servicios web de terceros y con componentes web
-      - 27 noviembre 2019 (provisional)
+      - 19 noviembre 2020 (provisional)
+      - 8 horas
+      - 15%
     * - Práctica #4
+      - Una aplicación con componentes web
+      - 3 diciembre 2020 (provisional)
+      - 4 horas
+      - 10%
+    * - Práctica #5
       - Una aplicación en la nube
-      - 22 diciembre 2019 (provisional)
+      - 23 diciembre 2020 (provisional)
+      - 18 horas
+      - 30%
 
 
 Instrucciones de entrega de las prácticas
@@ -82,7 +97,7 @@ Comienza preparando el documento HTML, sin tener en cuenta, por ahora, los aspec
 
 - una cabecera (elemento ``header``) que incluya el título (elemento ``h1``), el párrafo descriptivo y el índice (el índice será un elemento de tipo ``nav`` que incluirá una lista no numerada, ``ul``), los tres como descendientes inmediatos (hijos) del elemento ``header``;
 - la cabecera irá seguida de un fragmento principal (encerrado en el elemento ``main``) que incluirá ambos cuestionarios;
-- la página acabará con un pie de página (elemento ``footer``) con tus datos y los enlaces para cambiar la vista; encierra tu nombre completo (nombre y apellidos, en este orden) en un ``span`` (hijo de ``footer``) con identificador ``nombre`` y el DNI en otro elemento ``span`` (también hijo de ``footer``) con identificador ``dni``; utiliza el carácter ``'|'`` en el documento HTML para separar los diferentes contenidos del pie de página.
+- la página acabará con un pie de página (elemento ``footer``) con tus datos y los enlaces para cambiar la vista; encierra tu nombre de usuario de ``alu.ua.es`` (por ejemplo, ``zawm``) en un ``span`` (hijo de ``footer``) con identificador ``nombre``; utiliza el carácter ``'|'`` en el documento HTML para separar los diferentes contenidos del pie de página.
 
 Cada cuestionario estará incluido en su propia sección (mediante sendos elementos ``section``, que han de incluir atributos ``id``, con valores ``paris``, sin tilde y todo en minúsculas, y ``londres``, todo en minúsculas, que serán referenciados desde el índice) y tendrá un título de segundo nivel (un elemento ``h2``, que será hijo de ``section``) que incluirá una imagen (que no ha de coincidir necesariamente en tu solución con la de este enunciado, pero no ha de tener tamaño superior a 512x512 píxeles) seguida del texto del título tal como sigue:
 
@@ -170,7 +185,7 @@ Recomendaciones finales
 
 Asegúrate de que tus ficheros se validan correctamente con los validadores HTML5 y CSS del W3C (usando la pestaña :guilabel:`Validate by File Upload` en ambos casos). Además, usa Chrome DevTools para comprobar que el estilo aplicado en cada punto del documento es correcto. Finalmente, asegúrate de que cumple con todas las especificaciones de este enunciado (por ejemplo, los nombres o valores de atributos, elementos o ficheros).
 
-Recuerda poner tu nombre completo y DNI en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado ``p1-dai.zip`` a través del `servidor web del Departamento`_. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero ``index.html``, una carpeta ``css`` con los ficheros con las hojas de estilo que hayas usado y una carpeta ``img`` con las imágenes.
+Recuerda poner tu usuario de la cuenta de ``alu.ua.es`` en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado ``p1-dai.zip`` a través del `servidor web del Departamento`_. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero ``index.html``, una carpeta ``css`` con los ficheros con las hojas de estilo que hayas usado y una carpeta ``img`` con las imágenes.
 
 Por último, coloca en algún punto del pie de la página un fragmento de HTML como ``<span id="tiempo">[5 horas]</span>`` donde has de sustituir el 5 por el número de horas aproximadas que te haya llevado hacer esta prática.
 
