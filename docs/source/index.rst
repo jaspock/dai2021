@@ -26,10 +26,10 @@ Novedades
     :header-rows: 0
     :class: tablita
 
-    * - 09 sep
-      - Antes de las clases del 22 de septiembre e necesario haber leído el `capítulo sobre HTML`_ del libro "Client-Side Web Development".
-    * - 08 sep
-      - Ya está publicado el enunciado de la primera práctica. Las clases de prácticas comienzan el día 15 de septiembre.
+    * - 13 sep
+      - Con la normativa actual, puedes seguir y superar la asignatura sin problemas por vía cien por cien telemática, con la única excepción de los exámenes finales de enero y julio que a día de hoy están previstos únicamente en modalidad presencial. No obstante, si lo deseas también puedes asisitir presencialmente a las clases que la universidad te indique a través de la aplicación de Docencia Dual de UACloud (pero únicamente a las sesiones que allí aparezcan reflejadas).
+    * - 13 sep
+      - Ya está publicado el enunciado de la primera práctica. Las clases de teoría y prácticas comienzan el día 15 de septiembre.
 
 .. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
 
@@ -42,10 +42,10 @@ Estos son los materiales de clase de la asignatura Desarrollo de Aplicaciones en
 .. _`@japer3z`: https://twitter.com/japer3z
 .. _`guía docente`: http://cv1.cpd.ua.es/ConsPlanesEstudio/cvFichaAsiEEES.asp?wCodEst=C203&wcodasi=34063&wLengua=C&scaca=2020-21
 
-- La asistencia a prácticas es obligatoria, aunque se puede tener un máximo de 5 faltas no justificadas. Si tienes alguna ocupación que te impide asistir a todas o gran parte de las prácticas, envía un justificante escaneado al profesor a través del sistema de tutoría de UACloud. Para justificar una falta puntual, enseña al profesor el justificante durante la próxima sesión de prácticas a la que acudas. Cada falta no justificada por encima de las permitidas, restará una parte de la nota final de prácticas.
-- La visita virtual al profesor durante sus horas de tutoría no puede ser obligatoria por cuestiones normativas, pero es muy recomendable, ya que es la oportunidad de recibir supervisión sobre tus conocimientos de la materia o la calidad del código que has desarrollado. Reserva turno a través de UACloud. Si el horario no es compatible con tu agenda, escribe al profesor e intentará encontrar un hueco fuera de dicho horario para atenderte.
+- La asistencia a prácticas es obligatoria, aunque se puede tener un máximo de 4 faltas no justificadas. La asistencia contará indistintamente tanto si la realizas presencialmente (en las semanas que te asigne la universidad a través de la aplicación de Docencia Dual) o telemáticamente (en cualquiera de las semanas de curso, incluso en las que en principio la aplicación te permita asistir presencialmente). Si tienes alguna ocupación que te impide asistir a todas o gran parte de las prácticas incluso online, envía un justificante escaneado al profesor a través del sistema de tutoría de UACloud. Para justificar una falta puntual, envía al profesor el justificante por una tutoría de UACloud. Cada falta no justificada por encima de las permitidas, restará una parte de la nota final de prácticas.
+- La visita (virtual en este curso) al profesor durante sus horas de tutoría no puede ser obligatoria por cuestiones normativas, pero es muy recomendable, ya que es la oportunidad de recibir supervisión sobre tus conocimientos de la materia o la calidad del código que has desarrollado. Reserva turno a través de UACloud con anterioridad y conéctate con o sin cámara activada a la sala virtual allí indicada. Si el horario no es compatible con tu agenda, escribe al profesor e intentará encontrar un hueco fuera de dicho horario para atenderte.
 - Las prácticas se realizan individualmente. Lee lo que se comenta más abajo sobre plagios.
-- Cada una de las cuatro prácticas contribuye un 25% a la nota final de las prácticas.
+- Cada una de las cinco prácticas contribuye según lo indicado en la sección de prácticas a la nota final.
 - Para acceder a Google Cloud Platform en las últimas semanas del curso necesitarás tu `cuenta de correo electrónico de GCloud`_ con dominio ``@gcloud.ua.es`` de la que dispones como alumno de la Universitat d'Alacant. Asegúrate antes de la cuarta semana de clase de que la tienes activada entrando en la sección *Servicios externos* de UACloud.
 
 .. _`cuenta de correo electrónico de GCloud`: https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html
