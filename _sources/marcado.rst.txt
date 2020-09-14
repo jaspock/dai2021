@@ -28,14 +28,6 @@ HTML (*HyperText Markup Language*) es el lenguaje *declarativo* en el que están
   - Entender el papel jugado por un servidor web y cómo publicar en él contenido estático.
 
 
-.. admonition:: Hazlo tú ahora
-  :class: hazlotu
-
-  Prepárate para este tema, leyendo en primer lugar el `capítulo sobre HTML`_ del libro "Client-Side Web Development".
-
-  .. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
-
-
 Sintaxis y elementos del lenguaje HTML
 --------------------------------------
 
@@ -209,3 +201,4 @@ Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" >
 
   Ten en cuenta estas diferencias cuando encuentres código de ejemplo en HTML en alguna web. Los navegadores suelen procesar correctamente la mayor parte de la última versión del estándar existente cuando son publicados, pero no debes perder de vista que un gran número de usuarios tendrás probablemente versiones antiguas del navegador. Aunque no las veremos en este curso, existen maneras de desarrollar aplicaciones web teniendo en cuenta estas versiones antiguas sin renunciar necesariamente a la versatilidad de las recientes.
+

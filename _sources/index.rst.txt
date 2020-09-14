@@ -33,6 +33,18 @@ Novedades
 
 .. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
 
+
+Actividades previas a las clases
+--------------------------------
+
+- **Antes de la clase del 22/09/2020.** Estudia los siguientes vídeos: "`Selectores y propiedades de CSS (parte 1)`_", "`Selectores y propiedades de CSS (parte 2)`_" y "`Selectores y propiedades de CSS (parte 3)`_" (en la portada del vídeo se indica parte 2, pero es la parte 3). A continuación, contesta (plazo límite: 21/09/2020, 23:59 horas) el `test sobre la introducción a CSS`_.
+
+.. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
+.. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
+.. _`Selectores y propiedades de CSS (parte 3)`: https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing
+.. _`test sobre la introducción a CSS`: https://forms.gle/YUznititAny8dagi8
+
+
 Guía docente y normas del curso
 -------------------------------
 
@@ -63,6 +75,21 @@ El `código fuente`_ de estas páginas, escrito en reStructuredText, está dispo
 Puedes obtener una copia local de estas páginas (por ejemplo, para poder consultarlas sin conexión) ejecutando::
 
   wget --mirror --no-parent --convert-links --page-requisites https://jaspock.github.io/dai2021/index.html
+
+
+Cómo compartir código con el profesor en clase, tutorías virtuales o consultas por escrito
+------------------------------------------------------------------------------------------
+
+Si quieres que el profesor pueda ayudarte con algún código que estás desarrollando, mandar un pantallazo no es la mejor opción. Puedes utilizar repl.it para que el profesor pueda probar tu código e incluso realizar modificaciones en directo. 
+
+- Accede a la web de `repl.it`_ con tu usuario. 
+- Clica en el botón para añadir un nuevo espacio, elige :guilabel:`HTML,CSS,JS` o :guilabel:`Node.js` dependiendo de si tu aplicación es solo para el navegador o también incluye la parte del servidor, y clica en :guilabel:`Create repl`.
+- Arrastra desde el explorador de archivos tus ficheros sobre la zona :guilabel:`Files`.
+- Puedes lazanr tu aplicación con el botón :guilabel:`Run`.
+- Clica en el botón :guilabel:`Share` y manda el enlace al profesor.
+- Si no es necesario que el profesor edite tu código, también puedes mandarle simplemente el URL de tu código; para ello, tienes que haber creado el espacio como público.
+
+.. _`repl.it`: https://repl.it/
 
 
 Recomendaciones

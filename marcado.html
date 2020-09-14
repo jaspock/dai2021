@@ -178,10 +178,6 @@
 <li><p>Entender el papel jugado por un servidor web y cómo publicar en él contenido estático.</p></li>
 </ul>
 </div>
-<div class="hazlotu admonition">
-<p class="admonition-title">Hazlo tú ahora</p>
-<p>Prepárate para este tema, leyendo en primer lugar el <a class="reference external" href="https://info340.github.io/html-fundamentals.html">capítulo sobre HTML</a> del libro «Client-Side Web Development».</p>
-</div>
 <div class="section" id="sintaxis-y-elementos-del-lenguaje-html">
 <h2><span class="section-number">1.1. </span>Sintaxis y elementos del lenguaje HTML<a class="headerlink" href="#sintaxis-y-elementos-del-lenguaje-html" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>HTML es el lenguaje informático básico que se usa para escribir el contenido de las páginas web (por otro lado, CSS se usa para especificar los aspectos estéticos que afectan a la presentación de las páginas y JavaScript para programar los aspectos dinámicos). En esta actividad vas a conocer los elementos fundamentales de HTML. Te basarás para ello en el código de la página web mínima que aparece a continuación, que iremos ampliando con otros elementos del lenguaje.</p>
@@ -423,54 +419,102 @@
 198
 199
 200
-201</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="c">&lt;!-- &lt;!DOCTYPE&gt; informa al navegador de qué versión de HTML se usó para escribir el documento; desde </span>
-<span class="c">  HTML5 se usa simplemente la forma anterior --&gt;</span>
-<span class="c">&lt;!-- Definiciones de elementos tomadas de MDN web docs, developer.mozilla.org --&gt;</span>
-<span class="c">&lt;!-- El elemento &lt;html&gt; contiene todo el documento HTML; el atributo lang indica el idioma del contenido --&gt;</span>
+<span class="c">     HTML5 se usa simplemente la forma anterior --&gt;</span>
 
+<span class="c">&lt;!-- Definiciones de elementos tomadas de MDN web docs, developer.mozilla.org --&gt;</span>
+
+<span class="c">&lt;!-- El elemento &lt;html&gt; contiene todo el documento HTML; el atributo lang indica el idioma del contenido --&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
 
-<span class="c">&lt;!-- El elemento &lt;head&gt; provee información general (metadatos) acerca del documento, incluyendo su </span>
-<span class="c">    título y enlaces a scripts y hojas de estilos. --&gt;</span>
+  <span class="c">&lt;!-- El elemento &lt;head&gt; provee información general (metadatos) acerca del documento, incluyendo su </span>
+<span class="c">       título y enlaces a scripts y hojas de estilo --&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!-- El elemento &lt;meta&gt; aporta metainformación del documento; el atributo charset de &lt;meta&gt; indica </span>
 <span class="c">      la codificación de caracteres del documento: --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="c">&lt;!-- &lt;meta&gt; es un ejemplo de &quot;elemento vacío&quot;, que no requiere etiqueta de inicio y de fin;</span>
+<span class="c">         en versiones anteriores del estándar, estos se elementos se representaban con una barra</span>
+<span class="c">         al final: &lt;meta charset=&quot;utf-8&quot;/&gt; --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;author&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Franz de Copenhague&quot;</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!-- El elemento &lt;title&gt; indica el título del documento: --&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Blog del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 
-    <span class="c">&lt;!-- El elemento &lt;script&gt; carga la librería MathJax que permite mostrar ecuaciones dentro de páginas</span>
-<span class="c">      web: --&gt;</span>
+    <span class="c">&lt;!-- El elemento &lt;script&gt; carga la librería de JavaScript MathJax que permite mostrar ecuaciones dentro de páginas</span>
+<span class="c">         web: --&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- La librería de JavaScript chessboard-element permite define un componente web que permite usar</span>
+<span class="c">         el elemento personalizado chess-board (que no pertenece al estándar) en el documento --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/chessboard-element?module&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
   <span class="c">&lt;!-- El elemento &lt;body&gt; representa el contenido de un documento HTML; solo puede haber un </span>
-<span class="c">    elemento &lt;body&gt; en un documento: --&gt;</span>
+<span class="c">       elemento &lt;body&gt; en un documento: --&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!-- El elemento &lt;header&gt; representa un grupo de datos introductorios o de navegación; puede </span>
-<span class="c">      contener algunos elementos de encabezado, así como también un logo, un formulario de búsqueda, un </span>
-<span class="c">      nombre de autor y otros componentes --&gt;</span>
+<span class="c">         contener algunos elementos de encabezado, así como también un logo, un formulario de búsqueda, un </span>
+<span class="c">         nombre de autor y otros componentes --&gt;</span>
     <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
 
       <span class="c">&lt;!-- Los elementos de encabezado implementan seis niveles de encabezado del documento; &lt;h1&gt; es el </span>
-<span class="c">        más importante y &lt;h6&gt; el menos importante; un elemento de encabezado describe brevemente el </span>
-<span class="c">        tema de la sección que presenta --&gt;</span>
-      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Blogs de la Universidad de la Atlántida<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="c">           más importante y &lt;h6&gt; el menos importante; un elemento de encabezado describe brevemente el </span>
+<span class="c">           tema de la sección que presenta --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Blog del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!-- El elemento &lt;nav&gt; representa una sección de una página cuyo propósito es proporcionar enlaces de </span>
-<span class="c">      navegación, ya sea dentro del documento actual o a otros documentos; ejemplos comunes de secciones </span>
-<span class="c">      de navegación son menús, tablas de contenido e índices --&gt;</span>
+<span class="c">         navegación, ya sea dentro del documento actual o a otros documentos; ejemplos comunes de secciones </span>
+<span class="c">         de navegación son menús, tablas de contenido e índices --&gt;</span>
     <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
 
       <span class="c">&lt;!-- El elemento &lt;ul&gt;, de &quot;unordered list&quot;, representa una lista no ordenada; cada elemento va </span>
-<span class="c">        dentro del elemento &lt;li&gt; --&gt;</span>
+<span class="c">           dentro del elemento &lt;li&gt; --&gt;</span>
       <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- El elemento &lt;a&gt; es la base del hipertexto; a través del atributo &quot;href&quot; se indica el </span>
+<span class="c">             documento al que se saltará si se activa el enlace; en este caso, se enlaza a un</span>
+<span class="c">             elemento del documento actual etiquetado con un id --&gt;</span>
         <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Reflexiones sobre <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#física&quot;</span><span class="p">&gt;</span>física cuántica<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Reflexiones sobre <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#ia&quot;</span><span class="p">&gt;</span>inteligencia artificial<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -479,36 +523,38 @@
     <span class="c">&lt;!-- El elemento &lt;main&gt; representa el contenido principal del &lt;body&gt; de un documento o aplicación --&gt;</span>
     <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
 
-      <span class="c">&lt;!-- El elemento &lt;section&gt; representa una sección genérica de un documento: --&gt;</span>
+      <span class="c">&lt;!-- El elemento &lt;section&gt; representa una sección genérica de un documento --&gt;</span>
       <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Reflexiones sobre ciencia del profesor Franz de Copenhague<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
         <span class="c">&lt;!-- El atributo global id define un identificador único que no debe repetirse en todo el documento;</span>
-<span class="c">          su propósito es identificar el elemento al vincularlo en scripts u hojas de estilo --&gt;</span>
+<span class="c">             su propósito es identificar el elemento al vincularlo en scripts, hojas de estilo u enlaces --&gt;</span>
         <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;física&quot;</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Entradas sobre física cuántica ⚛<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-          <span class="c">&lt;!-- Teclear caracteres Unicode en Linux: Ctrl+Mayús+u 269b espacio: ⚛ --&gt;</span>
+          <span class="c">&lt;!-- Teclear caracteres Unicode en Linux: Ctrl+Mayús+u 269b espacio: ⚛; otros sistemas operativos </span>
+<span class="c">               tienen sus propias combinaciones de teclas --&gt;</span>
 
-          <span class="c">&lt;!-- El elemento &lt;p&gt; es el apropiado para distribuir el texto en párrafos: --&gt;</span>
+          <span class="c">&lt;!-- El elemento &lt;p&gt; es el apropiado para distribuir el texto en párrafos --&gt;</span>
           <span class="c">&lt;!-- El elemento &lt;strong&gt; es el apropiado para marcar con especial énfasis las partes más </span>
-<span class="c">            importantes de un texto: --&gt;</span>
+<span class="c">               importantes de un texto --&gt;</span>
           <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta sección incluye mis artículos <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>recientes<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> sobre física cuántica.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-          <span class="c">&lt;!-- El elemento &lt;article&gt;)representa una composición auto-contenida en un documento, página, </span>
-<span class="c">            una aplicación o en el sitio, que se destina a distribuir de forma independiente o reutilizable;</span>
-<span class="c">            podría ser un mensaje en un foro, un artículo de una revista o un periódico, una entrada de </span>
-<span class="c">            blog, un comentario de un usuario, un widget interactivo o gadget, o cualquier otro elemento </span>
-<span class="c">            independiente del contenido --&gt;</span>
+          <span class="c">&lt;!-- El elemento &lt;article&gt; representa una composición auto-contenida en un documento, página, </span>
+<span class="c">               o aplicación que se podría distribuir de forma independiente o reutilizable;</span>
+<span class="c">               podría ser un mensaje en un foro, un artículo de una revista o un periódico, una entrada de </span>
+<span class="c">               blog, un comentario de un usuario o cualquier otro elemento independiente del contenido --&gt;</span>
           <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
 
-            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Consecuencias del entrelazamiento cuántico (noviembre de 2016)<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El entrelazamiento cuántico se define como [...]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Consecuencias del entrelazamiento cuántico<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El entrelazamiento cuántico se define como lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+              exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
             <span class="c">&lt;!-- El elemento &lt;table&gt; representa datos en dos o más dimensiones; cada fila se incluye dentro del</span>
-<span class="c">              elemento &lt;tr&gt; y cada celda dentro del elemento &lt;td&gt; (o &lt;th&gt; para el encabezado de la tabla): --&gt;</span>
+<span class="c">                 elemento &lt;tr&gt; y cada celda dentro del elemento &lt;td&gt; (o &lt;th&gt; para el encabezado de la tabla) --&gt;</span>
             <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
               <span class="c">&lt;!-- El elemento &lt;thead&gt; representa el encabezado de la tabla donde suelen aparecer los nombres de</span>
-<span class="c">                cada campo: --&gt;</span>
+<span class="c">                   cada campo --&gt;</span>
               <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
                 <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
                   <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Encabezado 1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
@@ -516,7 +562,7 @@
                 <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
               <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
               <span class="c">&lt;!-- El elemento &lt;tbody&gt; encapsula una lista de filas de tabla que corresponden al cuerpo de la</span>
-<span class="c">                tabla: --&gt;</span>
+<span class="c">                   tabla --&gt;</span>
               <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
                 <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
                   <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>a<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -542,39 +588,54 @@
           <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Entradas sobre inteligencia artificial ♟<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta sección incluye mis artículos recientes sobre inteligencia artificial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Hacia una inteligencia artificial de propósito general (septiembre de 2017)<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Hacia una inteligencia artificial de propósito general<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Introducción<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Los recientes avances [...] En una charla reciente, Andrew Ng señalaba que:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Los recientes avances lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+              nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure 
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+              obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+              En una charla reciente, Andrew Ng señalaba que:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
  
             <span class="c">&lt;!-- El elemento &lt;blockquote&gt; indica que el texto rodeado por el elemento es una cita; su atributo</span>
-<span class="c">              cite indica la fuente de la cita: --&gt;</span>
+<span class="c">                 cite indica la fuente de la cita --&gt;</span>
             <span class="c">&lt;!-- El atributo lang se define al principio para todo el documento, pero aquí se indica para la cita;</span>
-<span class="c">              el valor del atributo ha de coincidir con alguno de los códigos de dos letras ISO 639-1: </span>
-<span class="c">              https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes --&gt;</span> 
+<span class="c">                 el valor del atributo ha de coincidir con alguno de los códigos de dos letras ISO 639-1: </span>
+<span class="c">                 https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes --&gt;</span> 
             <span class="c">&lt;!-- &amp;ldquo; es una entidad que permite introducir el signo de apertura de comillas en documentos</span>
-<span class="c">              con codificaciones de caracteres que no incluyen dicho simbolo: --&gt;</span>
+<span class="c">                 con codificaciones de caracteres que no incluyen dicho simbolo; existe un conjunto de entidades </span>
+<span class="c">                 definidas en el estándar como, por ejemplo, &amp;copy; para el símbolo de copyright --&gt;</span>
             <span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">cite</span><span class="o">=</span><span class="s">&quot;http://time.com/4631730/andrew-ng-artificial-intelligence-2017/&quot;</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
               <span class="ni">&amp;ldquo;</span>We&#39;re making this analogy that artificial inteligence is the new electricity. Electricity
               transformed industries: agriculture, transportation, communication, manufacturing. I think we are
               now in that phase where artificial inteligence technology has advanced to the point where we see
-              a clear path for it to transform multiple industries.”
+              a clear path for it to transform multiple industries.<span class="ni">&amp;rdquo;</span>
             <span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
  
             <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Modelo matemático<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>De todo lo anterior se deduce que [...]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>De todo lo anterior se deduce que lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed eiusmod tempor incidunt ut labore et dolore magna aliqua.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
             <span class="c">&lt;!-- Las ecuaciones para la librería MathJax se encierran dentro de $$ y usan una notación propia</span>
-<span class="c">              de la librería (basada en el lenguaje LaTeX); atención toda esta notación es específica de la</span>
-<span class="c">              librería y no es HTML: --&gt;</span>
+<span class="c">                 de la librería (basada en el lenguaje LaTeX); atención: toda esta notación es específica de la</span>
+<span class="c">                 librería y no es HTML: --&gt;</span>
             $$
               [\boldsymbol{\nu}_t,\boldsymbol{\xi}_t] = \mathcal{N}\left(x_t,r^{1}_{t-1},\ldots,r^{R}_{t-1}\right)
             $$
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>No obstante, [...]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+            <span class="c">&lt;!--</span>
+<span class="c">            $$</span>
+<span class="c">              I = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}</span>
+<span class="c">            $$</span>
+<span class="c">            --&gt;</span>
+
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>No obstante, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt 
+               ut labore et dolore magna aliqua.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
             <span class="c">&lt;!-- El elemento &lt;pre&gt; representa texto preformateado.; el texto en este elemento típicamente </span>
-<span class="c">              se muestra en una fuente fija, no proporcional (monoespacio), exactamente como es mostrado en </span>
-<span class="c">              el archivo: los espacios dentro de este elemento también son mostrados como están escritos: --&gt;</span>
-            <span class="c">&lt;!-- El elemento &lt;code&gt; indica que el contenido es código fuente: --&gt;</span>
+<span class="c">                 se muestra en una fuente fija, no proporcional (monoespacio), exactamente como es mostrado en </span>
+<span class="c">                 el archivo: los espacios dentro de este elemento también son mostrados como están escritos --&gt;</span>
+            <span class="c">&lt;!-- El elemento &lt;code&gt; indica que el contenido es código fuente --&gt;</span>
             <span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;&lt;</span><span class="nt">code</span><span class="p">&gt;</span>
               interface PrimaryCore {
                 boolean verifyDataLine();
@@ -585,42 +646,51 @@
 
           <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>La memoria en las redes neuronales (octubre de 2016)<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Tradicionalmente, las <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>redes neuronales<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> [...]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>La memoria en las redes neuronales<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Tradicionalmente, las <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>redes neuronales<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+               sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+               nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
             <span class="c">&lt;!-- El elemento &lt;figure&gt; representa contenido independiente, a menudo con un título; si bien se</span>
-<span class="c">              relaciona con el flujo principal, su posición es independiente de este; por lo general, se trata</span>
-<span class="c">              de una imagen, una ilustración, un diagrama, un fragmento de código o un esquema al que se hace</span>
-<span class="c">              referencia en el texto principal, pero que se puede mover a otra página o a un apéndice sin que</span>
-<span class="c">              afecte al flujo principal: --&gt;</span>
+<span class="c">                 relaciona con el flujo principal, su posición es independiente de este; por lo general, se trata</span>
+<span class="c">                 de una imagen, una ilustración, un diagrama, un fragmento de código o un esquema al que se hace</span>
+<span class="c">                 referencia en el texto principal, pero que se puede mover a otra página o a un apéndice sin que</span>
+<span class="c">                 afecte al flujo principal --&gt;</span>
             <span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
 
               <span class="c">&lt;!-- El elemento &lt;img&gt; representa una imagen en el documento; su atributo src indica el URL de la</span>
-<span class="c">                imagen; el atributo obligatorio alt define un texto alternativo que describe la imagen: --&gt;</span>
-                <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://images.nature.com/full/nature-assets/nature/journal/v538/n7626/images/nature20101-f1.jpg&quot;</span>
-                <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Esquema de una red neuronal derivable, donde se pueden observar los distintos cabezales de</span>
-<span class="s">                     lectura/escritura accediendo a los contenidos de la memoria.&quot;</span><span class="p">&gt;</span>
+<span class="c">                   imagen; el atributo obligatorio alt define un texto alternativo que describe la imagen --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fnature20101/MediaObjects/41586_2016_Article_BFnature20101_Fig4_HTML.jpg&quot;</span>
+                     <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Activaciones de los distintos cabezales de lectura/escritura </span>
+<span class="s">                          en una red neuronal derivable.&quot;</span><span class="p">&gt;</span>
 
               <span class="c">&lt;!-- El elemento &lt;figcaption&gt; representa un subtítulo o leyenda asociado al contenido del elemento </span>
-<span class="c">                padre &lt;figure&gt;, pudiendo ser colocado como primer o último hijo: --&gt;</span>
+<span class="c">                   padre &lt;figure&gt;, pudiendo ser colocado como primer o último hijo --&gt;</span>
               <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Esquema de una red neuronal derivable<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
             <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
         <span class="c">&lt;!-- El elemento &lt;aside&gt; representa una sección de una página que consiste en contenido que está </span>
-<span class="c">          indirectamente relacionado con el contenido principal del documento: --&gt;</span>
+<span class="c">             indirectamente relacionado con el contenido principal del documento (por ejemplo, comentarios</span>
+<span class="c">             al margen o publicidad) --&gt;</span>
         <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>
-          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al hilo de las reflexiones anteriores [...]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al hilo de las reflexiones anteriores, lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+             sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+             quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+          <span class="c">&lt;!-- Uso del componente web definido en la librería chessboard-element; el uso de style no está</span>
+<span class="c">               recomendado normalmente --&gt;</span>
+          <span class="p">&lt;</span><span class="nt">chess-board</span> <span class="na">position</span><span class="o">=</span><span class="s">&quot;start&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 256px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">chess-board</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!-- El elemento &lt;footer&gt; representa un pie de página para el contenido de sección más cercano o el</span>
-<span class="c">      elemento raíz de sección; un pie de página típicamente contiene información acerca del autor de la</span>
-<span class="c">      sección, datos de derechos de autor o enlaces a documentos relacionados: --&gt;</span>
+<span class="c">         elemento raíz de sección; un pie de página típicamente contiene información acerca del autor de la</span>
+<span class="c">         sección, datos de derechos de autor o enlaces a documentos relacionados --&gt;</span>
     <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2017, Universidad de la Atlántida<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2020, Franz de Copenhague<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
