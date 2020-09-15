@@ -66,6 +66,8 @@ Una de las ideas que tienes que tener más claras es que los diferentes elemento
 
   .. _`terminal braille`: https://en.wikipedia.org/wiki/Refreshable_braille_display
 
+Una parte importante de la sociedad tiene alguna discapacidad (visual, motora, intelectual...), ya sea congénita o adquirida (por enfermedad, accidente o edad, por ejemplo), que le puede dificultar la interacción con una página o aplicación web si esta no se desarrolla adecuadamente bajo principios de accesibilidad que atiendan a la diversidad funcional de la sociedad. El uso de HTML como lenguaje de anotación semántica de contenido es uno de los principios fundamentales para cumplir este objetivo.
+
 HTML tiene aproximadamente un centenar de elementos diferentes, cada uno de ellos con un propósito semántico bien definido. En este curso vamos a estudiar un subconjunto de ellos, cuyo cometido puedes consultar en `MDN web docs`_ y que se muestran en este documento más completo_.
 
 .. _`MDN web docs`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
