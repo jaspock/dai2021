@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 15 sep
+      - En la sección ":ref:`label-actividades`" puedes encontrar las actividades a realizar antes de la clase del 22 de septiembre. Hay un pequeño cuestionario que tienes que rellenar antes de las 23.59 del día anterior. Recuerda que estos cuestionarios contribuyen a la nota final. Consulta tras cada clase la sección ":ref:`label-actividades`" para comprobar si esa semana hay que realizar actividades antes de la clase siguiente.
     * - 13 sep
       - Con la normativa actual, puedes seguir y superar la asignatura sin problemas por vía cien por cien telemática, con la única excepción de los exámenes finales de enero y julio que a día de hoy están previstos únicamente en modalidad presencial. No obstante, si lo deseas también puedes asisitir presencialmente a las clases que la universidad te indique a través de la aplicación de Docencia Dual de UACloud (pero únicamente a las sesiones que allí aparezcan reflejadas).
     * - 13 sep
@@ -34,10 +36,12 @@ Novedades
 .. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
 
 
+.. _label-actividades:
+
 Actividades previas a las clases
 --------------------------------
 
-- **Antes de la clase del 22/09/2020.** Estudia los siguientes vídeos: "`Selectores y propiedades de CSS (parte 1)`_", "`Selectores y propiedades de CSS (parte 2)`_" y "`Selectores y propiedades de CSS (parte 3)`_" (en la portada del vídeo se indica parte 2, pero es la parte 3). A continuación, contesta (plazo límite: 21/09/2020, 23:59 horas) el `test sobre la introducción a CSS`_.
+- Antes de la clase del 22/09/2020: estudia los siguientes vídeos: "`Selectores y propiedades de CSS (parte 1)`_", "`Selectores y propiedades de CSS (parte 2)`_" y "`Selectores y propiedades de CSS (parte 3)`_"; a continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 
 .. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
 .. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
@@ -80,7 +84,7 @@ Puedes obtener una copia local de estas páginas (por ejemplo, para poder consul
 Cómo compartir código con el profesor en clase, tutorías virtuales o consultas por escrito
 ------------------------------------------------------------------------------------------
 
-Si quieres que el profesor pueda ayudarte con algún código que estás desarrollando, mandar un pantallazo no es la mejor opción. Puedes utilizar repl.it para que el profesor pueda probar tu código e incluso realizar modificaciones en directo. 
+Si quieres que el profesor pueda ayudarte con algún código que estás desarrollando, mandar un pantallazo no es la mejor opción. Utiliza repl.it en su lugar para que el profesor pueda probar tu código e incluso realizar modificaciones en directo.
 
 - Accede a la web de `repl.it`_ con tu usuario. 
 - Clica en el botón para añadir un nuevo espacio, elige :guilabel:`HTML,CSS,JS` o :guilabel:`Node.js` dependiendo de si tu aplicación es solo para el navegador o también incluye la parte del servidor, y clica en :guilabel:`Create repl`.
