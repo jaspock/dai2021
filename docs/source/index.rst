@@ -115,10 +115,10 @@ Este es el momento también en el que enfatizar la importancia de tomar apuntes 
     :numbered:
 
     marcado
+    estilo
     problemas
     practicas
 
-.. estilo
 .. cliente
 .. servicios
 .. componentes
