@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 21 sep
+      - En la sección ":ref:`label-actividades`" puedes encontrar las actividades a realizar antes de la clase del 29 de septiembre. Hay un pequeño cuestionario que tienes que rellenar antes de las 23.59 del día anterior. Recuerda que estos cuestionarios contribuyen a la nota final. Como has de consultar tras cada clase la sección ":ref:`label-actividades`" para comprobar si esa semana hay que realizar actividades antes de la clase siguiente, este tipo de anuncios recordándolo no se mostrará más.
     * - 15 sep
       - En la sección ":ref:`label-actividades`" puedes encontrar las actividades a realizar antes de la clase del 22 de septiembre. Hay un pequeño cuestionario que tienes que rellenar antes de las 23.59 del día anterior. Recuerda que estos cuestionarios contribuyen a la nota final. Consulta tras cada clase la sección ":ref:`label-actividades`" para comprobar si esa semana hay que realizar actividades antes de la clase siguiente.
     * - 13 sep
@@ -41,12 +43,14 @@ Novedades
 Actividades previas a las clases
 --------------------------------
 
+- Antes de la clase del 29/09/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-inline-css`", ":ref:`label-caja-css`" y ":ref:`label-posicionamiento-css`"; a continuación, contesta el `test sobre el modelo de caja de CSS`_ (plazo límite: 28/09/2020, 23:59 horas). Recuerda utilizar tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 - Antes de la clase del 22/09/2020: estudia los siguientes vídeos: "`Selectores y propiedades de CSS (parte 1)`_", "`Selectores y propiedades de CSS (parte 2)`_" y "`Selectores y propiedades de CSS (parte 3)`_"; a continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 
 .. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
 .. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
 .. _`Selectores y propiedades de CSS (parte 3)`: https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing
 .. _`test sobre la introducción a CSS`: https://forms.gle/YUznititAny8dagi8
+.. _`test sobre el modelo de caja de CSS`: https://forms.gle/PNmsNUSdrYMUsj5d9
 
 
 Guía docente y normas del curso

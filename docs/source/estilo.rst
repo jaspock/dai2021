@@ -22,6 +22,9 @@ El lenguaje HTML dota de contenido a una página web. El lenguaje JavaScript de 
     - Usar las herramientas para desarrolladores integradas en los navegadores, como Chrome DevTools, para inspeccionar el estilo de una parte de un documento HTML.
 
 
+Selectores y propiedades del lenguaje CSS
+-----------------------------------------
+
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
@@ -30,6 +33,36 @@ El lenguaje HTML dota de contenido a una página web. El lenguaje JavaScript de 
   .. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
   .. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
   .. _`Selectores y propiedades de CSS (parte 3)`: https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing
+
+Como se estudia en los vídeos anteriores, los selectores de CSS permiten identificar uno o más elementos de un documento HTML. Aunque en este tema vamos a usar los selectores como parte de las reglas de CSS, esta notación tiene otros usos que veremos más adelante (como identificar los nodos del árbol DOM sobre los que realizar ciertas operaciones en JavaScript). La sintaxis de los selectores puede ser más elaborada para definir criterios de selección más avanzados. Estudiando algunas de las propiedades de CSS (hay muchas más), has visto también cómo especificar medidas (por ejemplo, el tamaño de la letra), colores o tipos de letra en CSS.
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Practica con los diferentes tipos de selectores así como con los diferentes valores de las propiedades hasta tener claro su uso.
+
+
+.. Attention::
+
+  El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como ``div`` o ``span``: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento ``<q>``, que será el que usemos en el documento HTML en lugar de un elemento del tipo ``<span class="cita">``.
+
+.. Note::
+
+  No todas las propiedades se propagan *en cascada* a los elementos interiores. Las propiedades ``color``, ``font-size`` y muchas otras se heredan, pero hay muchas propiedades de CSS no heredadas como ``border``, ``margin``, ``padding``, ``width``, ``position``, etc.
+
+.. Note::
+
+  De la misma manera que un documento HTML puede (y debe) ser validado para asegurar su corrección, existen también validadores de documentos CSS, como el `validador del W3C`_. La validación no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores, pero permite detectar errores sintácticos que, por otra parte, posiblemente sean también detectados por el editor de texto que utilices.
+
+  .. _`validador del W3C`: http://jigsaw.w3.org/css-validator/
+
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Practica tu conocimiento de CSS con este entretenido `juego sobre selectores`_.
+
+  .. _`juego sobre selectores`: https://flukeout.github.io/
 
 
 Conexión entre los estilos y el documento HTML
@@ -101,41 +134,7 @@ En la tabla anterior aparecen algunos *selectores compuestos* que estudiarás m�
   El criterio de especificidad puede sobrescribirse usando ``!important`` en la declaración de estilo. Aunque no lo veremos en este curso por ser poco recomendable la mayoría de las veces (normalmente podremos conseguir que el valor de un estilo se aplique sobre otros aumentando la especificidad del selector), puede ser útil cuando no podemos modificar ni el código HTML ni el CSS de una página (por ejemplo, porque son generados automáticamente por una herramienta), sino únicamente aportar una nueva hoja de estilo (en ese contexto, si queremos que alguna propiedad se aplique a un elemento que ya tiene la misma propiedad aplicada con otro valor por la hoja de estilo generada automáticamente y no existe un selector más específico que el ya usado en la hoja de estilo generada, modificaremos la propiedad en nuestra hoja de estilo con ``!important``).
 
 
-Selectores y propiedades del lenguaje CSS
------------------------------------------
-
-Los selectores de CSS permiten identificar uno o más elementos de un documento HTML. Aunque en este tema vamos a usar los selectores como parte de las reglas de CSS, esta notación tiene otros usos que veremos más adelante (como identificar los nodos del árbol DOM sobre los que realizar ciertas operaciones en JavaScript). Como hemos visto, la sintaxis de los selectores puede ser más elaborada para definir criterios de selección más avanzados. Veremos también cómo especificar medidas (por ejemplo, el tamaño de la letra o el ancho de una caja), colores o tipos de letra en CSS.
-
-.. admonition:: Hazlo tú ahora
-  :class: hazlotu
-
-  Practica con los diferentes tipos de selectores así como con los diferentes valores de las propiedades hasta tener claro su uso.
-
-
-.. Attention::
-
-  El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como ``div`` o ``span``: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento ``<q>``, que será el que usemos en el documento HTML en lugar de un elemento del tipo ``<span class="cita">``.
-
-
-.. Note::
-
-  No todas las propiedades se propagan *en cascada* a los elementos interiores. Las propiedades ``color``, ``font-size`` y muchas otras se heredan, pero hay muchas propiedades de CSS no heredadas como ``border``, ``margin``, ``padding``, ``width``, ``position``, etc.
-
-
-.. Note::
-
-  De la misma manera que un documento HTML puede (y debe) ser validado para asegurar su corrección, existen también validadores de documentos CSS, como el `validador del W3C`_. La validación no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores, pero permite detectar errores sintácticos que, por otra parte, posiblemente sean también detectados por el editor de texto que utilices.
-
-  .. _`validador del W3C`: http://jigsaw.w3.org/css-validator/
-
-
-.. admonition:: Hazlo tú ahora
-  :class: hazlotu
-
-  Practica tu conocimiento de CSS con este entretenido `juego sobre selectores`_.
-
-  .. _`juego sobre selectores`: https://flukeout.github.io/
-
+.. _label-inline-css:
 
 Elementos en línea y de bloque
 ------------------------------
@@ -149,14 +148,14 @@ En el caso de los elementos *de bloque* (*block elements*),
 - su caja comienza en una nueva línea *debajo* de la caja anterior y, salvo que se restrinja explícitamente (mediante propiedades como ``width``), se extiende completamente a derecha e izquierda hasta ocupar todo el ancho disponible para el elemento padre (elemento contenedor); 
 - la caja de cualquier elemento posterior también aparece en una nueva línea; 
 - la altura de la caja depende del contenido (si se estrecha la ventana del navegador, la caja se alarga convenientemente para que el contenido quepa en ella), aunque puede fijarse explícitamente con propiedades como ``height``; 
-- elementos como ``<p>``, ``<div>`` o ``<section>`` son ejemplos de elementos de bloque.
+- elementos como ``<p>``, ``<div>`` o ``<section>`` son ejemplos de elementos de bloque; ``<div>`` es un elemento de bloque especial de HTML ya que no tiene una semántica asociada: su propósito es delimitar contenido cuya representación tiene algún estilo diferenciado, pero que no tiene un matiz semántico que se pueda representar mediante un elemento de HTML. 
 
 En el caso de los elementos *en línea* (*inline elements*),
   
 - estos elementos no se muestran en una nueva línea ni provocan la aparición de una nueva línea al final de ellos;
 - las cajas en línea no afectan al espaciado vertical;
 - el ancho de su caja depende de su contenido (propiedades como ``width`` y ``height`` son ignoradas), no del ancho del elemento padre; 
-- ejemplos de elementos en línea son ``<strong>``, ``<span>`` o ``<a>``.
+- ejemplos de elementos en línea son ``<strong>``, ``<span>`` o ``<a>``; al igual que ``<div>``, ``<span>`` no tiene semántica asociada y su propósito es el mismo que el de ``<div>`` pero para contenido en línea.
 
 Los comportamientos de las listas anteriores responden al flujo normal que se aplica por defecto a las cajas y constituye lo que se conoce como posicionamiento *estático*. Más adelante, veremos que hay otros tipos de posicionamiento.
 
@@ -217,18 +216,120 @@ Observa el resultado mostrado por el navegador para el siguiente bloque de códi
 Un elemento en línea puede aparecer dentro de un elemento en línea o de un elemento de tipo bloque. Un elemento de tipo bloque puede estar anidado dentro de otro elemento de tipo bloque; sin embargo, un elemento de tipo bloque no puede aparecer dentro de un elemento en línea.
 
 
+.. _label-caja-css:
+
 Modelo de caja en CSS
 ---------------------
 
-Entender el modelo de caja de CSS es fundamental a la hora de dar estilo a una página web. Esto implica, entre otras cosas, entender bien la forma de definir los márgenes, el borde y el relleno (*padding*) de cada caja.
+Todos los elementos de HTML se muestran en una caja *imaginaria* que se extiende alrededor de su contenido. Si bien el posicionamiento o el tamaño de estas cajas sigue reglas por defecto como las que hemos visto, muchas de estas propiedades geométricas pueden modificarse mediante reglas de CSS. Entender el modelo de caja de CSS es fundamental a la hora de dar estilo a una página web. Esto implica, entre otras cosas, entender bien la forma de definir los márgenes, el borde y el relleno (*padding*) de cada caja.
 
-.. admonition:: Hazlo tú ahora
-  :class: hazlotu
+.. figure:: https://img.alicdn.com/tfs/TB13u.4n5rpK1RjSZFhXXXSdXXa-377-340.png
+  :target: https://weex.apache.org/docs/styles/common-styles.html#box-model
+  :alt: modelo de caja CSS
 
-  Estudia la `sección "The Box Model"`_ (ojo: solo esta sección) del capítulo "CSS Layouts" del libro "Client-side web development". Practica con las diferentes propiedades con un documento con diferentes cajas hasta tener claro el propósito de cada una de ellas.
+  Modelo de caja CSS por Apache Weex
 
-  .. _`sección "The Box Model"`: https://info340.github.io/css-layouts.html#box-model
+Esta es una lista de los principales parámetros de una caja que podemos modificar mediente propiedades de CSS:
 
+- El ancho y alto de cada caja se pueden definir explícitamente mediante las propiedades ``width`` y ``height``.
+- Cada caja tiene un borde alrededor. El grosor de este borde se define con las propiedades ``border-top-width``, ``border-right-width``, ``border-bottom-width`` y ``border-bottom-left``; estas propiedades suelen tener valor cero por defecto. El color del borde se define con las propiedades ``bottom-top-color``, ``bottom-right-color``, etc. El trazo del borde puede, además, mostrarse con una línea continua (``solid``), con una línea discontinua (``dashed``) o con una línea de puntos (``dotted``), entre otros; estos valores pueden asignarse a las propiedades ``border-top-style``, ``border-right-style``, etc.
+- Cada caja tiene un relleno (*padding*), que es la distancia entre el borde y el contenido de la caja; este relleno se define con las propiedades ``padding-top``, ``padding-right``, etc.
+- Por último, es posible definir los márgenes entre una caja y las cajas de alrededor mediante las propiedades ``margin-top``, ``margin-right``, etc.
+
+Las separaciones y grosores anteriores se definen en base a las múltiples unidades de medida permitidas en CSS, como *píxeles* o *ems*. Si el valor es cero, no es necesario indicar la unidad de medida (0 píxeles y 0 *ems* es lo mismo en este caso).
+
+Existen formas compactas de definir algunas de las propiedades anteriores. Así, la propiedad ``padding: 3em 2em 1em 0`` establece el relleno, por este orden, superior, derecho, inferior e izquierdo; la propiedad ``padding: 2em 1em`` establece los rellenos superior e inferior (rellenos verticales) a ``2em`` y el relleno derecho e izquierdo (rellenos horizontales) a ``1em``; si solo tiene un valor, la propiedad ``padding: 2em`` establece todos los rellenos a ``2em``. La propiedad ``margin`` puede tener un número variable de valores, al igual que ``padding`` y con la misma semántica. Existe también una propiedad para dar valor al grosor de varios bordes a la vez, pero no es ``border`` (un error bastante común), sino ``border-width``. La propiedad ``border`` a secas cambia el grosor de todos los bordes, su estilo y su color a la vez, como en ``border: 1px solid blue``. 
+
+Considera el siguiente fragmento de HTML:
+
+.. code-block:: html
+  :linenos:
+
+  <div class="cuadrados">
+    <div class="orange">naranja</div>
+    <div class="blue">azul</div>
+    <div class="lavender">lavanda</div>
+  </div>
+
+Y considera el siguiente código CSS:
+
+.. code-block:: css
+  :linenos:
+
+  .cuadrados {
+    background: gainsboro; 
+    padding: 10px; 
+  }
+  .orange {         
+    background: orange;
+    height: 100px;
+    width: 100px;
+    border: 4px dotted olive
+  }
+  .blue {
+    background: lightskyblue;
+    height: 100px;
+    width: 100px; 
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  .lavender {
+    background: lavender;
+    height: 100px;
+    width: 100px;
+    padding: 1em 2em;
+    border-top-width: 2px;
+    border-top-color: olive;
+    border-top-style: solid;
+  }
+
+La visualización del código anterior por el navegador es la siguiente:
+
+.. raw:: html
+  
+  <div id="estatico">
+    <script>
+      var root = document.querySelector('#estatico').attachShadow({mode:'open'});
+      root.innerHTML = `
+      <style>
+        .cuadrados {
+          background: gainsboro; 
+          padding: 10px; 
+        }
+        .orange {         
+          background: orange;
+          height: 100px;
+          width: 100px;
+          border: 5px dotted olive
+        }
+        .blue {
+          background: lightskyblue;
+          height: 100px;
+          width: 100px; 
+          margin-top: 10px;
+          margin-left: 20px;
+          margin-bottom: 10px;
+        }
+        .lavender {
+          background: lavender;
+          height: 100px;
+          width: 100px;
+          padding: 1em 2em;
+          border-top-width: 2px;
+          border-top-color: olive;
+          border-top-style: solid;
+        }
+        </style>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+        </div>`;
+    </script>
+  </div>
+
+|
 
 .. Note::
 
@@ -245,12 +346,14 @@ Dado que los márgenes y rellenos por defecto que aplica el navegador a cada ele
       box-sizing: border-box;
     }
 
-De paso, hemos hecho que las medidas de todas las cajas se determinen usando el criterio ``border-box``, lo que también constituye una buena práctica.
+De paso, hemos hecho que las medidas de todas las cajas se determinen usando el criterio ``border-box``, lo que también constituye una buena práctica. Con el criterio por defecto, ``content-box``, si se define el ancho de una caja en 100 píxeles, por ejemplo, la subcaja del contenido del elemento tendrá 100 pixeles de ancho y el ancho de cualquier borde o relleno especificado se sumará al ancho final reflejado; es por ello que las cajas del ejemplo anterior tiene tamaños diferentes. Esto provocaba hace años que a menudo los desarrolladores tuvieran que andar restando al ancho total deseado las medidas del borde y el relleno de cara a obtener el valor adecuado del atributo ``width``.  Con el valor ``border-box`` de la propiedad ``box-sizing`` la caja completa tendrá 100 píxeles de ancho y, si hay borde o relleno, la subcaja de contenido reducirá su tamaño para que el ancho final mostrado para la caja sea de 100 píxeles. Observa que los márgenes no modifican la caja con uno u otro valor de la propiedad, ya que no definen en sí propiedades de la caja del contenido sino del espacio entre ella y las cajas adyacentes.
 
 .. Note::
 
   Independientemente del tipo (en línea o bloque) que un elemento tenga por defecto en HTML, el tipo puede cambiarse mediante la propiedad ``display`` usando los valores ``block`` e ``inline``. Además, podemos dar a un elemento el tipo ``inline-block`` que hace que se comporte como un elemento en línea, pero para el que se tienen en cuenta el ancho, el alto o los márgenes de manera que los elementos circundantes respetan el espacio de la caja, lo que no ocurre con los elementos en línea. La propiedad ``display`` también puede tomar el valor ``none``; en ese caso, el contenido del elemento no se visualiza en la ventana del navegador ni se reserva sitio alguno para él.
 
+
+.. _label-posicionamiento-css:
 
 Posicionamiento
 ---------------
@@ -286,7 +389,7 @@ Y considera el siguiente código CSS:
     background: gainsboro; 
     padding: 10px; 
   }
-  .orange {         
+  .orange {
     background: orange;
     height: 100px;
     width: 100px;

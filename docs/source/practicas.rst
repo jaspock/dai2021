@@ -179,13 +179,14 @@ y lo siguiente a tu hoja de estilo:
 
     box-shadow: 6px 6px 3px slategray;
 
+Aunque es una práctica habitual, no resetees a cero los márgenes y el relleno de todos los estilos del documento mediante una regla que use el selector universal ``*``.
 
 Recomendaciones finales
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Asegúrate de que tus ficheros se validan correctamente con los validadores HTML5 y CSS del W3C (usando la pestaña :guilabel:`Validate by File Upload` en ambos casos). Además, usa Chrome DevTools para comprobar que el estilo aplicado en cada punto del documento es correcto. Finalmente, asegúrate de que cumple con todas las especificaciones de este enunciado (por ejemplo, los nombres o valores de atributos, elementos o ficheros).
 
-Recuerda poner tu usuario de la cuenta de ``alu.ua.es`` en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado ``p1-dai.zip`` a través del `servidor web del Departamento`_. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero ``index.html``, una carpeta ``css`` con los ficheros con las hojas de estilo que hayas usado y una carpeta ``img`` con las imágenes.
+Recuerda poner tu usuario de la cuenta de ``alu.ua.es`` (pero sin la arroba y el dominio) en el pie del documento. Realiza tu entrega en un único fichero comprimido llamado ``p1-dai.zip`` a través del `servidor web del Departamento`_. El archivo comprimido contendrá directamente (sin ninguna carpeta contenedora) el fichero ``index.html``, una carpeta ``css`` con los ficheros con las hojas de estilo que hayas usado y una carpeta ``img`` con las imágenes.
 
 Por último, coloca en algún punto del pie de la página un fragmento de HTML como ``<span id="tiempo">[5 horas]</span>`` donde has de sustituir el 5 por el número de horas aproximadas que te haya llevado hacer esta prática.
 

@@ -192,6 +192,13 @@ Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con
 
 .. Note::
 
+  En `determinadas ocasiones`_ el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, no es necesario cerrar la etiqueta ``</body>`` de antes de ``</html>``), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.
+
+  .. _`determinadas ocasiones`: https://html.spec.whatwg.org/multipage/syntax.html#optional-tags
+
+
+.. Note::
+
   El lenguaje HTML evoluciona como cualquier otro lenguaje informático. Así, lo que hoy en día se representa como:
 
   .. code-block:: html
