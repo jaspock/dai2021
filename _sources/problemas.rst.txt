@@ -36,14 +36,30 @@ Lenguajes de marcado
 
   .. raw:: html
 
-    <section><h4>Colores
-    </h4>
-    <ul>
-    <li>azul
-    </li>
-    </ul>
-    </section>
-    
+    <div id="limon4">
+      <script>
+        var root = document.querySelector('#limon4').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+            .cuadrados {
+              width: 500px;
+              background: gainsboro;
+              padding: 10px;
+              margin-bottom: 10px;
+            }
+          </style>
+          <div class="cuadrados">
+            <section><h4>Colores
+            </h4>
+            <ul>
+            <li>azul
+            </li>
+            </ul>
+            </section>
+          </div>`;
+      </script>
+    </div>
+
   .. code-block:: html
     :linenos:
 
@@ -608,6 +624,502 @@ Lenguajes de estilo
   .. examen enero 2020
 
 
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  Considera el siguiente código de una página web:
+
+  .. code-block:: html
+    :linenos:
+
+    <!doctype html>
+    <html lang="es">
+      <head>
+        <meta charset="utf-8">
+        <title>Cuadrados</title>
+        <style>
+          .cuadrados {
+            width: 500px;
+            background: gainsboro;
+            padding: 10px;
+          }
+          .orange {
+            background: orange;
+            height: 100px;
+            width: 100px;
+          }
+          .blue {
+            background: lightskyblue;
+            height: 100px;
+            width: 100px;
+          }
+          .lavender {
+            background: lavender;
+            height: 100px;
+            width: 100px;
+          }
+          .lemonchiffon {
+            background: lemonchiffon;
+            height: 100px;
+            width: 100px;
+          }      
+        </style>
+      </head>
+      <body>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+          <div class="lemonchiffon">lemonchiffon</div>
+        </div>
+      </body>
+    </html>
+
+  La página anterior se muestra en el navegador como sigue: 
+
+  .. raw:: html
+
+    <div id="limon1">
+      <script>
+        var root = document.querySelector('#limon1').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+            .cuadrados {
+              width: 500px;
+              background: gainsboro;
+              padding: 10px;
+              margin-bottom: 10px;
+            }
+            .orange {
+              background: orange;
+              height: 100px;
+              width: 100px;
+            }
+            .blue {
+              background: lightskyblue;
+              height: 100px;
+              width: 100px;
+            }
+            .lavender {
+              background: lavender;
+              height: 100px;
+              width: 100px;
+            }
+            .lemonchiffon {
+              background: lemonchiffon;
+              height: 100px;
+              width: 100px;
+            }      
+          </style>
+          <div class="cuadrados">
+            <div class="orange">naranja</div>
+            <div class="blue">azul</div>
+            <div class="lavender">lavanda</div>
+            <div class="lemonchiffon">lemonchiffon</div>
+          </div>`;
+      </script>
+    </div>
+
+  Considera ahora una versión ligeramente diferente del código anterior:
+
+  .. code-block:: html
+    :linenos:
+
+    <!doctype html>
+    <html lang="es">
+      <head>
+        <meta charset="utf-8">
+        <title>Cuadrados del problema 4</title>
+        <style>
+          .cuadrados {
+            width: 500px;
+            background: gainsboro;
+            padding: 10px;
+          }
+          .orange {
+            background: orange;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: @1;
+          }
+          .blue {
+            background: lightskyblue;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            right: @2;
+          }
+          .lavender {
+            background: lavender;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: @1;
+          }
+          .lemonchiffon {
+            background: lemonchiffon;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            right: @2;
+          }      
+        </style>
+      </head>
+      <body>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+          <div class="lemonchiffon">lemonchiffon</div>
+        </div>
+      </body>
+    </html>
+
+  Indica con qué sustituir @1 y @2 en el código anterior para que el documento se muestre cómo sigue:
+
+  .. raw:: html
+
+    <div id="limon2">
+      <script>
+        var root = document.querySelector('#limon2').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+          .cuadrados {
+            width: 500px;
+            background: gainsboro;
+            padding: 10px;
+            margin-bottom: 10px;
+          }
+          .orange {
+            background: orange;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: 400px;
+          }
+          .blue {
+            background: lightskyblue;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            right: -400px;
+          }
+          .lavender {
+            background: lavender;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: 400px;
+          }
+          .lemonchiffon {
+            background: lemonchiffon;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            right: -400px;
+          }      
+        </style>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+          <div class="lemonchiffon">lemonchiffon</div>
+        </div>`;
+      </script>
+    </div>
+
+  Como pista, recuerda que en el posicionamiento relativo un valor positivo de la propiedad ``right`` especifica la distancia que el límite derecho del elemento se ha de mover a la izquierda respecto a su posición normal; un valor negativo de la propiedad ``right`` especifica, al contrario, la distancia que el límite derecho del elemento se ha de mover a la derecha respecto a su posición normal. En el caso de la propiedad ``left`` un valor positivo representa un movimiento a la derecha de la caja y un valor negativo representa un movimiento a la izquierda.
+
+  .. solución: @1=400px, @2=-400px
+  .. examen julio 2020
+  .. jugar con left y right para hacer distintas combinaciones poniendo left y right en distintas combinaciones y en otros
+
+
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  Considera el siguiente código de una página web:
+
+  .. code-block:: html
+    :linenos:
+
+    <!doctype html>
+    <html lang="es">
+      <head>
+        <meta charset="utf-8">
+        <title>Cuadrados del problema 5</title>
+        <style>
+          .cuadrados {
+            width: 500px;
+            background: gainsboro;
+            padding: 10px;
+          }
+          .orange {
+            background: orange;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            bottom: @1;
+          }
+          .blue {
+            background: lightskyblue;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            bottom: @2;
+          }
+          .lavender {
+            background: lavender;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            bottom: @3;
+          }
+          .lemonchiffon {
+            background: lemonchiffon;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            bottom: @4;
+          }      
+        </style>
+      </head>
+      <body>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+          <div class="lemonchiffon">lemonchiffon</div>
+        </div>
+      </body>
+    </html>
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el código anterior para que el documento se muestre cómo sigue: 
+
+  .. raw:: html
+
+    <div id="limon3">
+      <script>
+        var root = document.querySelector('#limon3').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+            .cuadrados {
+              width: 500px;
+              background: gainsboro;
+              padding: 10px;
+              margin-bottom: 10px;
+            }
+            .orange {
+              background: orange;
+              height: 100px;
+              width: 100px;
+              position: relative;
+              bottom: -300px;
+            }
+            .blue {
+              background: lightskyblue;
+              height: 100px;
+              width: 100px;
+              position: relative;
+              bottom: -100px;
+            }
+            .lavender {
+              background: lavender;
+              height: 100px;
+              width: 100px;
+              position: relative;
+              bottom: 100px;
+            }
+            .lemonchiffon {
+              background: lemonchiffon;
+              height: 100px;
+              width: 100px;
+              position: relative;
+              bottom: 300px;
+            }      
+          </style>
+          <div class="cuadrados">
+            <div class="orange">naranja</div>
+            <div class="blue">azul</div>
+            <div class="lavender">lavanda</div>
+            <div class="lemonchiffon">lemonchiffon</div>
+          </div>`;
+      </script>
+    </div>
+
+  Como pista, recuerda que en el posicionamiento relativo un valor positivo de la propiedad ``right`` especifica la distancia que el límite derecho del elemento se ha de mover a la izquierda respecto a su posición normal; un valor negativo de la propiedad ``right`` especifica, al contrario, la distancia que el límite derecho del elemento se ha de mover a la derecha respecto a su posición normal. En el caso de la propiedad ``left`` un valor positivo representa un movimiento a la derecha de la caja y un valor negativo representa un movimiento a la izquierda. Para este problema en concreto puedes adaptar la pista anterior sobre las propiedades ``left`` y ``right`` al caso de las propiedades ``top`` y ``bottom``.
+
+  .. solución: @1=-300px,@2=-100px,@3=100px,@4=300px
+  .. examen julio 2020
+
+
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  Considera el siguiente código de una página web:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <!doctype html>
+    <html lang="es">
+      <head>
+        <meta charset="utf-8">
+        <title>Cuadrados del problema 6</title>
+        <style>
+          .cuadrados {
+            width: 500px;
+            height: 400px;
+            background: gainsboro;
+            padding: 10px;
+            position: @1;
+          }
+          .orange {
+            background: orange;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 10px;
+            @2: 10px;
+          }
+          .blue {
+            background: lightskyblue;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 110px;
+          }
+          .lavender {
+            background: lavender;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 210px;
+          }
+          .lemonchiffon {
+            background: lemonchiffon;
+            height: 100px;
+            width: 100px;
+            position: @3;
+            top: @4;
+          }      
+        </style>
+      </head>
+      <body>
+        <div class="cuadrados">
+          <div class="orange">naranja</div>
+          <div class="blue">azul</div>
+          <div class="lavender">lavanda</div>
+          <div class="lemonchiffon">lemonchiffon</div>
+        </div>
+      </body>
+    </html>
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el código anterior para que el documento se muestre cómo sigue: 
+
+  .. raw:: html
+
+    <div id="limon5">
+      <script>
+        var root = document.querySelector('#limon5').attachShadow({mode:'open'});
+        root.innerHTML = `
+          <style>
+            .cuadrados {
+              width: 500px;
+              height: 410px;
+              background: gainsboro;
+              padding: 10px;
+              position: relative;
+              margin-bottom: 10px;
+            }
+            .orange {
+              background: orange;
+              height: 100px;
+              width: 100px;
+              position: absolute;
+              top: 10px;
+              right: 10px;
+            }
+            .blue {
+              background: lightskyblue;
+              height: 100px;
+              width: 100px;
+              position: absolute;
+              top: 110px;
+            }
+            .lavender {
+              background: lavender;
+              height: 100px;
+              width: 100px;
+              position: absolute;
+              top: 210px;
+            }
+            .lemonchiffon {
+              background: lemonchiffon;
+              height: 100px;
+              width: 100px;
+              position: absolute;
+              top: 310px;
+            }      
+          </style>
+          <div class="cuadrados">
+            <div class="orange">naranja</div>
+            <div class="blue">azul</div>
+            <div class="lavender">lavanda</div>
+            <div class="lemonchiffon">lemonchiffon</div>
+          </div>`;
+      </script>
+    </div>
+
+  Como pista, recuerda que en el posicionamiento absoluto la propiedad ``top`` especifica la distancia entre el límite superior del elemento y el límite superior de *cierto* elemento contenedor; si el valor es negativo, el límite superior de dicho elemento contenedor queda por debajo del límite superior del elemento contenido. De forma análoga, puedes deducir el propósito de las propiedades ``left``, ``top`` o ``bottom``.
+
+  .. solución: @1=relative,@2=right,@3=absolute,@4=310px
+  .. considerar esta solución: @3=relative,@4=300px
+  .. examen julio 2020
+
+
+.. admonition:: :problema-contador-estilo:`Problema`
+  :class: problema
+
+  Considera el siguiente fragmento de un documento en HTML:
+
+  .. code-block:: html
+    :linenos:
+
+    <ol id="o3">
+      <li class="c9">orangered</li>
+      <li class="c7">tomato</li>
+      <li class="c9 c7">firebrick</li>
+      <li id="choco">chocolate</li>
+      <ul>
+        <li class="c9">mintcream</li>
+      </ul>
+    </ol>
+
+
+  Considera que al documento anterior se le están aplicando los siguientes estilos:
+
+  .. code-block:: css
+    :linenos:
+
+    *       {color: aqua;}
+    @1      {color: firebrick;}
+    #choco  {color: chocolate;}
+    @2      {color: mintcream;}
+    @3      {color: orangered;}
+    @4      {color: tomato;}
+
+  Indica con qué sustituir las marcas ``@1``, ``@2``, ``@3`` y ``@4`` en el fragmento de CSS anterior para que cada elemento de la lista se muestre en el color que corresponde a su nombre, es decir, la palabra *chocolate* se muestre en color ``chocolate``, etc. Asume que cualquier valor asignado a un atributo ``class`` puede estar asignado a otro atributo ``class`` en otras partes no mostradas del documento HTML y que cualquiera de los elementos HTML pueden estar siendo usados en otras partes del documento. Si hay más de una posibilidad para sustituir una determinada marca, pon la que menos caracteres ocupe.
+
+  .. solución: @1=#o3 .c9.c7, @2=#o3 ul .c9, @3=#o3 .c9, @4=#o3 .c7
+  .. examen julio 2020
+
+
 Programar el lado del cliente
 -----------------------------
 
@@ -1041,6 +1553,120 @@ Programar el lado del cliente
   .. examen enero 2020
 
 
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera el siguiente fragmento del HTML de una página web:
+
+  .. code-block:: html
+    :linenos:
+  
+    <nav id="i100">
+      <div class="a">
+        <div>
+          <span>Anduin</span>
+          <span>Bruinen</span>
+          <div>
+            <span>Calenhir</span>
+          </div>
+          <span>Celduin</span>
+        </div>
+      </div>
+      <div lang="sjn">
+        <div>
+          <span>Celebrant</span>
+        </div>
+      </div>
+      <span>Bruinen</span>
+      <div lang="art">
+        <span>Anduin</span>
+        <span>Ciril</span>
+        <span>Entwash</span>
+        <span>Erui</span>
+        <span>Ethir<span>Bruinen</span></span>
+      </div>
+    </nav>
+
+  Indica con qué sustituir la marca ``@1`` en el siguiente código en JavaScript para que el *primer* elemento de tipo ``span`` que tiene como contenido la cadena *Bruinen* (hay tres en total) pase a tener un atributo ``spellcheck`` con valor ``false``. Asume que cualquier valor asignado a un atributo ``class`` puede estar asignado a otro atributo ``class`` en otras partes no mostradas del documento HTML y que cualquiera de los elementos HTML pueden estar siendo usados en otras partes del documento. Si hay más de una posibilidad para sustituir una determinada marca, pon la que menos caracteres ocupe.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var element= document.querySelector(@1);
+    element.setAttribute("spellcheck",false);
+
+  .. solución: @1="#i100 .a span:nth-child(2)" 
+  .. examen julio 2020
+
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera de nuevo todos los fragmentos de código del problema anterior. Indica con qué sustituir la marca ``@1`` del código de JavaScript para que el *segundo* elemento de tipo ``span`` que tiene como contenido la cadena *Bruinen* (hay tres en total) pase a tener un atributo ``spellcheck`` con valor ``false``. Asume que cualquier valor asignado a un atributo ``class`` puede estar asignado a otro atributo ``class`` en otras partes no mostradas del documento HTML y que cualquiera de los elementos HTML pueden estar siendo usados en otras partes del documento. Si hay más de una posibilidad para sustituir una determinada marca, pon la que menos caracteres ocupe.
+
+  .. solución: @1="#i100 > span"
+  .. examen julio 2020
+
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Considera de nuevo todos los fragmentos de código del problema anterior. Indica con qué sustituir la marca ``@1`` del código de JavaScript para que el *tercer* elemento de tipo ``span`` que tiene como contenido la cadena *Bruinen* (hay tres en total) pasen a tener un atributo ``spellcheck`` con valor ``false``. Asume que cualquier valor asignado a un atributo ``class`` puede estar asignado a otro atributo ``class`` en otras partes no mostradas del documento HTML y que cualquiera de los elementos HTML pueden estar siendo usados en otras partes del documento. Si hay más de una posibilidad para sustituir una determinada marca, pon la que menos caracteres ocupe.
+
+  .. solución: @1="#i100 span > span"
+  .. solución: @1="#i100 div[lang='art'] span span"
+  .. examen julio 2020
+
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica con qué sustituir las marcas ``@1``, ``@2``, ``@3``, ``@4`` en el siguiente programa de JavaScript para que la salida sea 7.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let c= {gamma:2};
+    let h1= x =@1 x*x;
+    let h2= (x,y) =@2 h1(x)*c.@3-h1(y);
+    console.log(h2(4,@4));
+
+  .. solución: @1=>,@2=>,@3=gamma,@4=5 
+
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  En el siguiente programa en JavaScript la función ``emit`` imprime por consola el valor pasado como parámetro tras realizar una serie de cálculos durante 1 segundo. El tiempo de ejecución de cualquier otro elemento del código es despreciable. La función ``setTimeout`` es estándar de JavaScript y registra una función que se ejecutará asíncronamente después del número de milisegundos indicados como segundo parámetro. Indica con qué sustituir la marca ``@1`` para que se impriman por consola en este orden los valores 1, 2, 3, 4, 5, 6, 7, 8.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    let lista=@1
+
+    for(let i=0;i<lista.length;i++) {
+      if (i==2 || i==3) {
+        setTimeout(function() {emit(lista[i])}, 2000);
+      }
+      else if (i==4 || i==5) {
+        setTimeout(function() {emit(lista[i])}, 1000);
+      }
+      else {
+        emit(lista[i]);
+      }
+    }
+
+  Observa que la variable ``lista`` es un *array* de números que serán impresos dentro del bucle, por lo que una posible respuesta (incorrecta) sería ``@1=[8,7,6,5,4,3,2,1]``.
+
+  .. function emit(s) { function pause(milliseconds) { let dt = new Date(); while ((new Date())-dt<=milliseconds) { /* Do nothing */} } pause(1000); let dt= new Date(); let seconds= dt.getSeconds(); console.log(seconds+"': "+s); }
+  .. solución: [1,2,7,8,5,6,3,4]
+  .. examen julio 2020
+
+
+
 Servicios web
 -------------
 
@@ -1258,6 +1884,62 @@ Servicios web
   Indica con qué sustituir las marcas ``@1``, ``@2`` y ``@3`` en el siguiente texto para que sea correcto: "El framework @1 de Node.js nos permite definir lo que en inglés se conoce como *middleware*. El *middleware* está formado por @2 encadenadas que se ejecutan durante el ciclo de vida de una petición al servidor. Cada una de ellas puede acceder a sendos objetos que representan la petición y la @3."
 
   .. solución: @1=Express,@2=funciones,@3=respuesta
+
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
+  Tenemos una aplicación web desplegada en ``example.com``. El código que se ejecuta en el servidor está en el fichero ``index.js`` y es el siguiente: 
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    var path = require('path');
+
+    const app = express();
+
+    app.use(bodyParser.json());
+
+    app.get('/index', (req, res) => {
+      res.sendFile(path.join(__dirname,'index.html'));
+    });
+
+    app.get('/@1', (req, res) => {
+      res.send({"key":@2*2});
+    });
+
+    app.listen(3000, () => console.log('server started'));
+
+  El documento ``index.html`` que se sirve al cliente desde el código anterior es:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Key</title>
+      </head>
+      <body>
+        <script>
+          fetch('/@3')
+          .then(r => r.json())
+          .then(x => console.log(@4))
+          .catch(e => console.log(e));
+        </script>
+      </body>
+    </html>
+
+  Indica con qué hay que sustituir las marcas ``@1``, ``@2``, ``@3`` y ``@4`` en los dos bloques anteriores para que si se intenta abrir en un navegador el URL ``example.com/index``, en la consola del navegador se muestre el valor *42*. Como restricción adicional, los valores de ``@2`` y ``@4`` no pueden ser constantes numéricas.
+
+  .. solución: @1=:id (u otra cadena), @2=req.params.id (el mismo nombre que en @1), @3=21, @4=x.key 
+  .. solución: https://repl.it/@jaspock/Node-Express#index.js
+  .. examen julio 2020
 
 
 Componentes web

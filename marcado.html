@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="2. Problemas" href="problemas.html" />
+    <link rel="next" title="2. Lenguajes de estilo" href="estilo.html" />
     <link rel="prev" title="Materiales de Desarrollo de Aplicaciones en Internet" href="index.html" /> 
 </head>
 
@@ -93,8 +93,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#validacion-de-documentos-html">1.6. Validación de documentos HTML</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="problemas.html">2. Problemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="practicas.html">3. Enunciados de las prácticas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">3. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">4. Enunciados de las prácticas</a></li>
 </ul>
 
             
@@ -211,9 +212,10 @@
 </td></tr></table></div>
 </div>
 <p>Una de las ideas que tienes que tener más claras es que los diferentes elementos de HTML no representan propiedades <em>estéticas</em> de su contenido (como, por ejemplo, si un texto se muestra en negrita o si se ha de mostrar separado del texto precedente por un espacio vertical), sino únicamente propiedades <em>semánticas</em> (este texto enfatiza una determinada idea o este otro texto constituye un párrafo). Los aspectos estéticos se definen mediante lenguajes de estilo como CSS, que estudiaremos más adelante. Esta separación de presentación y contenido hace que el documento HTML sea independiente de la representación visual, táctil o auditiva que hagamos de él: en diferentes contextos podrían usarse diferentes hojas de estilo para el mismo documento; o un <em>screen reader</em> podría usar el contenido del bloque <cite>nav</cite> para permitir a una persona ciega elegir directamente qué sección del documento desea escuchar o consultar en un <a class="reference external" href="https://en.wikipedia.org/wiki/Refreshable_braille_display">terminal braille</a>; o un programa que procesa automáticamente un documento HTML (por poner un ejemplo, un buscador) no tendría que lidiar con aspectos secundarios meramente cosméticos. Además, gracias a la <em>externalización</em> de los estilos en un fichero aparte, es posible reutilizar los mismos estilos en múltiples documentos de HTML sin tener que duplicar su definición.</p>
-<blockquote>
-<div></div></blockquote>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
 <p>Una parte importante de la sociedad tiene alguna discapacidad (visual, motora, intelectual…), ya sea congénita o adquirida (por enfermedad, accidente o edad, por ejemplo), que le puede dificultar la interacción con una página o aplicación web si esta no se desarrolla adecuadamente bajo principios de accesibilidad que atiendan a la diversidad funcional de la sociedad. El uso de HTML como lenguaje de anotación semántica de contenido es uno de los principios fundamentales para cumplir este objetivo.</p>
+</div>
 <p>HTML tiene aproximadamente un centenar de elementos diferentes, cada uno de ellos con un propósito semántico bien definido. En este curso vamos a estudiar un subconjunto de ellos, cuyo cometido puedes consultar en <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN web docs</a> y que se muestran en este documento más <a class="reference external" href="_static/data/franz.html">completo</a>.</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
@@ -763,6 +765,10 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
+<p>En <a class="reference external" href="https://html.spec.whatwg.org/multipage/syntax.html#optional-tags">determinadas ocasiones</a> el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, no es necesario cerrar la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;/body&gt;</span></code> de antes de <code class="docutils literal notranslate"><span class="pre">&lt;/html&gt;</span></code>), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
 <p>El lenguaje HTML evoluciona como cualquier otro lenguaje informático. Así, lo que hoy en día se representa como:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">utf-8</span><span class="p">&gt;</span>
 </pre></div>
@@ -784,7 +790,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="problemas.html" class="btn btn-neutral float-right" title="2. Problemas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="estilo.html" class="btn btn-neutral float-right" title="2. Lenguajes de estilo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Materiales de Desarrollo de Aplicaciones en Internet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
