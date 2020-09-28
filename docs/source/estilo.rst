@@ -22,17 +22,19 @@ El lenguaje HTML dota de contenido a una página web. El lenguaje JavaScript de 
     - Usar las herramientas para desarrolladores integradas en los navegadores, como Chrome DevTools, para inspeccionar el estilo de una parte de un documento HTML.
 
 
+.. _label-intro-css:
+
 Selectores y propiedades del lenguaje CSS
 -----------------------------------------
 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Los siguientes vídeos introducen los elementos principales del lenguaje CSS, especialmente los conceptos de propiedad y selector que se usan a la hora de definir la reglas de estilo: "`Selectores y propiedades de CSS (parte 1)`_", "`Selectores y propiedades de CSS (parte 2)`_" y "`Selectores y propiedades de CSS (parte 3)`_".
+  Estudia todos los vídeos de la serie "Selectores y propiedades de CSS" en los que se introducen los elementos principales del lenguaje CSS, especialmente los conceptos de propiedad y selector que se usan a la hora de definir la reglas de estilo: `parte 1`_, `parte 2`_ y `parte 3`_.
 
-  .. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
-  .. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
-  .. _`Selectores y propiedades de CSS (parte 3)`: https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing
+  .. _`parte 1`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
+  .. _`parte 2`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing
+  .. _`parte 3`: https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing
 
 Como se estudia en los vídeos anteriores, los selectores de CSS permiten identificar uno o más elementos de un documento HTML. Aunque en este tema vamos a usar los selectores como parte de las reglas de CSS, esta notación tiene otros usos que veremos más adelante (como identificar los nodos del árbol DOM sobre los que realizar ciertas operaciones en JavaScript). La sintaxis de los selectores puede ser más elaborada para definir criterios de selección más avanzados. Estudiando algunas de las propiedades de CSS (hay muchas más), has visto también cómo especificar medidas (por ejemplo, el tamaño de la letra), colores o tipos de letra en CSS.
 
@@ -44,7 +46,7 @@ Como se estudia en los vídeos anteriores, los selectores de CSS permiten identi
 
 .. Attention::
 
-  El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como ``div`` o ``span``: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento ``<q>``, que será el que usemos en el documento HTML en lugar de un elemento del tipo ``<span class="cita">``.
+  El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (Selectores y propiedades de CSS (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como ``div`` o ``span``: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento ``<q>``, que será el que usemos en el documento HTML en lugar de un elemento del tipo ``<span class="cita">``.
 
 .. Note::
 
