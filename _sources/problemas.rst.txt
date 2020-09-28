@@ -371,7 +371,7 @@ Lenguajes de estilo
       </section>
     </body>
 
-  .. solución: man .act; https://jsfiddle.net/2mt1p7he/
+  .. solución: main .act; https://jsfiddle.net/2mt1p7he/
 
 .. ------
 

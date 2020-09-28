@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="3. Problemas" href="problemas.html" />
+    <link rel="next" title="3. Programar el lado del cliente" href="cliente.html" />
     <link rel="prev" title="1. Lenguajes de marcado" href="marcado.html" /> 
 </head>
 
@@ -101,8 +101,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#chuletas-de-resumen">2.7. Chuletas de resumen</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="problemas.html">3. Problemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="practicas.html">4. Enunciados de las prácticas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">3. Programar el lado del cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">4. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">5. Enunciados de las prácticas</a></li>
 </ul>
 
             
@@ -184,10 +185,10 @@
 </ul>
 </div>
 <div class="section" id="selectores-y-propiedades-del-lenguaje-css">
-<h2><span class="section-number">2.1. </span>Selectores y propiedades del lenguaje CSS<a class="headerlink" href="#selectores-y-propiedades-del-lenguaje-css" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="label-intro-css"></span><h2><span class="section-number">2.1. </span>Selectores y propiedades del lenguaje CSS<a class="headerlink" href="#selectores-y-propiedades-del-lenguaje-css" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
-<p>Los siguientes vídeos introducen los elementos principales del lenguaje CSS, especialmente los conceptos de propiedad y selector que se usan a la hora de definir la reglas de estilo: «<a class="reference external" href="https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing">Selectores y propiedades de CSS (parte 1)</a>», «<a class="reference external" href="https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing">Selectores y propiedades de CSS (parte 2)</a>» y «<a class="reference external" href="https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing">Selectores y propiedades de CSS (parte 3)</a>».</p>
+<p>Estudia todos los vídeos de la serie «Selectores y propiedades de CSS» en los que se introducen los elementos principales del lenguaje CSS, especialmente los conceptos de propiedad y selector que se usan a la hora de definir la reglas de estilo: <a class="reference external" href="https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing">parte 1</a>, <a class="reference external" href="https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing">parte 2</a> y <a class="reference external" href="https://drive.google.com/file/d/1PhItC2tHklcq82pHclsrt1sG5eD8PmNl/view?usp=sharing">parte 3</a>.</p>
 </div>
 <p>Como se estudia en los vídeos anteriores, los selectores de CSS permiten identificar uno o más elementos de un documento HTML. Aunque en este tema vamos a usar los selectores como parte de las reglas de CSS, esta notación tiene otros usos que veremos más adelante (como identificar los nodos del árbol DOM sobre los que realizar ciertas operaciones en JavaScript). La sintaxis de los selectores puede ser más elaborada para definir criterios de selección más avanzados. Estudiando algunas de las propiedades de CSS (hay muchas más), has visto también cómo especificar medidas (por ejemplo, el tamaño de la letra), colores o tipos de letra en CSS.</p>
 <div class="hazlotu admonition">
@@ -196,7 +197,7 @@
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Atención</p>
-<p>El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como <code class="docutils literal notranslate"><span class="pre">div</span></code> o <code class="docutils literal notranslate"><span class="pre">span</span></code>: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento <code class="docutils literal notranslate"><span class="pre">&lt;q&gt;</span></code>, que será el que usemos en el documento HTML en lugar de un elemento del tipo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;cita&quot;&gt;</span></code>.</p>
+<p>El hecho de introducir propiedades cosméticas a nivel de clase o identificador no debe distraer al desarrollador web de seguir usando los elementos de HTML para indicar la semántica del contenido (Selectores y propiedades de CSS (como se estudió en el tema de lenguajes de marcado), evitando así el abuso de elementos como <code class="docutils literal notranslate"><span class="pre">div</span></code> o <code class="docutils literal notranslate"><span class="pre">span</span></code>: por ejemplo, si queremos aplicar un estilo específico a una cita, definiremos en la hoja de estilo el valor de las propiedades oportunas para el elemento <code class="docutils literal notranslate"><span class="pre">&lt;q&gt;</span></code>, que será el que usemos en el documento HTML en lugar de un elemento del tipo <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;cita&quot;&gt;</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -980,7 +981,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="problemas.html" class="btn btn-neutral float-right" title="3. Problemas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cliente.html" class="btn btn-neutral float-right" title="3. Programar el lado del cliente" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="marcado.html" class="btn btn-neutral float-left" title="1. Lenguajes de marcado" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
