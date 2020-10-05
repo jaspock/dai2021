@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 05 oct
+      - Es importante señalar que los vídeos que se están publicando no pretenden ser una fuente de información que tengas que ver una y otra vez para asimilar la materia. El profesor te aconseja que los veas quizás un par de veces y que tomes apuntes que te permitan afrontar el visionado como una tarea activa y consultar luego la información de forma mucho más rápida y eficiente. Busca en fuentes fiables de internet o pregunta todas aquellas cosas que no te hayan quedado claras e incorpora también tus conclusiones a tus apuntes. A la hora de preparar el examen, puede ser interesante realizar un visionado adicional (probablemente a velocidad 1,5x) para refrescar ideas y asegurarte de que no se dice nada en los vídeos que no sepas ya por tus apuntes.
     * - 21 sep
       - En la sección ":ref:`label-actividades`" puedes encontrar las actividades a realizar antes de la clase del 29 de septiembre. Hay un pequeño cuestionario que tienes que rellenar antes de las 23.59 del día anterior. Recuerda que estos cuestionarios contribuyen a la nota final. Como has de consultar tras cada clase la sección ":ref:`label-actividades`" para comprobar si esa semana hay que realizar actividades antes de la clase siguiente, este tipo de anuncios recordándolo no se mostrará más.
     * - 15 sep
@@ -43,11 +45,12 @@ Novedades
 Actividades previas a las clases
 --------------------------------
 
-- Antes de la clase del 06/10/2020: estudia los vídeos de la actividad ":ref:`label-intro-js`" (duración total de los vídeos: unos 55 minutos). A continuación, contesta el `test sobre la introducción a JavaScript`_ (plazo límite: 05/10/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
+- Antes de la clase del 13/10/2020: estudia el código y los vídeos de la actividad ":ref:`label-app-web-sencilla`" (duración total de los vídeos: unos 50 minutos; unos 35 a 1,5x). A continuación, contesta el `test sobre la aplicación web sencilla con JavaScript`_ (plazo límite: 12/10/2020, 23:59 horas).
+- Antes de la clase del 06/10/2020: estudia los vídeos de la actividad ":ref:`label-intro-js`" (duración total de los vídeos: unos 55 minutos; unos 40 a 1,5x). A continuación, contesta el `test sobre la introducción a JavaScript`_ (plazo límite: 05/10/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 - Antes de la clase del 29/09/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-inline-css`", ":ref:`label-caja-css`" y ":ref:`label-posicionamiento-css`". A continuación, contesta el `test sobre el modelo de caja de CSS`_ (plazo límite: 28/09/2020, 23:59 horas). Recuerda utilizar tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
-- Antes de la clase del 22/09/2020: estudia los vídeos y practica con la actividad ":ref:`label-intro-css`" (duración total de los vídeos: unos 35 minutos). A continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
+- Antes de la clase del 22/09/2020: estudia los vídeos y practica con la actividad ":ref:`label-intro-css`" (duración total de los vídeos: unos 35 minutos; unos 25 a velocidad 1,5x). A continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 
-
+.. _`test sobre la aplicación web sencilla con JavaScript`: https://forms.gle/mQw11xgGZCjzcSkp6
 .. _`test sobre la introducción a JavaScript`: https://forms.gle/K5krpteo4L9qzSud8
 .. _`Selectores y propiedades de CSS (parte 1)`: https://drive.google.com/file/d/1i3s-LKeMsCam5-kmD65G-BMGWsJjmaA8/view?usp=sharing
 .. _`Selectores y propiedades de CSS (parte 2)`: https://drive.google.com/file/d/1XpPhulZBzbsS-ODtjuwZUzDNznKVphj6/view?usp=sharing

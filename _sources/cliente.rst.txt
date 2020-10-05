@@ -22,14 +22,14 @@ Introducción al lenguaje de programación JavaScript
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Estudia todos los vídeos de la serie "Introducción a JavaScript" en los que se presentan los elementos principales del lenguaje: `parte 1`_, `parte 2`_, `parte 3`_, `parte 4`_, `parte 5`_ y `parte 6`_.
+  Estudia todos los vídeos de la serie "Introducción a JavaScript" en los que se presentan los elementos principales del lenguaje: `parte 1-1`_, `parte 1-2`_, `parte 1-3`_, `parte 1-4`_, `parte 1-5`_ y `parte 1-6`_.
 
-  .. _`parte 1`: https://drive.google.com/file/d/1p3ThE3xA1ubg3jJXFd968ucwckVpayKy/view?usp=sharing
-  .. _`parte 2`: https://drive.google.com/file/d/1MgFD19HaWSPo6P_CnPUFF6kmCLJJowEx/view?usp=sharing
-  .. _`parte 3`: https://drive.google.com/file/d/1GInxvZFxgt8GcS2cWzbMRWEDpNi0kHmG/view?usp=sharing
-  .. _`parte 4`: https://drive.google.com/file/d/1SrmuNde9DeOoOOClZ2WDGbf-aZH4vi33/view?usp=sharing
-  .. _`parte 5`: https://drive.google.com/file/d/15Z-leYRlWbMmPWQZczqakCt0q3jMLAcJ/view?usp=sharing
-  .. _`parte 6`: https://drive.google.com/file/d/1uP37JivyhSZeEgqwzcD57CznQwzLqS-Z/view?usp=sharing
+  .. _`parte 1-1`: https://drive.google.com/file/d/1p3ThE3xA1ubg3jJXFd968ucwckVpayKy/view?usp=sharing
+  .. _`parte 1-2`: https://drive.google.com/file/d/1MgFD19HaWSPo6P_CnPUFF6kmCLJJowEx/view?usp=sharing
+  .. _`parte 1-3`: https://drive.google.com/file/d/1GInxvZFxgt8GcS2cWzbMRWEDpNi0kHmG/view?usp=sharing
+  .. _`parte 1-4`: https://drive.google.com/file/d/1SrmuNde9DeOoOOClZ2WDGbf-aZH4vi33/view?usp=sharing
+  .. _`parte 1-5`: https://drive.google.com/file/d/15Z-leYRlWbMmPWQZczqakCt0q3jMLAcJ/view?usp=sharing
+  .. _`parte 1-6`: https://drive.google.com/file/d/1uP37JivyhSZeEgqwzcD57CznQwzLqS-Z/view?usp=sharing
 
 Elementos más avanzados del lenguaje o las características adicionales a las que un programador puede acceder cuando escribe programas en JavaScript para ser ejecutados por un navegador se estudiarán más adelante. Los conceptos que tienes que comprender del lenguaje se encuentran recogidos en `estas diapositivas`_, que también contiene información sobre elementos más avanzados que estudiaremos más adelante.
 
@@ -44,12 +44,26 @@ Elementos más avanzados del lenguaje o las características adicionales a las q
   .. _`repl.it`: https://repl.it/
 
 
+.. _label-app-web-sencilla:
+
 Una aplicación web sencilla
 ---------------------------
 
-El siguiente código muestra *en acción*, a modo de introducción, los elementos básicos del lenguaje JavaScript (variables, condicionales, bucles, funciones, etc.), así como la utilización de las APIs del navegador relacionadas con la gestión del DOM, de los eventos o de los estilos, para, con todo ello, presentar una `aplicación web muy sencilla`_ que permite añadir dinámicamente contenido a una página web e interactuar con el contenido añadido. Lee los comentarios para entender el propósito de cada línea, pero ten en cuenta que en actividades posteriores ampliaremos todos estos elementos.
+El código que se incluye más abajo muestra *en acción*, a modo de introducción, los elementos básicos del lenguaje JavaScript (variables, condicionales, bucles, funciones, etc.), así como la utilización de las APIs del navegador relacionadas con la gestión del DOM, de los eventos o de los estilos, para, con todo ello, presentar una `aplicación web muy sencilla`_ que permite añadir dinámicamente contenido a una página web e interactuar con el contenido añadido. 
 
 .. _`aplicación web muy sencilla`: _static/data/ejemplo-apis-js.html
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Lee los comentarios para entender el propósito de cada línea, pero ten en cuenta que en actividades posteriores ampliaremos estos elementos. Estudia después todos los vídeos de la serie "Una aplicación web sencilla con JavaScript" en los que se comenta este código con detalle: `parte 2-1`_, `parte 2-2`_, `parte 2-3`_, `parte 2-4`_ y `parte 2-5`_. Repasa después, otra vez, el código y asegúrate de que ahora comprendes mejor cada una de sus instrucciones.
+
+  .. _`parte 2-1`: https://drive.google.com/file/d/1YUI7AIgzHO9vcGnmxJ9h84YyEZy9MnXi/view?usp=sharing
+  .. _`parte 2-2`: https://drive.google.com/file/d/1g_enM9nz9iVIsGJYmV_HOUORdIs6PUeA/view?usp=sharing
+  .. _`parte 2-3`: https://drive.google.com/file/d/1Iw6z9tf4Jc-XztH7sDa16LANPVF56xDw/view?usp=sharing
+  .. _`parte 2-4`: https://drive.google.com/file/d/1Py4eM_Zu8EHW6hIqw1JXktSVnGuSw47j/view?usp=sharing
+  .. _`parte 2-5`: https://drive.google.com/file/d/16ZE7bQHXPTcRO7xCbqml_9m-nsenmgBB/view?usp=sharing
+
 
 .. literalinclude:: _static/data/ejemplo-apis-js.html
   :language: html
