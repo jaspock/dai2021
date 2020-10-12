@@ -146,22 +146,31 @@ Sin embargo, si usamos ``let`` en lugar de ``var`` en las declaraciones de ``i``
   x.f2();
 
 
+.. _label-api-web-js:
+
 Las APIs del navegador para programar el lado del cliente
 ---------------------------------------------------------
 
 Los navegadores incluyen una serie de librerías estandarizadas para programar la parte de la aplicación web que se ejecuta en el navegador (lo que se conoce como el *front-end* de la aplicación, en oposición al *back-end*, que denotaría la parte del servidor). En esta actividad profundizaremos en las APIs para el manejo del árbol DOM, la gestión de eventos y el control de estilos. Otras APIs, como la que permite realizar peticiones asíncronas desde el cliente a un servidor, se explorarán más adelante.
 
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Estudia todos los vídeos de la serie "El API del navegador para JavaScript" en los que se presentan los elementos principales del lenguaje: `parte 3-1`_, `parte 3-2`_, `parte 3-3`_, `parte 3-4`_, `parte 3-5`_, `parte 3-6`_ y `parte 3-7`_. Practica después con todas las funciones con la consola de JavaScript de las Chrome Devtools o con entornos como CodePen_.
+
+  .. _`parte 3-1`: https://drive.google.com/file/d/1Q-H8iZpfQ8k2h0DhMbp1hOxRK37SrCQB/view?usp=sharing
+  .. _`parte 3-2`: https://drive.google.com/file/d/1Fa4r4IPDKBHFhWOMCaX9Ca2BLb-TiljQ/view?usp=sharing
+  .. _`parte 3-3`: https://drive.google.com/file/d/1IYKnaNmt6LJO0zMp8jM5AtriYfY6FK1s/view?usp=sharing
+  .. _`parte 3-4`: https://drive.google.com/file/d/1cbN_pIzpt0CPkFp5vv2szHyd7EYCQfS4/view?usp=sharing
+  .. _`parte 3-5`: https://drive.google.com/file/d/1TFYTXsrpO5-vi9aXIdrImPAFu4ZdP4Sz/view?usp=sharing
+  .. _`parte 3-6`: https://drive.google.com/file/d/1ySWqKaravIKkI8s860FL8ZoB73t7cinm/view?usp=sharing
+  .. _`parte 3-7`: https://drive.google.com/file/d/1eJjgloOm5q8RVyeQDtpr6FKUpjlGjJ2w/view?usp=sharing
+  .. _CodePen: http://codepen.io/
+
 Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en `estas otras diapositivas`_.
 
 .. _`estas otras diapositivas`: _static/slides/150-apidom-slides.html
 
-.. admonition:: Hazlo tú ahora
-  :class: hazlotu
-
-  Lee el `capítulo sobre el Document Object Model`_ del libro "Client-Side Web Development", donde se explican las principales funciones de las APIs ya mencionadas. Puedes practicar con la consola de JavaScript de las Chrome Devtools o con entornos como `JSFiddle`_.
-
-  .. _`capítulo sobre el Document Object Model`: https://info340.github.io/dom.html
-  .. _`JSFiddle`: https://jsfiddle.net/
 
 Herramientas para desarrolladores
 ---------------------------------
