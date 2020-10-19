@@ -88,13 +88,12 @@
 <li class="toctree-l1"><a class="reference internal" href="estilo.html">2. Lenguajes de estilo</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Programar el lado del cliente</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduccion-al-lenguaje-de-programacion-javascript">3.1. Introducción al lenguaje de programación JavaScript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#una-aplicacion-web-sencilla">3.2. Una aplicación web sencilla</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ambitos-y-clausuras">3.2.1. Ámbitos y clausuras</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#una-aplicacion-web-sencilla">3.2. Una aplicación web sencilla</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#las-apis-del-navegador-para-programar-el-lado-del-cliente">3.3. Las APIs del navegador para programar el lado del cliente</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#herramientas-para-desarrolladores">3.4. Herramientas para desarrolladores</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#profundizar-en-javascript">3.5. Profundizar en JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objetos-y-prototipos">3.5. Objetos y prototipos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ambitos-y-clausuras">3.6. Ámbitos y clausuras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#profundizar-en-javascript">3.7. Profundizar en JavaScript</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="problemas.html">4. Problemas</a></li>
@@ -583,16 +582,231 @@
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table></div>
+</div>
+<div class="section" id="las-apis-del-navegador-para-programar-el-lado-del-cliente">
+<span id="label-api-web-js"></span><h2><span class="section-number">3.3. </span>Las APIs del navegador para programar el lado del cliente<a class="headerlink" href="#las-apis-del-navegador-para-programar-el-lado-del-cliente" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los navegadores incluyen una serie de librerías estandarizadas para programar la parte de la aplicación web que se ejecuta en el navegador (lo que se conoce como el <em>front-end</em> de la aplicación, en oposición al <em>back-end</em>, que denotaría la parte del servidor). En esta actividad profundizaremos en las APIs para el manejo del árbol DOM, la gestión de eventos y el control de estilos. Otras APIs, como la que permite realizar peticiones asíncronas desde el cliente a un servidor, se explorarán más adelante.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Estudia todos los vídeos de la serie «El API del navegador para JavaScript» en los que se presentan los elementos principales del lenguaje: <a class="reference external" href="https://drive.google.com/file/d/1Q-H8iZpfQ8k2h0DhMbp1hOxRK37SrCQB/view?usp=sharing">parte 3-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1Fa4r4IPDKBHFhWOMCaX9Ca2BLb-TiljQ/view?usp=sharing">parte 3-2</a>, <a class="reference external" href="https://drive.google.com/file/d/1IYKnaNmt6LJO0zMp8jM5AtriYfY6FK1s/view?usp=sharing">parte 3-3</a>, <a class="reference external" href="https://drive.google.com/file/d/1cbN_pIzpt0CPkFp5vv2szHyd7EYCQfS4/view?usp=sharing">parte 3-4</a>, <a class="reference external" href="https://drive.google.com/file/d/1TFYTXsrpO5-vi9aXIdrImPAFu4ZdP4Sz/view?usp=sharing">parte 3-5</a>, <a class="reference external" href="https://drive.google.com/file/d/1ySWqKaravIKkI8s860FL8ZoB73t7cinm/view?usp=sharing">parte 3-6</a> y <a class="reference external" href="https://drive.google.com/file/d/1eJjgloOm5q8RVyeQDtpr6FKUpjlGjJ2w/view?usp=sharing">parte 3-7</a>. Practica después con todas las funciones con la consola de JavaScript de las Chrome Devtools o con entornos como <a class="reference external" href="http://codepen.io/">CodePen</a>.</p>
+</div>
+<p>Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en <a class="reference external" href="_static/slides/150-apidom-slides.html">estas otras diapositivas</a>.</p>
+</div>
+<div class="section" id="herramientas-para-desarrolladores">
+<h2><span class="section-number">3.4. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las herramientas para desarrolladores que incorporan los navegadores permiten depurar el código en JavaScript de la parte del cliente de una aplicación web.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Familiarízate con las opciones de depuración de JavaScript de las pestañas <span class="guilabel">Console</span> y <span class="guilabel">Sources</span> del entorno de las Chrome DevTools siguiendo estas páginas de su documentación: <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/console">Console Overview</a> , <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript">Get Started</a>, <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Pause your Code with Breakpoints</a> y <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">JS Debugging Reference</a>. Practica las distintas posibilidades en DevTools con una aplicación web como la de la primera actividad de este tema.</p>
+</div>
+</div>
+<div class="section" id="objetos-y-prototipos">
+<span id="label-js-objetos"></span><h2><span class="section-number">3.5. </span>Objetos y prototipos<a class="headerlink" href="#objetos-y-prototipos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La manera en la que se gestionan los objetos en JavaScript es diferente a la que puedas conocer por otros lenguajes como Java o C++. JavaScript sigue el paradigma de la <em>programación basada en prototipos</em>, que algunos denominan también programación orientada a objetos <em>sin clases</em>. Para familiarizarte con este enfoque de la programación orientada a objetos, vas en esta ocasión a leer un texto en inglés, lo que te permitirá no solo profundizar en el tema, sino desarrollar tu habilidad para leer documentación en este idioma (recuerda que las fuentes primarias de documentación tecnológica suelen estar en inglés y que muchas veces el tiempo necesario para que haya información de calidad en otros idiomas sobre una materia novedosa puede ser inaceptablemente largo). En la actividad «<a class="reference internal" href="#label-intro-js"><span class="std std-ref">Introducción al lenguaje de programación JavaScript</span></a>» ya realizamos una introducción rápida a los objetos en JavaScript. Ahora vamos a estudiarlos con más detalle.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Lee el capítulo «<a class="reference external" href="https://eloquentjavascript.net/06_object.html">The secret life of objects</a>» de la tercera edición del libro con licencia abierta «<a class="reference external" href="https://eloquentjavascript.net/">Eloquent JavaScript</a>». Practica por tu cuenta cada concepto estudiado con un intérprete de JavaScript. Lee únicamente desde el principio hasta el apartado «<a class="reference external" href="https://eloquentjavascript.net/06_object.html#h_oUlUep3Os8">Overriding derived properties</a>» incluido.</p>
+<p>La recomendación es que leas el fragmento del capítulo en su idioma original, pero si te cuesta seguir el texto de este modo, puedes leer una <a class="reference external" href="https://translate.google.es/translate?hl=es&amp;sl=en&amp;tl=es&amp;u=https%3A%2F%2Feloquentjavascript.net%2F06_object.html">versión traducida automáticamente del capítulo</a>. Recuerda que aunque la traducción automática entre lenguas similares ha mejorado mucho en los últimos años, los sistemas aún cometen errores que en ocasiones son difíciles de detectar porque la frase traducida <em>suena bien</em> en español, por ejemplo, pero no refleja el significado de la original en inglés. Desde el enlace anterior puedes ir alternando entre la versión traducida automáticamente y el texto original con los botones de la parte superior; además, si consultas la versión traducida automáticamente y colocas el puntero del ratón sobre una frase, se mostrará un texto flotante con el original. Si lees la versión traducida automáticamente, ve consultando el original para asegurarte de que el sistema no ha alterado su significado. Ten especial cuidado con el código en JavaScript cuyas variables o palabras reservadas, por ejemplo, pueden haber sido traducidas erroneamente.</p>
+</div>
+<p>De cara a comprender mejor el capítulo sobre la vida secreta de los objetos, se muestran a continuación algunas notas que te pueden servir para terminar de comprender los conceptos allí introducidos.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En primer lugar, no hay que confundir la propiedad <code class="docutils literal notranslate"><span class="pre">prototype</span></code> de una función constructora con el prototipo de un objeto. El prototipo de un objeto, entendido como un segundo objeto que contiene el conjunto de funciones y atributos compartidos con otros objetos, se almacena en una propiedad <em>interna</em> llamada <code class="docutils literal notranslate"><span class="pre">[[Prototype]]</span></code> que no es directamente accesible desde tu código. Consultar o modificar esta propiedad interna se puede hacer de dos formas:</p>
+<ul class="simple">
+<li><p>Usando el atributo <code class="docutils literal notranslate"><span class="pre">__proto__</span></code> de un objeto, atributo que muchos navegadores han venido soportando pero que el estándar de ECMAScript solo ha reconocido recientemente, señalándolo, eso sí, como un atributo en vías de extinción (<em>deprecated</em>). Significa esto que puedes usarlo para acceder rápidamente al prototipo de un objeto mientras haces pruebas desde la consola del navegador o en la fase de desarrollo de un programa, pero nunca deberías usarlo sobre aplicaciones en producción porque futuras versiones de los navegadores podrían no soportarlo.</p></li>
+<li><p>Mediante las funciones <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf()</span></code> y <code class="docutils literal notranslate"><span class="pre">Object.setPrototypeOf()</span></code> reconocidas por el estándar del lenguaje como la forma correcta de acceso al prototipo interno.</p></li>
+</ul>
+</div>
+<p>Un prototipo no deja de ser un objeto con una serie de funciones como el siguiente:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">protoOkapi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">habla</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>La definición anterior no parece seguir la notación que habíamos estudiado para crear objetos literalmente, pero lo que está ocurriendo es simplemente que, si omitimos el nombre de la propiedad, se utilizará para ella el mismo nombre que el de la función correspondiente, por lo que lo anterior es equivalente a:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">protoOkapi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">habla</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">habla</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Y también es equivalente a:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">protoOkapi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">habla</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola!&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">habla</span></code> no tiene en principio nada especial; podemos invocarla para que imprima el saludo con <code class="docutils literal notranslate"><span class="pre">protoOkapi.habla()</span></code>.</p>
+<p>Una vez tenemos nuestro prototipo, podemos crear objetos que lo usen y <em>hereden</em> sus propiedades mediante la función <code class="docutils literal notranslate"><span class="pre">Object.create()</span></code>. Vamos a usarla en una función que, además de crear un objeto con dicho prototipo, asigna a ese objeto en particular un atributo con la edad del animal:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">proto</span><span class="p">,</span><span class="nx">edad</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">okapi</span><span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">proto</span><span class="p">);</span>
+  <span class="nx">okapi</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span> <span class="nx">edad</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">okapi</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Con estos ingredientes, podemos crear dos objetos que representen sendos okapis:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">o1</span><span class="o">=</span> <span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">o2</span><span class="o">=</span> <span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">o1</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+<span class="nx">o2</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Aunque cada okapi tiene su propio atributo <code class="docutils literal notranslate"><span class="pre">edad</span></code> (puedes imprimir <code class="docutils literal notranslate"><span class="pre">o1.edad</span></code> y <code class="docutils literal notranslate"><span class="pre">o2.edad</span></code>), el código de la función <code class="docutils literal notranslate"><span class="pre">habla</span></code> no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase <code class="docutils literal notranslate"><span class="pre">Function</span></code>) dentro del prototipo. Cuando escribimos <code class="docutils literal notranslate"><span class="pre">o1.edad</span></code> el atributo se encuentra directamente en el objeto, pero cuando escribimos <code class="docutils literal notranslate"><span class="pre">o1.habla()</span></code> la función no es un atributo directo de <code class="docutils literal notranslate"><span class="pre">o1</span></code>, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.</p>
+<p>Como hemos comentado, podemos acceder al prototipo del objeto con <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf(o1)</span></code> y en muchos navegadores, aunque no recomendado, con <code class="docutils literal notranslate"><span class="pre">o1.__proto__</span></code>. De hecho, en un navegador que soporte <code class="docutils literal notranslate"><span class="pre">__proto__</span></code> la comparación <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf(o1)</span> <span class="pre">===</span> <span class="pre">o1.__proto__</span></code> devolverá <code class="docutils literal notranslate"><span class="pre">true</span></code> porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión <code class="docutils literal notranslate"><span class="pre">o1.__proto__</span> <span class="pre">===</span> <span class="pre">protoOkapi</span></code> en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de <code class="docutils literal notranslate"><span class="pre">o1.__proto__.__proto__</span></code> o, dicho de otra forma, cuál es el prototipo del objeto <code class="docutils literal notranslate"><span class="pre">protoOkapi</span></code>? Si mostramos el contenido de la expresión <code class="docutils literal notranslate"><span class="pre">o1.__proto__.__proto__</span></code> por la consola del navegador, veremos un objeto con una serie de métodos como <code class="docutils literal notranslate"><span class="pre">toString</span></code>, entre otros. Estos métodos vienen del prototipo de <code class="docutils literal notranslate"><span class="pre">Object</span></code>, es decir, <code class="docutils literal notranslate"><span class="pre">Object.prototype</span></code>, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico, como comentaremos más adelante. La expresión <code class="docutils literal notranslate"><span class="pre">Object.prototype</span> <span class="pre">===</span> <span class="pre">o1.__proto__.__proto__</span></code> se evalúa, por tanto, a cierto.</p>
+<p>El método <code class="docutils literal notranslate"><span class="pre">habla</span></code> definido anteriormente se limita a imprimir siempre la misma cadena. Los métodos, sin embargo, suelen utilizar los atributos del objeto sobre el que se invocan. Como el intérprete de JavaScript se encarga de vincular <code class="docutils literal notranslate"><span class="pre">this</span></code> al objeto sobre el que se ejecuta un método, podemos hacer que la función <code class="docutils literal notranslate"><span class="pre">habla</span></code> imprima la edad del okapi con otro prototipo:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">protoOkapi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">habla</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡Hola! Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">o3</span><span class="o">=</span> <span class="nx">creaOkapi</span><span class="p">(</span><span class="nx">protoOkapi</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+<span class="nx">o3</span><span class="p">.</span><span class="nx">habla</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Obviamente, si invocamos <code class="docutils literal notranslate"><span class="pre">habla</span></code> directamente haciendo <code class="docutils literal notranslate"><span class="pre">protoOkapi.habla()</span></code>, la variable <code class="docutils literal notranslate"><span class="pre">this.edad</span></code> valdrá <code class="docutils literal notranslate"><span class="pre">undefined</span></code>. Observa que podemos asociar una nueva función al okapi <code class="docutils literal notranslate"><span class="pre">o1</span></code> haciendo:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">o1</span><span class="p">.</span><span class="nx">camina</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Caminando voy.&quot;</span><span class="p">);</span> <span class="p">}</span>
+<span class="nx">o1</span><span class="p">.</span><span class="nx">camina</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Pero, al no pertenecer al prototipo, la función <code class="docutils literal notranslate"><span class="pre">camina</span></code> solo existe para el objeto <code class="docutils literal notranslate"><span class="pre">o1</span></code>.</p>
+<p>JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una <em>función constructora</em> y utilizar la palabra reservada <code class="docutils literal notranslate"><span class="pre">new</span></code>:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">Okapi</span> <span class="p">(</span><span class="nx">edad</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span> <span class="nx">edad</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Okapi</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">charla</span><span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¿Qué tal? Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">o4</span><span class="o">=</span> <span class="k">new</span> <span class="nx">Okapi</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="nx">o4</span><span class="p">.</span><span class="nx">charla</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>El operador <code class="docutils literal notranslate"><span class="pre">new</span></code> hace aquí muchas cosas:</p>
+<ul class="simple">
+<li><p>crea un nuevo objeto;</p></li>
+<li><p>asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible <code class="docutils literal notranslate"><span class="pre">[[Prototype]]</span></code>, la misma a la que podemos acceder con <code class="docutils literal notranslate"><span class="pre">Object.getPrototypeOf()</span></code> o en algunos navegadores con <code class="docutils literal notranslate"><span class="pre">__proto</span></code>) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre <code class="docutils literal notranslate"><span class="pre">prototype</span></code> del constructor (en este caso, <code class="docutils literal notranslate"><span class="pre">Okapi.prototype</span></code>, objeto al que hemos añadido la función <code class="docutils literal notranslate"><span class="pre">charla</span></code>);</p></li>
+<li><p>hace que <code class="docutils literal notranslate"><span class="pre">this</span></code> apunte al nuevo objeto;</p></li>
+<li><p>ejecuta la función constructora;</p></li>
+<li><p>devuelve el objeto creado (que en este caso será asignado a la variable <code class="docutils literal notranslate"><span class="pre">o4</span></code>).</p></li>
+</ul>
+<p>Cada vez que creamos una función, el objeto que la representa recibe un atributo <code class="docutils literal notranslate"><span class="pre">prototype</span></code>, que es un objeto con un atributo <code class="docutils literal notranslate"><span class="pre">constructor</span></code> que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo que inicialmente se basa en el prototipo de la clase predefinida <code class="docutils literal notranslate"><span class="pre">Object</span></code>, esto es, <code class="docutils literal notranslate"><span class="pre">Object.prototype</span></code>, que contiene una serie de métodos básicos como <code class="docutils literal notranslate"><span class="pre">toString</span></code>. Cuando sobre el objeto creado (<code class="docutils literal notranslate"><span class="pre">o4</span></code> en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función <code class="docutils literal notranslate"><span class="pre">charla</span></code>); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función <code class="docutils literal notranslate"><span class="pre">toString</span></code>) y así sucesivamente hasta llegar al prototipo de <code class="docutils literal notranslate"><span class="pre">Object</span></code>. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.</p>
+<p>En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.</p>
+<p>Más recientemente, JavaScript ha incorporado la palabra reservada <code class="docutils literal notranslate"><span class="pre">class</span></code> que permite crear objetos y asociarles prototipos de una forma más parecida a como otros lenguajes definen clases y crean objetos. En realidad, esta otra manera de definir los objetos es lo que se conoce como <em>azúcar sintáctica</em>, porque no añade nuevas características al lenguaje, sino que el intérprete transforma la nueva notación a la clásica basada en prototipos que hemos visto:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">OkapiBis</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">edad</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">=</span> <span class="nx">edad</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">charla</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¿Qué tal? Tengo &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="o">+</span><span class="s2">&quot; años.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">o5</span><span class="o">=</span> <span class="k">new</span> <span class="nx">OkapiBis</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">o5</span><span class="p">.</span><span class="nx">charla</span><span class="p">();</span>
+<span class="nx">o5</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Finalmente, encadenando prototipos podemos definir relaciones de herencia, lo que con la nueva notación se puede hacer con la palabra reservada <code class="docutils literal notranslate"><span class="pre">extends</span></code>:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Empleado</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">)</span> <span class="p">{...}</span>
+  <span class="nx">getNombreCompleto</span><span class="p">()</span> <span class="p">{...};</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Director</span> <span class="kr">extends</span> <span class="nx">Empleado</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="nx">apellidos</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_empleados</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+  <span class="nx">añadeEmpleado</span><span class="p">(</span><span class="nx">empleado</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_empleados</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">empleado</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 <div class="section" id="ambitos-y-clausuras">
-<h3><span class="section-number">3.2.1. </span>Ámbitos y clausuras<a class="headerlink" href="#ambitos-y-clausuras" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Las clausuras y su relación con las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> o <code class="docutils literal notranslate"><span class="pre">let</span></code> es uno de los aspectos que más cuesta entender a los programadores que acaban de empezar con JavaScript. Existen cuatro tipos de ámbitos para las variables en JavaScript:</p>
+<span id="label-js-clausuras"></span><h2><span class="section-number">3.6. </span>Ámbitos y clausuras<a class="headerlink" href="#ambitos-y-clausuras" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En JavaScript es habitual definir una función dentro de otra de forma que la función interna utilice variables definidas en el ámbito de la externa y <em>sobreviva</em> a ella, en el sentido de que la función interna acabe ejecutándose cuando la externa ya finalizó:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">creaLista</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#list&quot;</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">item</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">);</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">&quot;Elemento &quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">));</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Se ha hecho clic en el elemento &quot;</span><span class="o">+</span><span class="nx">i</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Para que este código funcione es necesario que las variables locales de la función externa no se destruyan al finalizar la ejecución de la función como ocurriría en principio con todas sus variables locales cuando son eliminadas de la pila. Una <em>clausura</em> de JavaScript es la combinación de una función (como la función manejadora de evento del código anterior) junto con las variables locales del ámbito exterior que utiliza (la variable <code class="docutils literal notranslate"><span class="pre">i</span></code> en este caso). Una clausura se implementa como un registro que almacena una función y un entorno de la pila.</p>
+<p>Las clausuras y su relación con las variables declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code> o <code class="docutils literal notranslate"><span class="pre">let</span></code> es uno de los aspectos que más cuesta entender a los programadores que acaban de empezar con JavaScript (con el permiso de los prototipos, claro). Existen cuatro tipos de ámbitos para las variables en JavaScript:</p>
 <ul class="simple">
 <li><p>ámbito de función: corresponde a las variables locales declaradas con <code class="docutils literal notranslate"><span class="pre">var</span></code>; estas variables se almacenan en la pila y pueden usarse incluso antes de haber sido definidas; esto es así por un mecanismo conocido como <em>izado</em> (<em>hoisting</em>) que aupa las declaraciones de variables locales (pero no sus inicializaciones) al comienzo de la función; declarar dos o más veces una variable con <code class="docutils literal notranslate"><span class="pre">var</span></code> dentro de la misma función equivale a declararla una sola vez al comienzo de esta; si intentamos leer el valor de una variable antes de su declaración en el código y antes de haberle asignado ningún valor obtenemos el valor <em>undefined</em>;</p></li>
 <li><p>ámbito de bloque: corresponde a las variables locales declaradas con <code class="docutils literal notranslate"><span class="pre">let</span></code>; estas variables se almacenan en la pila también, pero no hay ningún proceso de izado y la variable se circunscribe al ámbito en el que ha sido declarada; dos variables declaradas en ámbitos diferentes de una misma función tienen espacios separados en la pila; no se pueden declarar dos variables de este tipo con el mismo nombre dentro del mismo contexto; si se declara una variable con <code class="docutils literal notranslate"><span class="pre">let</span></code> dentro de un bucle, se reserva sitio en la pila para una variable distinta en cada iteración;  el uso de <code class="docutils literal notranslate"><span class="pre">let</span></code> está permitido en el lenguaje desde la versión 6 de ECMAScript, publicada en 2015, por lo que es normal que encuentres muchos ejemplos de código que no lo usan;</p></li>
 <li><p>ámbito global: corresponde a las variables globales declaradas fuera de cualquier función; estas variables se almacenan en el <em>heap</em> y sus declaraciones también son <em>izadas</em> al principio del ámbito global;</p></li>
-<li><p>ámbito léxico: corresponde al hecho de que una función definida dentro de otra función puede acceder a las variables locales de esta última; si una función interna <em>sobrevive</em> a la función contenedora, las variables referenciadas no se borran de la memoria (a la asociación entre la función y las variables externas se le conoce como <em>clausura</em>);</p></li>
+<li><p>ámbito léxico: corresponde al hecho de que una función definida dentro de otra función puede acceder a las variables locales de esta última; si una función interna <em>sobrevive</em> a la función contenedora, las variables referenciadas no se borran de la memoria (a la asociación entre la función y las variables externas se le conoce, como hemos mencionado, como <em>clausura</em>);</p></li>
 </ul>
 <p>Las declaraciones de funciones locales y globales también sufren el mecanismo de izado en sus ámbitos respectivos.</p>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
 <p>Estudia el siguiente código y ejécutalo después de dedicar un rato a pensar qué valores imprime por la consola.</p>
 <div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -613,8 +827,7 @@
 17
 18
 19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{};</span>
   <span class="p">{</span>
@@ -634,9 +847,9 @@
 
 <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
 <span class="nx">x</span><span class="p">.</span><span class="nx">f1</span><span class="p">();</span>
-<span class="nx">x</span><span class="p">.</span><span class="nx">f2</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
+</div>
 <p>La variable <code class="docutils literal notranslate"><span class="pre">i</span></code> se declara con <code class="docutils literal notranslate"><span class="pre">var</span></code> y, por tanto, su ámbito es el de la función <code class="docutils literal notranslate"><span class="pre">f</span></code>. No importa que usemos <code class="docutils literal notranslate"><span class="pre">var</span></code> varias veces a continuación dentro de la función, incluso aunque estas declaraciones adicionales estén dentro de un nuevo ámbito. En la pila de ejecución solo se reserva sitio para una variable cuando se ejecuta la función y esta única posición es la que no se destruye al salir de la función debido a las clausuras que se crean por las dos funciones anónimas asignadas a <code class="docutils literal notranslate"><span class="pre">x.f1</span></code> y <code class="docutils literal notranslate"><span class="pre">x.f2</span></code>. La variable <code class="docutils literal notranslate"><span class="pre">i</span></code> vale 2 al salir de la función y este valor es el que se usa al llamar a las dos funciones.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -686,27 +899,77 @@
 <span class="nx">x</span><span class="p">.</span><span class="nx">f2</span><span class="p">();</span>
 </pre></div>
 </td></tr></table></div>
-</div>
-</div>
-<div class="section" id="las-apis-del-navegador-para-programar-el-lado-del-cliente">
-<span id="label-api-web-js"></span><h2><span class="section-number">3.3. </span>Las APIs del navegador para programar el lado del cliente<a class="headerlink" href="#las-apis-del-navegador-para-programar-el-lado-del-cliente" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Los navegadores incluyen una serie de librerías estandarizadas para programar la parte de la aplicación web que se ejecuta en el navegador (lo que se conoce como el <em>front-end</em> de la aplicación, en oposición al <em>back-end</em>, que denotaría la parte del servidor). En esta actividad profundizaremos en las APIs para el manejo del árbol DOM, la gestión de eventos y el control de estilos. Otras APIs, como la que permite realizar peticiones asíncronas desde el cliente a un servidor, se explorarán más adelante.</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
-<p>Estudia todos los vídeos de la serie «El API del navegador para JavaScript» en los que se presentan los elementos principales del lenguaje: <a class="reference external" href="https://drive.google.com/file/d/1Q-H8iZpfQ8k2h0DhMbp1hOxRK37SrCQB/view?usp=sharing">parte 3-1</a>, <a class="reference external" href="https://drive.google.com/file/d/1Fa4r4IPDKBHFhWOMCaX9Ca2BLb-TiljQ/view?usp=sharing">parte 3-2</a>, <a class="reference external" href="https://drive.google.com/file/d/1IYKnaNmt6LJO0zMp8jM5AtriYfY6FK1s/view?usp=sharing">parte 3-3</a>, <a class="reference external" href="https://drive.google.com/file/d/1cbN_pIzpt0CPkFp5vv2szHyd7EYCQfS4/view?usp=sharing">parte 3-4</a>, <a class="reference external" href="https://drive.google.com/file/d/1TFYTXsrpO5-vi9aXIdrImPAFu4ZdP4Sz/view?usp=sharing">parte 3-5</a>, <a class="reference external" href="https://drive.google.com/file/d/1ySWqKaravIKkI8s860FL8ZoB73t7cinm/view?usp=sharing">parte 3-6</a> y <a class="reference external" href="https://drive.google.com/file/d/1eJjgloOm5q8RVyeQDtpr6FKUpjlGjJ2w/view?usp=sharing">parte 3-7</a>. Practica después con todas las funciones con la consola de JavaScript de las Chrome Devtools o con entornos como <a class="reference external" href="http://codepen.io/">CodePen</a>.</p>
-</div>
-<p>Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en <a class="reference external" href="_static/slides/150-apidom-slides.html">estas otras diapositivas</a>.</p>
-</div>
-<div class="section" id="herramientas-para-desarrolladores">
-<h2><span class="section-number">3.4. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Las herramientas para desarrolladores que incorporan los navegadores permiten depurar el código en JavaScript de la parte del cliente de una aplicación web.</p>
-<div class="hazlotu admonition">
-<p class="admonition-title">Hazlo tú ahora</p>
-<p>Familiarízate con las opciones de depuración de JavaScript de las pestañas <span class="guilabel">Console</span> y <span class="guilabel">Sources</span> del entorno de las Chrome DevTools siguiendo estas páginas de su documentación: <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/console">Console Overview</a> , <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript">Get Started</a>, <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Pause your Code with Breakpoints</a> y <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">JS Debugging Reference</a>. Practica las distintas posibilidades en DevTools con una aplicación web como la de la primera actividad de este tema.</p>
+<p>Las clausuras llevan fácilmente a confusión si no se entiende bien cómo funcionan. Intenta predecir la salida del siguiente código antes de ejecutarlo:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">f</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My value: &quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]();</span>  <span class="c1">// Aquí se obtiene un resultado</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">funcs</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">m</span><span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">m</span><span class="p">[</span><span class="nx">j</span><span class="p">]();</span>   <span class="c1">// Aquí otro diferente</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Intenta predecir ahora la salida cuando las variables se declaran con <code class="docutils literal notranslate"><span class="pre">let</span></code> en lugar de con <code class="docutils literal notranslate"><span class="pre">var</span></code>:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">f</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My value: &quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">funcs</span><span class="p">[</span><span class="nx">i</span><span class="p">]();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">funcs</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">m</span><span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">m</span><span class="p">[</span><span class="nx">j</span><span class="p">]();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Comprueba después si tus predicciones eran correctas ejecutando el código en un intérprete de JavaScript.</p>
 </div>
 </div>
 <div class="section" id="profundizar-en-javascript">
-<h2><span class="section-number">3.5. </span>Profundizar en JavaScript<a class="headerlink" href="#profundizar-en-javascript" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Profundizar en JavaScript<a class="headerlink" href="#profundizar-en-javascript" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>JavaScript tiene obviamente muchos más elementos que los que hemos explorado en este tema. Si quieres ampliar por tu cuenta tu conocimiento del lenguaje, puedes seguir con referencias como <a class="reference external" href="https://javascript.info/">The Modern JavaScript Tutorial</a> o <a class="reference external" href="https://eloquentjavascript.net/">Eloquent JavaScript</a>.</p>
 </div>
 </div>

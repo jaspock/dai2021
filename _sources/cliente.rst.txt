@@ -69,82 +69,6 @@ El código que se incluye más abajo muestra *en acción*, a modo de introducci�
   :language: html
   :linenos:
 
-Ámbitos y clausuras
-~~~~~~~~~~~~~~~~~~~
-
-Las clausuras y su relación con las variables declaradas con ``var`` o ``let`` es uno de los aspectos que más cuesta entender a los programadores que acaban de empezar con JavaScript. Existen cuatro tipos de ámbitos para las variables en JavaScript:
-
-- ámbito de función: corresponde a las variables locales declaradas con ``var``; estas variables se almacenan en la pila y pueden usarse incluso antes de haber sido definidas; esto es así por un mecanismo conocido como *izado* (*hoisting*) que aupa las declaraciones de variables locales (pero no sus inicializaciones) al comienzo de la función; declarar dos o más veces una variable con ``var`` dentro de la misma función equivale a declararla una sola vez al comienzo de esta; si intentamos leer el valor de una variable antes de su declaración en el código y antes de haberle asignado ningún valor obtenemos el valor *undefined*;
-- ámbito de bloque: corresponde a las variables locales declaradas con ``let``; estas variables se almacenan en la pila también, pero no hay ningún proceso de izado y la variable se circunscribe al ámbito en el que ha sido declarada; dos variables declaradas en ámbitos diferentes de una misma función tienen espacios separados en la pila; no se pueden declarar dos variables de este tipo con el mismo nombre dentro del mismo contexto; si se declara una variable con ``let`` dentro de un bucle, se reserva sitio en la pila para una variable distinta en cada iteración;  el uso de ``let`` está permitido en el lenguaje desde la versión 6 de ECMAScript, publicada en 2015, por lo que es normal que encuentres muchos ejemplos de código que no lo usan;
-- ámbito global: corresponde a las variables globales declaradas fuera de cualquier función; estas variables se almacenan en el *heap* y sus declaraciones también son *izadas* al principio del ámbito global;
-- ámbito léxico: corresponde al hecho de que una función definida dentro de otra función puede acceder a las variables locales de esta última; si una función interna *sobrevive* a la función contenedora, las variables referenciadas no se borran de la memoria (a la asociación entre la función y las variables externas se le conoce como *clausura*);
-
-Las declaraciones de funciones locales y globales también sufren el mecanismo de izado en sus ámbitos respectivos.
-
-Estudia el siguiente código y ejécutalo después de dedicar un rato a pensar qué valores imprime por la consola.
-
-
-.. code-block:: javascript
-  :linenos:
-
-  function f() {
-    var i = 0;
-    var x = {};
-    {
-      var i = 0;
-      x.f1 = function() {
-        console.log(i);
-      };
-    }
-    i++;
-    {
-      var i = 1;
-      x.f2 = () => { console.log(i); };
-    }
-    i++;
-    return x;
-  }
-
-  var x = f();
-  x.f1();
-  x.f2();
-
-.. |
-.. la barra introduce una línea en blanco en restructured text
-
-La variable ``i`` se declara con ``var`` y, por tanto, su ámbito es el de la función ``f``. No importa que usemos ``var`` varias veces a continuación dentro de la función, incluso aunque estas declaraciones adicionales estén dentro de un nuevo ámbito. En la pila de ejecución solo se reserva sitio para una variable cuando se ejecuta la función y esta única posición es la que no se destruye al salir de la función debido a las clausuras que se crean por las dos funciones anónimas asignadas a ``x.f1`` y ``x.f2``. La variable ``i`` vale 2 al salir de la función y este valor es el que se usa al llamar a las dos funciones.
-
-.. Note::
-
-  Observa de paso que para introducir nuevos ámbitos no es necesario usar una instrucción condicional o un bucle, sino que en JavaScript, como en la mayoría de lenguajes, basta con encerrar un bloque de código entre llaves para conseguirlo.
-
-Sin embargo, si usamos ``let`` en lugar de ``var`` en las declaraciones de ``i``, el ámbito de cada variable será el del bloque y tendremos tres variables distintas en la pila de ejecución justo antes de salir de la función. La primera de ellas será destruida en ese momento, pero las otras dos se *salvarán* de dicha destrucción para mantener las clausuras:
-
-.. code-block:: javascript
-  :linenos:
-
-  function f () {
-    let i=0;
-    let x= {};
-    {
-      let i=0;
-      x.f1= function() {
-        console.log(i);
-      };
-    }
-    i++;
-    {
-      let i=1;
-      x.f2= () => {console.log(i);};
-    }
-    i++;
-    return x;
-  }
-
-  let x= f();
-  x.f1();
-  x.f2();
-
 
 .. _label-api-web-js:
 
@@ -186,6 +110,320 @@ Las herramientas para desarrolladores que incorporan los navegadores permiten de
   .. _`Get Started`: https://developers.google.com/web/tools/chrome-devtools/javascript
   .. _`Pause your Code with Breakpoints`: https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints
   .. _`JS Debugging Reference`: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
+
+
+.. _label-js-objetos:
+
+Objetos y prototipos
+--------------------
+
+La manera en la que se gestionan los objetos en JavaScript es diferente a la que puedas conocer por otros lenguajes como Java o C++. JavaScript sigue el paradigma de la *programación basada en prototipos*, que algunos denominan también programación orientada a objetos *sin clases*. Para familiarizarte con este enfoque de la programación orientada a objetos, vas en esta ocasión a leer un texto en inglés, lo que te permitirá no solo profundizar en el tema, sino desarrollar tu habilidad para leer documentación en este idioma (recuerda que las fuentes primarias de documentación tecnológica suelen estar en inglés y que muchas veces el tiempo necesario para que haya información de calidad en otros idiomas sobre una materia novedosa puede ser inaceptablemente largo). En la actividad ":ref:`label-intro-js`" ya realizamos una introducción rápida a los objetos en JavaScript. Ahora vamos a estudiarlos con más detalle.
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Lee el capítulo "`The secret life of objects`_" de la tercera edición del libro con licencia abierta "`Eloquent JavaScript`_". Practica por tu cuenta cada concepto estudiado con un intérprete de JavaScript. Lee únicamente desde el principio hasta el apartado "`Overriding derived properties`_" incluido.
+
+  .. _`The secret life of objects`: https://eloquentjavascript.net/06_object.html
+  .. _`Eloquent JavaScript`: https://eloquentjavascript.net/
+  .. _`Overriding derived properties`: https://eloquentjavascript.net/06_object.html#h_oUlUep3Os8
+
+  La recomendación es que leas el fragmento del capítulo en su idioma original, pero si te cuesta seguir el texto de este modo, puedes leer una `versión traducida automáticamente del capítulo`_. Recuerda que aunque la traducción automática entre lenguas similares ha mejorado mucho en los últimos años, los sistemas aún cometen errores que en ocasiones son difíciles de detectar porque la frase traducida *suena bien* en español, por ejemplo, pero no refleja el significado de la original en inglés. Desde el enlace anterior puedes ir alternando entre la versión traducida automáticamente y el texto original con los botones de la parte superior; además, si consultas la versión traducida automáticamente y colocas el puntero del ratón sobre una frase, se mostrará un texto flotante con el original. Si lees la versión traducida automáticamente, ve consultando el original para asegurarte de que el sistema no ha alterado su significado. Ten especial cuidado con el código en JavaScript cuyas variables o palabras reservadas, por ejemplo, pueden haber sido traducidas erroneamente.
+
+  .. _`versión traducida automáticamente del capítulo`: https://translate.google.es/translate?hl=es&sl=en&tl=es&u=https%3A%2F%2Feloquentjavascript.net%2F06_object.html
+
+De cara a comprender mejor el capítulo sobre la vida secreta de los objetos, se muestran a continuación algunas notas que te pueden servir para terminar de comprender los conceptos allí introducidos. 
+
+.. Important::
+
+  En primer lugar, no hay que confundir la propiedad ``prototype`` de una función constructora con el prototipo de un objeto. El prototipo de un objeto, entendido como un segundo objeto que contiene el conjunto de funciones y atributos compartidos con otros objetos, se almacena en una propiedad *interna* llamada ``[[Prototype]]`` que no es directamente accesible desde tu código. Consultar o modificar esta propiedad interna se puede hacer de dos formas:
+
+  - Usando el atributo ``__proto__`` de un objeto, atributo que muchos navegadores han venido soportando pero que el estándar de ECMAScript solo ha reconocido recientemente, señalándolo, eso sí, como un atributo en vías de extinción (*deprecated*). Significa esto que puedes usarlo para acceder rápidamente al prototipo de un objeto mientras haces pruebas desde la consola del navegador o en la fase de desarrollo de un programa, pero nunca deberías usarlo sobre aplicaciones en producción porque futuras versiones de los navegadores podrían no soportarlo.
+  - Mediante las funciones ``Object.getPrototypeOf()`` y ``Object.setPrototypeOf()`` reconocidas por el estándar del lenguaje como la forma correcta de acceso al prototipo interno.
+
+Un prototipo no deja de ser un objeto con una serie de funciones como el siguiente:
+
+.. code-block:: javascript
+  :linenos:
+
+  protoOkapi = {
+    habla() { console.log("¡Hola!"); }
+  }
+
+La definición anterior no parece seguir la notación que habíamos estudiado para crear objetos literalmente, pero lo que está ocurriendo es simplemente que, si omitimos el nombre de la propiedad, se utilizará para ella el mismo nombre que el de la función correspondiente, por lo que lo anterior es equivalente a:
+
+.. code-block:: javascript
+  :linenos:
+
+  protoOkapi = {
+    habla: function habla() { console.log("¡Hola!"); }
+  }
+
+Y también es equivalente a:
+
+.. code-block:: javascript
+  :linenos:
+
+  protoOkapi = {
+    habla: function() { console.log("¡Hola!"); }
+  }
+
+La función ``habla`` no tiene en principio nada especial; podemos invocarla para que imprima el saludo con ``protoOkapi.habla()``. 
+
+Una vez tenemos nuestro prototipo, podemos crear objetos que lo usen y *hereden* sus propiedades mediante la función ``Object.create()``. Vamos a usarla en una función que, además de crear un objeto con dicho prototipo, asigna a ese objeto en particular un atributo con la edad del animal:
+
+.. code-block:: javascript
+  :linenos:
+
+  function creaOkapi(proto,edad) {
+    let okapi= Object.create(proto);
+    okapi.edad= edad;
+    return okapi;
+  }
+
+Con estos ingredientes, podemos crear dos objetos que representen sendos okapis:
+
+.. code-block:: javascript
+  :linenos:
+
+  let o1= creaOkapi(protoOkapi,2);
+  let o2= creaOkapi(protoOkapi,4);
+  o1.habla();
+  o2.habla();
+
+Aunque cada okapi tiene su propio atributo ``edad`` (puedes imprimir ``o1.edad`` y ``o2.edad``), el código de la función ``habla`` no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase ``Function``) dentro del prototipo. Cuando escribimos ``o1.edad`` el atributo se encuentra directamente en el objeto, pero cuando escribimos ``o1.habla()`` la función no es un atributo directo de ``o1``, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.
+
+Como hemos comentado, podemos acceder al prototipo del objeto con ``Object.getPrototypeOf(o1)`` y en muchos navegadores, aunque no recomendado, con ``o1.__proto__``. De hecho, en un navegador que soporte ``__proto__`` la comparación ``Object.getPrototypeOf(o1) === o1.__proto__`` devolverá ``true`` porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión ``o1.__proto__ === protoOkapi`` en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de ``o1.__proto__.__proto__`` o, dicho de otra forma, cuál es el prototipo del objeto ``protoOkapi``? Si mostramos el contenido de la expresión ``o1.__proto__.__proto__`` por la consola del navegador, veremos un objeto con una serie de métodos como ``toString``, entre otros. Estos métodos vienen del prototipo de ``Object``, es decir, ``Object.prototype``, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico, como comentaremos más adelante. La expresión ``Object.prototype === o1.__proto__.__proto__`` se evalúa, por tanto, a cierto.
+
+El método ``habla`` definido anteriormente se limita a imprimir siempre la misma cadena. Los métodos, sin embargo, suelen utilizar los atributos del objeto sobre el que se invocan. Como el intérprete de JavaScript se encarga de vincular ``this`` al objeto sobre el que se ejecuta un método, podemos hacer que la función ``habla`` imprima la edad del okapi con otro prototipo:
+
+.. code-block:: javascript
+  :linenos:
+
+  protoOkapi = {
+    habla() { console.log("¡Hola! Tengo "+this.edad+" años."); }
+  }
+  let o3= creaOkapi(protoOkapi,6);
+  o3.habla();
+
+Obviamente, si invocamos ``habla`` directamente haciendo ``protoOkapi.habla()``, la variable ``this.edad`` valdrá ``undefined``. Observa que podemos asociar una nueva función al okapi ``o1`` haciendo:
+
+.. code-block:: javascript
+  :linenos:
+
+  o1.camina = function() { console.log("Caminando voy."); }
+  o1.camina();
+
+Pero, al no pertenecer al prototipo, la función ``camina`` solo existe para el objeto ``o1``.
+
+JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una *función constructora* y utilizar la palabra reservada ``new``:
+
+.. code-block:: javascript
+  :linenos:
+
+  function Okapi (edad) {
+    this.edad= edad;
+  }
+  Okapi.prototype.charla= function () {
+    console.log("¿Qué tal? Tengo "+this.edad+" años.");
+  }
+  let o4= new Okapi(8);
+  o4.charla();
+
+El operador ``new`` hace aquí muchas cosas:
+
+- crea un nuevo objeto;
+- asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible ``[[Prototype]]``, la misma a la que podemos acceder con ``Object.getPrototypeOf()`` o en algunos navegadores con ``__proto``) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre ``prototype`` del constructor (en este caso, ``Okapi.prototype``, objeto al que hemos añadido la función ``charla``);
+- hace que ``this`` apunte al nuevo objeto;
+- ejecuta la función constructora;
+- devuelve el objeto creado (que en este caso será asignado a la variable ``o4``).
+
+Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo que inicialmente se basa en el prototipo de la clase predefinida ``Object``, esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
+
+En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.
+
+Más recientemente, JavaScript ha incorporado la palabra reservada ``class`` que permite crear objetos y asociarles prototipos de una forma más parecida a como otros lenguajes definen clases y crean objetos. En realidad, esta otra manera de definir los objetos es lo que se conoce como *azúcar sintáctica*, porque no añade nuevas características al lenguaje, sino que el intérprete transforma la nueva notación a la clásica basada en prototipos que hemos visto:
+
+.. code-block:: javascript
+  :linenos:
+
+  class OkapiBis { 
+    constructor(edad) { 
+      this.edad= edad;
+    } 
+    charla() {
+      console.log("¿Qué tal? Tengo "+this.edad+" años.");
+    }
+  }
+  
+  let o5= new OkapiBis(10);
+  o5.charla();
+  o5.toString();
+
+Finalmente, encadenando prototipos podemos definir relaciones de herencia, lo que con la nueva notación se puede hacer con la palabra reservada ``extends``:
+
+.. code-block:: javascript
+  :linenos:
+
+  class Empleado {
+    constructor(nombre,apellidos) {...}
+    getNombreCompleto() {...};
+  }
+
+  class Director extends Empleado {
+    constructor(nombre,apellidos) {
+      super(nombre,apellidos);
+      this._empleados = [];
+    }
+    añadeEmpleado(empleado) {
+      this._empleados.push(empleado);
+    }
+  }
+
+
+.. _label-js-clausuras:
+
+Ámbitos y clausuras
+-------------------
+
+En JavaScript es habitual definir una función dentro de otra de forma que la función interna utilice variables definidas en el ámbito de la externa y *sobreviva* a ella, en el sentido de que la función interna acabe ejecutándose cuando la externa ya finalizó:
+
+.. code-block:: javascript
+  :linenos:
+
+  function creaLista() {
+    var list = document.querySelector("#list");
+    for (let i = 1; i <= 5; i++) {
+      let item = document.createElement("li");
+      item.appendChild(document.createTextNode("Elemento " + i));
+      item.addEventListener("click", function (e) {
+        console.log("Se ha hecho clic en el elemento "+i+".");
+      }, false);
+      list.appendChild(item);
+    }
+  }
+
+Para que este código funcione es necesario que las variables locales de la función externa no se destruyan al finalizar la ejecución de la función como ocurriría en principio con todas sus variables locales cuando son eliminadas de la pila. Una *clausura* de JavaScript es la combinación de una función (como la función manejadora de evento del código anterior) junto con las variables locales del ámbito exterior que utiliza (la variable ``i`` en este caso). Una clausura se implementa como un registro que almacena una función y un entorno de la pila.
+
+Las clausuras y su relación con las variables declaradas con ``var`` o ``let`` es uno de los aspectos que más cuesta entender a los programadores que acaban de empezar con JavaScript (con el permiso de los prototipos, claro). Existen cuatro tipos de ámbitos para las variables en JavaScript:
+
+- ámbito de función: corresponde a las variables locales declaradas con ``var``; estas variables se almacenan en la pila y pueden usarse incluso antes de haber sido definidas; esto es así por un mecanismo conocido como *izado* (*hoisting*) que aupa las declaraciones de variables locales (pero no sus inicializaciones) al comienzo de la función; declarar dos o más veces una variable con ``var`` dentro de la misma función equivale a declararla una sola vez al comienzo de esta; si intentamos leer el valor de una variable antes de su declaración en el código y antes de haberle asignado ningún valor obtenemos el valor *undefined*;
+- ámbito de bloque: corresponde a las variables locales declaradas con ``let``; estas variables se almacenan en la pila también, pero no hay ningún proceso de izado y la variable se circunscribe al ámbito en el que ha sido declarada; dos variables declaradas en ámbitos diferentes de una misma función tienen espacios separados en la pila; no se pueden declarar dos variables de este tipo con el mismo nombre dentro del mismo contexto; si se declara una variable con ``let`` dentro de un bucle, se reserva sitio en la pila para una variable distinta en cada iteración;  el uso de ``let`` está permitido en el lenguaje desde la versión 6 de ECMAScript, publicada en 2015, por lo que es normal que encuentres muchos ejemplos de código que no lo usan;
+- ámbito global: corresponde a las variables globales declaradas fuera de cualquier función; estas variables se almacenan en el *heap* y sus declaraciones también son *izadas* al principio del ámbito global;
+- ámbito léxico: corresponde al hecho de que una función definida dentro de otra función puede acceder a las variables locales de esta última; si una función interna *sobrevive* a la función contenedora, las variables referenciadas no se borran de la memoria (a la asociación entre la función y las variables externas se le conoce, como hemos mencionado, como *clausura*);
+
+Las declaraciones de funciones locales y globales también sufren el mecanismo de izado en sus ámbitos respectivos.
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Estudia el siguiente código y ejécutalo después de dedicar un rato a pensar qué valores imprime por la consola.
+
+  .. code-block:: javascript
+    :linenos:
+
+    function f() {
+      var i = 0;
+      var x = {};
+      {
+        var i = 0;
+        x.f1 = function() {
+          console.log(i);
+        };
+      }
+      i++;
+      {
+        var i = 1;
+        x.f2 = () => { console.log(i); };
+      }
+      i++;
+      return x;
+    }
+
+    var x = f();
+    x.f1();
+
+  .. la barra introduce una línea en blanco en restructured text
+
+La variable ``i`` se declara con ``var`` y, por tanto, su ámbito es el de la función ``f``. No importa que usemos ``var`` varias veces a continuación dentro de la función, incluso aunque estas declaraciones adicionales estén dentro de un nuevo ámbito. En la pila de ejecución solo se reserva sitio para una variable cuando se ejecuta la función y esta única posición es la que no se destruye al salir de la función debido a las clausuras que se crean por las dos funciones anónimas asignadas a ``x.f1`` y ``x.f2``. La variable ``i`` vale 2 al salir de la función y este valor es el que se usa al llamar a las dos funciones.
+
+.. Note::
+
+  Observa de paso que para introducir nuevos ámbitos no es necesario usar una instrucción condicional o un bucle, sino que en JavaScript, como en la mayoría de lenguajes, basta con encerrar un bloque de código entre llaves para conseguirlo.
+
+Sin embargo, si usamos ``let`` en lugar de ``var`` en las declaraciones de ``i``, el ámbito de cada variable será el del bloque y tendremos tres variables distintas en la pila de ejecución justo antes de salir de la función. La primera de ellas será destruida en ese momento, pero las otras dos se *salvarán* de dicha destrucción para mantener las clausuras:
+
+.. code-block:: javascript
+  :linenos:
+
+  function f () {
+    let i=0;
+    let x= {};
+    {
+      let i=0;
+      x.f1= function() {
+        console.log(i);
+      };
+    }
+    i++;
+    {
+      let i=1;
+      x.f2= () => {console.log(i);};
+    }
+    i++;
+    return x;
+  }
+
+  let x= f();
+  x.f1();
+  x.f2();
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Las clausuras llevan fácilmente a confusión si no se entiende bien cómo funcionan. Intenta predecir la salida del siguiente código antes de ejecutarlo:
+
+  .. code-block:: javascript
+    :linenos:
+
+    function f () {
+      var funcs = [];
+      for (var i = 0; i < 3; i++) {
+        funcs[i] = function() {
+          console.log("My value: " + i);
+        };
+        funcs[i]();  // Aquí se obtiene un resultado
+      }
+      return funcs;
+    }
+
+    var m= f();
+    for (var j = 0; j < 3; j++) {
+      m[j]();   // Aquí otro diferente
+    }
+
+  Intenta predecir ahora la salida cuando las variables se declaran con ``let`` en lugar de con ``var``:
+
+  .. code-block:: javascript
+    :linenos:
+
+    function f () {
+      var funcs = [];
+      for (let i = 0; i < 3; i++) {
+        funcs[i] = function() {
+          console.log("My value: " + i);
+        };
+        funcs[i]();
+      }
+      return funcs;
+    }
+
+    var m= f();
+    for (var j = 0; j < 3; j++) {
+      m[j]();
+    }
+
+  Comprueba después si tus predicciones eran correctas ejecutando el código en un intérprete de JavaScript.
 
 
 Profundizar en JavaScript
