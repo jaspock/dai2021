@@ -9,7 +9,8 @@ body {
         problema-cliente 0 seccion-cliente 3
         problema-servicios 0 seccion-servicios 4
         problema-componentes 0 seccion-componentes 5
-        problema-nube 0 seccion-nube 6
+        problema-rest 0 seccion-rest 6
+        problema-nube 0 seccion-nube 7
 }
 
 /* estilo para añadir el número de problema */
@@ -33,6 +34,12 @@ body {
     counter-increment: problema-componentes; 
     content: " " counter(seccion-componentes) "." counter(problema-componentes);
 }
+
+.problema-contador-rest::after {
+    counter-increment: problema-rest; 
+    content: " " counter(seccion-rest) "." counter(problema-rest);
+}
+
 .problema-contador-nube::after {
     counter-increment: problema-nube; 
     content: " " counter(seccion-nube) "." counter(problema-nube);

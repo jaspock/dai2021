@@ -1,4 +1,3 @@
-.. role:: problema-contador
 
 Lenguajes de estilo
 ===================
