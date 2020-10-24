@@ -26,6 +26,10 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 24 oct
+      - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 1.
+    * - 24 oct
+      - Las prácticas 3 y 4 planificadas originalmente para este curso se han refundido en la práctica 3 (en el curso anterior, de hecho, se trataba de una sola práctica). La práctica 5 planificada inicialmente pasa a ser ahora la cuarta y última. Los contenidos de las prácticas, en cualquier caso, no sufren modificación respecto a la planificación inicial. El plazo de entrega de la nueva práctica 3 es el 26 de noviembre, lo que nos permite ganar una semana de tiempo para la última práctica que, tradicionalmente, es la que más esfuerzo ha requerido para los estudiantes de la asignatura.
     * - 05 oct
       - Es importante señalar que los vídeos que se están publicando no pretenden ser una fuente de información que tengas que ver una y otra vez para asimilar la materia. El profesor te aconseja que los veas quizás un par de veces y que tomes apuntes que te permitan afrontar el visionado como una tarea activa y consultar luego la información de forma mucho más rápida y eficiente. Busca en fuentes fiables de internet o pregunta todas aquellas cosas que no te hayan quedado claras e incorpora también tus conclusiones a tus apuntes. A la hora de preparar el examen, puede ser interesante realizar un visionado adicional (probablemente a velocidad 1,5x) para refrescar ideas y asegurarte de que no se dice nada en los vídeos que no sepas ya por tus apuntes.
     * - 21 sep
@@ -37,13 +41,15 @@ Novedades
     * - 13 sep
       - Ya está publicado el enunciado de la primera práctica. Las clases de teoría y prácticas comienzan el día 15 de septiembre.
 
-.. _`capítulo sobre HTML`: https://info340.github.io/html-fundamentals.html
+.. _`web del departamento`: https://www.dlsi.ua.es/alumnes/index.cgi?id=val
 
 
 .. _label-actividades:
 
 Actividades previas a las clases
 --------------------------------
+
+.. - Antes de la clase del 03/11/2020: realiza las actividades ":ref:`label-servicios-http`", ":ref:`label-servicios-promesas`", ":ref:`label-servicios-xhr`" y ":ref:`label-servicios-fetch`". Todas las actividades menos la segunda consisten principalmente en el estudio de una serie de vídeos (duración total de los vídeos: 50 minutos; unos 35 a 1,5x). Para la la segunda actividad, sin embargo, tienes que leer su contenido (tiempo estimado de lectura: 30 minutos). A continuación contesta el `test sobre acceso a servicios web`_ (plazo límite: 02/11/2020, 23:59 horas).
 
 - Antes de la clase del 27/10/2020: realiza la actividad ":ref:`label-js-objetos`" (en esta actividad tienes que leer un texto con un tiempo estimado de lectura de unos 80 minutos); después, lee y practica con lo que se discute en la actividad ":ref:`label-js-clausuras`" (tiempo estimado de lectura: 15 minutos). A continuación contesta el `test sobre prototipos y clausuras en JavaScript`_ (plazo límite: 26/10/2020, 23:59 horas). 
 - Antes de la clase del 20/10/2020: estudia los vídeos de la actividad ":ref:`label-api-web-js`" (duración total de los vídeos: unos 55 minutos; unos 40 a 1,5x). A continuación, contesta el `test sobre la API de los navegadores para JavaScript`_ (plazo límite: 19/10/2020, 23:59 horas).
@@ -52,6 +58,7 @@ Actividades previas a las clases
 - Antes de la clase del 29/09/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-inline-css`", ":ref:`label-caja-css`" y ":ref:`label-posicionamiento-css`". A continuación, contesta el `test sobre el modelo de caja de CSS`_ (plazo límite: 28/09/2020, 23:59 horas). Recuerda utilizar tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 - Antes de la clase del 22/09/2020: estudia los vídeos y practica con la actividad ":ref:`label-intro-css`" (duración total de los vídeos: unos 35 minutos; unos 25 a velocidad 1,5x). A continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 
+.. _`test sobre acceso a servicios web`: zzz
 .. _`test sobre prototipos y clausuras en JavaScript`: https://forms.gle/3Z4WfGQzZNx31Sui8
 .. _`test sobre la API de los navegadores para JavaScript`: https://forms.gle/mmMFWaZP2dqy2juw9
 .. _`test sobre la aplicación web sencilla con JavaScript`: https://forms.gle/mQw11xgGZCjzcSkp6
@@ -103,7 +110,7 @@ Si quieres que el profesor pueda ayudarte con algún código que estás desarrol
 - Accede a la web de `repl.it`_ con tu usuario. 
 - Clica en el botón para añadir un nuevo espacio, elige :guilabel:`HTML,CSS,JS` o :guilabel:`Node.js` dependiendo de si tu aplicación es solo para el navegador o también incluye la parte del servidor, y clica en :guilabel:`Create repl`.
 - Arrastra desde el explorador de archivos tus ficheros sobre la zona :guilabel:`Files`.
-- Puedes lazanr tu aplicación con el botón :guilabel:`Run`.
+- Puedes lanzar tu aplicación con el botón :guilabel:`Run`.
 - Clica en el botón :guilabel:`Share` y manda el enlace al profesor.
 - Si no es necesario que el profesor edite tu código, también puedes mandarle simplemente el URL de tu código; para ello, tienes que haber creado el espacio como público.
 
@@ -131,11 +138,12 @@ Este es el momento también en el que enfatizar la importancia de tomar apuntes 
     marcado
     estilo
     cliente
+    servicios
     problemas
     practicas
 
-.. servicios
 .. componentes
+.. rest
 .. nube
    
 .. >>> add new documents here

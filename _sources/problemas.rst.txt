@@ -3,6 +3,7 @@
 .. role:: problema-contador-cliente
 .. role:: problema-contador-servicios
 .. role:: problema-contador-componentes
+.. role:: problema-contador-rest
 .. role:: problema-contador-nube
 
 .. _label-problemas:
@@ -1667,8 +1668,8 @@ Programar el lado del cliente
 
 
 
-Servicios web
--------------
+Acceso a servicios web de terceros
+----------------------------------
 
 .. admonition:: :problema-contador-servicios:`Problema`
   :class: problema
@@ -1676,6 +1677,8 @@ Servicios web
   Sabiendo que no hay ningún error en el siguiente código, indica la salida que emite por consola el siguiente bloque de JavaScript:
 
   .. code-block:: javascript
+    :linenos:
+    :force:
 
     p1()
     .then( (x) => { console.log(x*x); return p2(x+1,x+2,x+3); } )
@@ -1699,7 +1702,9 @@ Servicios web
 
   Sabiendo que no hay ningún error en el siguiente código, indica con qué valor hay que sustituir las expresiones ``@1`` y ``@2`` en el siguiente código para que la salida emitida por consola sea 5:
 
-  .. code-block::
+  .. code-block:: javascript
+    :linenos:
+    :force:
 
     new Promise( (resolve,reject) => resolve( {a:0,b:2} ) )
     .then( (x) => { 
@@ -1718,6 +1723,36 @@ Servicios web
     .catch( (x) => console.log(x) );
 
   .. solución: @1=5,@2=8, https://jsfiddle.net/dLxq5n0k/
+
+.. ------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+  
+  Indica cuál es la salida del siguiente programa en JavaScript.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    new Promise(function(resolve, reject) {
+      setTimeout(() => resolve(1), 1000);
+    }).then(function(result) {
+      console.log(result);
+      return new Promise((resolve, reject) => { // (*)
+        setTimeout(() => resolve(result * 2), 1000);
+      });
+    }).then(function(result) { // (**)
+      console.log(result);
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(result * 2), 1000);
+      });
+    }).then(function(result) {
+      console.log(result);
+    });
+
+  .. solución: 1,2,4
+
 
 .. ------
 
@@ -1742,6 +1777,35 @@ Servicios web
     12    fetch(function('http://example.com/movies.json/birdbox'))
 
   .. solución: 10,01,11,03,07,06,09
+
+
+.. ------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
+  Sabiendo que no hay ningún error en el siguiente código y que la llamada al URL indicado en ``fetch`` devuelve en el cuerpo de la respuesta el dato válido en JSON ``{"title":"天気の子","director":"新海誠","year":2019}``, indica el código con el que hay que sustituir ``@1`` y ``@2`` en el siguiente bloque de JavaScript para que se imprima por consola el valor ``2021``:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    async function movie() {
+      var g= 1;
+      g+= @1;
+      try {
+        let r= await fetch('http://example.com/movies.json/3400231');
+        let x= @2 r.json();
+        console.log(x.year + g);
+      } catch(e) {
+        console.log(e)
+      };
+    }
+
+    movie();
+
+  .. solución: @1=1,@2=await, https://codesandbox.io/s/objective-leaf-9wx6z
+
 
 .. ------
 
@@ -1776,6 +1840,26 @@ Servicios web
 .. admonition:: :problema-contador-servicios:`Problema`
   :class: problema
 
+  Indica con qué sustituir ``@1`` y ``@2`` en el siguiente código para que ``delay`` defina una alternativa a ``setTimeout`` basada en promesas.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(@1,@2));
+    }
+
+    // ejemplo de uso:
+    delay(3000).then(() => console.log('esto se imprime tras 3 segundos'));
+
+  .. solución: @1=resolve, @2=ms
+
+.. ------
+
+.. admonition:: :problema-contador-servicios:`Problema`
+  :class: problema
+
   Sabiendo que no hay ningún error en el siguiente código y que la llamada al URL indicado en ``fetch`` devuelve en el cuerpo de la respuesta el dato válido en JSON ``{"title":"天気の子","director":"新海誠","year":2019}``, indica la salida que emite por consola el siguiente bloque de JavaScript:
 
   .. code-block:: javascript
@@ -1799,147 +1883,6 @@ Servicios web
     movie();
 
   .. solución: 2,2023, https://codesandbox.io/s/dazzling-paper-kpkyq
-
-.. ------
-
-.. admonition:: :problema-contador-servicios:`Problema`
-  :class: problema
-
-  El siguiente código define una función de *middleware* de Express que añade la cabecera ``Content-type`` con valor ``text/html`` a la respuesta del servidor. Indica con qué hay que sustituir ``@1`` y ``@2`` para que el código sea correcto.
-
-  .. code-block:: javascript
-    :linenos:
-    :force:
-
-    app.use( (request,response,foo) => {
-      res.set('Content-Type', '@1')
-      @2;
-    });
-
-  .. solución: @1=text/html,@2=foo()
-
-.. ------
-
-.. admonition:: :problema-contador-servicios:`Problema`
-  :class: problema
-
-  Sabiendo que no hay ningún error en el siguiente código y que la llamada al URL indicado en ``fetch`` devuelve en el cuerpo de la respuesta el dato válido en JSON ``{"title":"天気の子","director":"新海誠","year":2019}``, indica el código con el que hay que sustituir ``@1`` y ``@2`` en el siguiente bloque de JavaScript para que se imprima por consola el valor ``2021``:
-
-  .. code-block:: javascript
-    :linenos:
-    :force:
-
-    async function movie() {
-      var g= 1;
-      g+= @1;
-      try {
-        let r= await fetch('http://example.com/movies.json/3400231');
-        let x= @2 r.json();
-        console.log(x.year + g);
-      } catch(e) {
-        console.log(e)
-      };
-    }
-
-    movie();
-
-  .. solución: @1=1,@2=await, https://codesandbox.io/s/objective-leaf-9wx6z
-
-.. ------
-
-.. admonition:: :problema-contador-servicios:`Problema`
-  :class: problema
-
-  Indica qué cadena ha de devolver en el bloque de datos la llamada al servicio web para que la salida emitida por consola sea ``zz80``. Como siempre indica la respuesta más corta posible si hay más de una alternativa; si tu respuesta estuviera escrita en un formato (como HTML, CSS o JSON) que puede ser validado, asegúrate de que es válida.
-
-  .. code-block:: javascript
-    :linenos:
-
-    function catalog() {
-      fetch('http://example.com/service.json/discover/azz3').
-      .then( r => {
-        return r.json();
-      })
-      .then( x => {
-        if (x.bool) {
-          console.log(x.i+x.i-x.j);
-        } else {
-          console.log(x.i+x.i+x.j);
-        }
-      })
-      .catch( e => console.log(e) );
-    }
-
-    catalog();
-
-  .. solución: {"bool":false,"i":"z","j":80}
-  .. solución más corta: {"i":"z","j":80}
-  .. examen enero 2020
-
-.. ------
-
-.. admonition:: :problema-contador-servicios:`Problema`
-  :class: problema
-
-  Indica con qué sustituir las marcas ``@1``, ``@2`` y ``@3`` en el siguiente texto para que sea correcto: "El framework @1 de Node.js nos permite definir lo que en inglés se conoce como *middleware*. El *middleware* está formado por @2 encadenadas que se ejecutan durante el ciclo de vida de una petición al servidor. Cada una de ellas puede acceder a sendos objetos que representan la petición y la @3."
-
-  .. solución: @1=Express,@2=funciones,@3=respuesta
-
-
-.. admonition:: :problema-contador-servicios:`Problema`
-  :class: problema
-
-  Tenemos una aplicación web desplegada en ``example.com``. El código que se ejecuta en el servidor está en el fichero ``index.js`` y es el siguiente: 
-
-  .. code-block:: javascript
-    :linenos:
-    :force:
-
-    const express = require('express');
-    const bodyParser = require('body-parser');
-    var path = require('path');
-
-    const app = express();
-
-    app.use(bodyParser.json());
-
-    app.get('/index', (req, res) => {
-      res.sendFile(path.join(__dirname,'index.html'));
-    });
-
-    app.get('/@1', (req, res) => {
-      res.send({"key":@2*2});
-    });
-
-    app.listen(3000, () => console.log('server started'));
-
-  El documento ``index.html`` que se sirve al cliente desde el código anterior es:
-
-  .. code-block:: html
-    :linenos:
-    :force:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Key</title>
-      </head>
-      <body>
-        <script>
-          fetch('/@3')
-          .then(r => r.json())
-          .then(x => console.log(@4))
-          .catch(e => console.log(e));
-        </script>
-      </body>
-    </html>
-
-  Indica con qué hay que sustituir las marcas ``@1``, ``@2``, ``@3`` y ``@4`` en los dos bloques anteriores para que si se intenta abrir en un navegador el URL ``example.com/index``, en la consola del navegador se muestre el valor *42*. Como restricción adicional, los valores de ``@2`` y ``@4`` no pueden ser constantes numéricas.
-
-  .. solución: @1=:id (u otra cadena), @2=req.params.id (el mismo nombre que en @1), @3=21, @4=x.key 
-  .. solución: https://repl.it/@jaspock/Node-Express#index.js
-  .. examen julio 2020
 
 
 Componentes web
@@ -2024,7 +1967,7 @@ Componentes web
 
 .. ------
 
-.. admonition:: :problema-contador-nube:`Problema`
+.. admonition:: :problema-contador-componentes:`Problema`
   :class: problema
 
   Considera el contenido del fichero ``invierte-cadena.js`` que define un componente web que muestra invertida y en color azul la cadena recibida como parámetro:
@@ -2077,6 +2020,124 @@ Componentes web
 
   .. solución: @1=id="#cadena",@2="s",@3=this.s,  https://jsfiddle.net/rqgwb5vd/ 
   .. examen enero 2020
+
+
+
+Implementación de servicios web
+-------------------------------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  El siguiente código define una función de *middleware* de Express que añade la cabecera ``Content-type`` con valor ``text/html`` a la respuesta del servidor. Indica con qué hay que sustituir ``@1`` y ``@2`` para que el código sea correcto.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    app.use( (request,response,foo) => {
+      res.set('Content-Type', '@1')
+      @2;
+    });
+
+  .. solución: @1=text/html,@2=foo()
+
+.. ------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Indica qué cadena ha de devolver en el bloque de datos la llamada al servicio web para que la salida emitida por consola sea ``zz80``. Como siempre indica la respuesta más corta posible si hay más de una alternativa; si tu respuesta estuviera escrita en un formato (como HTML, CSS o JSON) que puede ser validado, asegúrate de que es válida.
+
+  .. code-block:: javascript
+    :linenos:
+
+    function catalog() {
+      fetch('http://example.com/service.json/discover/azz3').
+      .then( r => {
+        return r.json();
+      })
+      .then( x => {
+        if (x.bool) {
+          console.log(x.i+x.i-x.j);
+        } else {
+          console.log(x.i+x.i+x.j);
+        }
+      })
+      .catch( e => console.log(e) );
+    }
+
+    catalog();
+
+  .. solución: {"bool":false,"i":"z","j":80}
+  .. solución más corta: {"i":"z","j":80}
+  .. examen enero 2020
+
+.. ------
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Indica con qué sustituir las marcas ``@1``, ``@2`` y ``@3`` en el siguiente texto para que sea correcto: "El framework @1 de Node.js nos permite definir lo que en inglés se conoce como *middleware*. El *middleware* está formado por @2 encadenadas que se ejecutan durante el ciclo de vida de una petición al servidor. Cada una de ellas puede acceder a sendos objetos que representan la petición y la @3."
+
+  .. solución: @1=Express,@2=funciones,@3=respuesta
+
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Tenemos una aplicación web desplegada en ``example.com``. El código que se ejecuta en el servidor está en el fichero ``index.js`` y es el siguiente: 
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    var path = require('path');
+
+    const app = express();
+
+    app.use(bodyParser.json());
+
+    app.get('/index', (req, res) => {
+      res.sendFile(path.join(__dirname,'index.html'));
+    });
+
+    app.get('/@1', (req, res) => {
+      res.send({"key":@2*2});
+    });
+
+    app.listen(3000, () => console.log('server started'));
+
+  El documento ``index.html`` que se sirve al cliente desde el código anterior es:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Key</title>
+      </head>
+      <body>
+        <script>
+          fetch('/@3')
+          .then(r => r.json())
+          .then(x => console.log(@4))
+          .catch(e => console.log(e));
+        </script>
+      </body>
+    </html>
+
+  Indica con qué hay que sustituir las marcas ``@1``, ``@2``, ``@3`` y ``@4`` en los dos bloques anteriores para que si se intenta abrir en un navegador el URL ``example.com/index``, en la consola del navegador se muestre el valor *42*. Como restricción adicional, los valores de ``@2`` y ``@4`` no pueden ser constantes numéricas.
+
+  .. solución: @1=:id (u otra cadena), @2=req.params.id (el mismo nombre que en @1), @3=21, @4=x.key 
+  .. solución: https://repl.it/@jaspock/Node-Express#index.js
+  .. examen julio 2020
+
 
 
 Computación en la nube
