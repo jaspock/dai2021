@@ -28,10 +28,11 @@ HTTP (por *hypertext transfer protocol*) es el protocolo de comunicación (a niv
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Estudia todos los vídeos de la serie "El protocolo HTTP" en los que se realiza un repaso a los principales elementos del protocolo: `parte 1-1`_ y `parte 1-2`_.
+  Estudia todos los vídeos de la serie "El protocolo HTTP" en los que se realiza un repaso a los principales elementos del protocolo: `parte 1-1`_, `parte 1-2`_ y `parte 1-3`_.
 
-  .. _`parte 1-1`: zzz
-  .. _`parte 1-2`: zzz
+  .. _`parte 1-1`: https://drive.google.com/file/d/1Wy4iV-oi7MEypO77wL4AYGPDLfIAWoNy/view?usp=sharing
+  .. _`parte 1-2`: https://drive.google.com/file/d/1scQJsHbPgrznE3qqx4BTqDXWgpEdcJsE/view?usp=sharing
+  .. _`parte 1-3`: https://drive.google.com/file/d/1eAiocuglVBR0WCC_j9L77OMJ7zlsLRq4/view?usp=sharing
 
 
 Los conceptos que tienes que comprender del protocolo HTTP se encuentran recogidos en `estas diapositivas`_.
@@ -361,10 +362,9 @@ A partir de finales de los noventa y especialmente en los primeros años del sig
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Estudia todos los vídeos de la serie "Los objetos de tipo XMLHttpRequest" en los que se realiza una traza del código que aparece a continuación para interactuar con un servicio web mediante un objeto de la clase ``XMLHttpRequest``: `parte 2-1`_ y `parte 2-2`_.
+  Estudia el vídeo "`Los objetos de tipo XMLHttpRequest`_" en el que se realiza una traza del código que aparece a continuación para interactuar con un servicio web mediante un objeto de la clase ``XMLHttpRequest``.
 
-  .. _`parte 2-1`: zzz
-  .. _`parte 2-2`: zzz
+  .. _`Los objetos de tipo XMLHttpRequest`: https://drive.google.com/file/d/1G6eoew4ZyPd3rnpkXOWanjKY8ACL9nIB/view?usp=sharing
   
 El siguiente es un ejemplo típico de uso de un objeto de tipo ``XMLHttpRequest``:
 
@@ -469,11 +469,10 @@ En los últimos años, sin embargo, los navegadores han comenzado a implementar 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  Estudia el vídeo de "La API Fetch" en el que se realiza una traza del código anterior: `parte 3-1`_ y `parte 3-2`_.
+  Estudia el vídeo de "`La API Fetch`_" en el que se realiza una traza del código anterior.
 
-  .. _`parte 3-1`: zzz
-  .. _`parte 3-2`: zzz
-
+  .. _`La API Fetch`: https://drive.google.com/file/d/1MFQSQizsfatfhJT6r2GnLZ2CCoYV5VDd/view?usp=sharing 
+  
 No te costará entender este código si repasas lo estudiado en una sección anterior sobre las promesas en JavaScript y te decimos que la función ``fetch`` devuelve una promesa que se cumple cuando el servidor devuelve un resultado (aunque la respuesta incluya un código de error de HTTP) y se incumple cuando por cualquier motivo no es posible establecer la comunicación con el servidor. También debería ser fácil deducir que la función ``json`` devuelve otra promesa que se cumple si el cuerpo de la respuesta del servidor (que se pasa por la promesa ``fetch`` a la función ``resolve`` y de ahí a la función manejadora del primer método ``then``) es una cadena en formato JSON que se puede convertir sin errores (usando ``JSON.parse()``) en un objeto de JavaScript.
 
 También debería ser fácil de entender el siguiente código, que añade un paso intermedio al procesamiento de la respuesta del servidor que convierte los títulos de películas almacenados en el objeto de JavaScript a minúsculas. Para ello, define una función que devuelve una promesa que no se cumple únicamente en el caso de que la cadena del atributo ``title`` sea vacía.
