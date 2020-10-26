@@ -2070,6 +2070,109 @@ que está en tu varita dio otra pluma,<span class="p">&lt;/</span><span class="n
 </td></tr></table></div>
 <p>Observa que la variable <code class="docutils literal notranslate"><span class="pre">lista</span></code> es un <em>array</em> de números que serán impresos dentro del bucle, por lo que una posible respuesta (incorrecta) sería <code class="docutils literal notranslate"><span class="pre">&#64;1=[8,7,6,5,4,3,2,1]</span></code>.</p>
 </div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-cliente">Problema</span></p>
+<p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> en el siguiente código en JavaScript para que se creen en memoria los objetos indicados en el diagrama y se muestre por la consola la cadena <code class="docutils literal notranslate"><span class="pre">Esta</span> <span class="pre">persona</span> <span class="pre">se</span> <span class="pre">llama</span> <span class="pre">Jane</span></code>.</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="err">@</span><span class="mi">1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;Esta persona se llama &#39;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="err">@</span><span class="mi">2</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="err">@</span><span class="mi">3</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">jane</span> <span class="o">=</span> <span class="err">@</span><span class="mi">4</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Jane&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span>
+</pre></div>
+</td></tr></table></div>
+<div class="figure align-default" id="id1">
+<a class="reference external image-reference" href="https://exploringjs.com/impatient-js/ch_proto-chains-classes.html#classes-under-the-hood"><img alt="objetos de JavaScript en memoria" src="https://exploringjs.com/impatient-js/img-book/9e58a0eff1bb377a79c6c288675ac37ece33af23.svg" /></a>
+<p class="caption"><span class="caption-text">Objetos de JavaScript en memoria por Axel Rauschmayer</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</div>
+</div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-cliente">Problema</span></p>
+<p>Indica cuál es la salida del siguiente código en JavaScript:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">creaBichoBola</span><span class="p">(</span><span class="nx">proto</span><span class="p">,</span><span class="nx">exoesqueleto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">bicho</span><span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">proto</span><span class="p">);</span>
+  <span class="nx">bicho</span><span class="p">.</span><span class="nx">exoesqueleto</span><span class="o">=</span> <span class="nx">exoesqueleto</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">bicho</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">protoBichoBola</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">enrolla</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;grrrr&quot;</span><span class="p">)},</span>
+  <span class="nx">desplaza</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;shhhh&quot;</span><span class="p">)}</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">Bolinche</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Bolinche</span><span class="p">.</span><span class="nx">prototype</span><span class="o">=</span> <span class="nx">protoBichoBola</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">bicho</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bolinche</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">bicho2</span><span class="o">=</span> <span class="nx">creaBichoBola</span><span class="p">(</span><span class="nx">protoBichoBola</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bicho</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">===</span> <span class="nx">bicho2</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">bicho</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">bicho2</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">protoBichoBola</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">protoBichoBola</span><span class="p">.</span><span class="nx">enrolla</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">===</span> <span class="nx">protoBichoBola</span><span class="p">.</span><span class="nx">desplaza</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-cliente">Problema</span></p>
+<p>Indica con qué hay que sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> en el siguiente código para que la salida emitida sea <code class="docutils literal notranslate"><span class="pre">30</span> <span class="pre">42</span></code>.</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">f1</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span><span class="o">=</span> <span class="err">@</span><span class="mi">1</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">f2</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">k</span><span class="o">=</span> <span class="nx">n</span><span class="o">*</span><span class="nx">a</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">f2</span><span class="p">(</span><span class="err">@</span><span class="mi">2</span><span class="p">);</span>
+  <span class="nx">a</span><span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">f2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">f1</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">f</span><span class="p">(</span><span class="err">@</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 <div class="section" id="acceso-a-servicios-web-de-terceros">
 <h2><span class="section-number">5.4. </span>Acceso a servicios web de terceros<a class="headerlink" href="#acceso-a-servicios-web-de-terceros" title="Enlazar permanentemente con este título">¶</a></h2>

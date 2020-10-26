@@ -1553,6 +1553,7 @@ Programar el lado del cliente
   .. solución: tomato,tomato,darkorchid,firebrick,darksalmon,darksalmon, lemonchiffon, https://jsfiddle.net/h9s4mv7y/
   .. examen enero 2020
 
+.. ------
 
 .. admonition:: :problema-contador-cliente:`Problema`
   :class: problema
@@ -1665,6 +1666,97 @@ Programar el lado del cliente
   .. function emit(s) { function pause(milliseconds) { let dt = new Date(); while ((new Date())-dt<=milliseconds) { /* Do nothing */} } pause(1000); let dt= new Date(); let seconds= dt.getSeconds(); console.log(seconds+"': "+s); }
   .. solución: [1,2,7,8,5,6,3,4]
   .. examen julio 2020
+
+.. ------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` en el siguiente código en JavaScript para que se creen en memoria los objetos indicados en el diagrama y se muestre por la consola la cadena ``Esta persona se llama Jane``.
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    class Person {
+      @1() {
+        return 'Esta persona se llama '+this.name;
+      }
+      @2(name) {
+        @3 = name;
+      }
+    }
+    const jane = @4 Person('Jane');
+    console.log(jane.describe());
+    
+  .. figure:: https://exploringjs.com/impatient-js/img-book/9e58a0eff1bb377a79c6c288675ac37ece33af23.svg
+    :target: https://exploringjs.com/impatient-js/ch_proto-chains-classes.html#classes-under-the-hood
+    :alt: objetos de JavaScript en memoria
+  
+    Objetos de JavaScript en memoria por Axel Rauschmayer
+
+  .. solución: @1=describe,@2=constructor,@3=this.name,@4=new
+  
+.. ------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica cuál es la salida del siguiente código en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    function creaBichoBola(proto,exoesqueleto) {
+      let bicho= Object.create(proto);
+      bicho.exoesqueleto= exoesqueleto;
+      return bicho;
+    };
+    protoBichoBola = {
+      enrolla: function() {console.log("grrrr")},
+      desplaza: function() {console.log("shhhh")}
+    };
+    function Bolinche() {
+      this.x= -1;
+    }
+    Bolinche.prototype= protoBichoBola;
+    var bicho = new Bolinche();
+    var bicho2= creaBichoBola(protoBichoBola);
+    console.log(bicho.prototype === bicho2.prototype);
+    console.log(Object.getPrototypeOf(bicho) === Object.getPrototypeOf(bicho2));
+    console.log(Object.getPrototypeOf(protoBichoBola) === Object.prototype);
+    console.log(protoBichoBola.enrolla.prototype === protoBichoBola.desplaza.prototype);
+
+  .. solución: true[null===nulll],true,true, false
+  
+.. ------
+
+.. admonition:: :problema-contador-cliente:`Problema`
+  :class: problema
+
+  Indica con qué hay que sustituir ``@1`` y ``@2`` en el siguiente código para que la salida emitida sea ``30 42``.
+  
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    function f1(n) {
+      var a= @1;
+      function f2(i) {
+        let k= n*a*i;
+        console.log(k);
+      }
+      f2(@2);
+      a= 7;
+      return f2;
+    }
+
+    var f = f1(3);
+    f(@2);
+
+  .. solución: @1=5,@2=2
+  
 
 
 

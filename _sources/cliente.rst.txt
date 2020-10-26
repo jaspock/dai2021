@@ -136,10 +136,14 @@ De cara a comprender mejor el capítulo sobre la vida secreta de los objetos, se
 
 .. Important::
 
-  En primer lugar, no hay que confundir la propiedad ``prototype`` de una función constructora con el prototipo de un objeto. El prototipo de un objeto, entendido como un segundo objeto que contiene el conjunto de funciones y atributos compartidos con otros objetos, se almacena en una propiedad *interna* llamada ``[[Prototype]]`` que no es directamente accesible desde tu código. Consultar o modificar esta propiedad interna se puede hacer de dos formas:
+  En primer lugar, no hay que confundir la propiedad ``prototype`` de una función con el prototipo de un objeto. El prototipo de un objeto, entendido como un segundo objeto que contiene el conjunto de funciones y atributos compartidos con otros objetos, se almacena en una propiedad *interna* llamada ``[[Prototype]]`` que no es directamente accesible desde tu código. No obstante, consultar o modificar esta propiedad interna se puede hacer indirectamente de dos formas:
 
   - Usando el atributo ``__proto__`` de un objeto, atributo que muchos navegadores han venido soportando pero que el estándar de ECMAScript solo ha reconocido recientemente, señalándolo, eso sí, como un atributo en vías de extinción (*deprecated*). Significa esto que puedes usarlo para acceder rápidamente al prototipo de un objeto mientras haces pruebas desde la consola del navegador o en la fase de desarrollo de un programa, pero nunca deberías usarlo sobre aplicaciones en producción porque futuras versiones de los navegadores podrían no soportarlo.
   - Mediante las funciones ``Object.getPrototypeOf()`` y ``Object.setPrototypeOf()`` reconocidas por el estándar del lenguaje como la forma correcta de acceso al prototipo interno.
+
+  El prototipo (interno) por defecto de los objetos de JavaScript es ``Object.prototype``, es decir, el prototipo (visible) de la función ``Object``. 
+  
+  Por otro lado, el valor por defecto del prototipo (visible) de una función es un objeto que contiene una única propiedad llamada ``constructor`` que apunta a la propia función.
 
 Un prototipo no deja de ser un objeto con una serie de funciones como el siguiente:
 
@@ -150,7 +154,7 @@ Un prototipo no deja de ser un objeto con una serie de funciones como el siguien
     habla() { console.log("¡Hola!"); }
   }
 
-La definición anterior no parece seguir la notación que habíamos estudiado para crear objetos literalmente, pero lo que está ocurriendo es simplemente que, si omitimos el nombre de la propiedad, se utilizará para ella el mismo nombre que el de la función correspondiente, por lo que lo anterior es equivalente a:
+La definición anterior no parece seguir la notación que habíamos estudiado para crear objetos literalmente, pero lo que ocurre aquí es simplemente que, si omitimos el nombre de la propiedad, se utilizará para ella el mismo nombre que el de la función correspondiente, por lo que lo anterior es más o menos equivalente a:
 
 .. code-block:: javascript
   :linenos:
@@ -191,9 +195,9 @@ Con estos ingredientes, podemos crear dos objetos que representen sendos okapis:
   o1.habla();
   o2.habla();
 
-Aunque cada okapi tiene su propio atributo ``edad`` (puedes imprimir ``o1.edad`` y ``o2.edad``), el código de la función ``habla`` no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase ``Function``) dentro del prototipo. Cuando escribimos ``o1.edad`` el atributo se encuentra directamente en el objeto, pero cuando escribimos ``o1.habla()`` la función no es un atributo directo de ``o1``, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.
+Aunque cada okapi tiene su propio atributo ``edad`` (puedes imprimir ``o1.edad`` y ``o2.edad``), el código de la función ``habla`` no está duplicado en memoria, porque solo existe una instancia de la función (recuerda que las funciones son objetos de clase ``Function`` y podemos, por tanto, manejar referencias a ellas) dentro del prototipo. Cuando escribimos ``o1.edad`` el atributo se encuentra directamente en el objeto, pero cuando escribimos ``o1.habla()`` la función no es un atributo directo de ``o1``, sino que, al no encontrarlo en el objeto, el intérprete lo busca en su prototipo.
 
-Como hemos comentado, podemos acceder al prototipo del objeto con ``Object.getPrototypeOf(o1)`` y en muchos navegadores, aunque no recomendado, con ``o1.__proto__``. De hecho, en un navegador que soporte ``__proto__`` la comparación ``Object.getPrototypeOf(o1) === o1.__proto__`` devolverá ``true`` porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión ``o1.__proto__ === protoOkapi`` en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de ``o1.__proto__.__proto__`` o, dicho de otra forma, cuál es el prototipo del objeto ``protoOkapi``? Si mostramos el contenido de la expresión ``o1.__proto__.__proto__`` por la consola del navegador, veremos un objeto con una serie de métodos como ``toString``, entre otros. Estos métodos vienen del prototipo de ``Object``, es decir, ``Object.prototype``, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico, como comentaremos más adelante. La expresión ``Object.prototype === o1.__proto__.__proto__`` se evalúa, por tanto, a cierto.
+Como hemos comentado, podemos acceder al prototipo del objeto con ``Object.getPrototypeOf(o1)`` y en muchos navegadores, aunque no recomendado, con ``o1.__proto__``. De hecho, en un navegador que soporte ``__proto__`` la comparación ``Object.getPrototypeOf(o1) === o1.__proto__`` devolverá ``true`` porque el prototipo no deja de ser un único objeto en memoria. También devolverá cierto la expresión ``o1.__proto__ === protoOkapi`` en nuestro caso. Ahora bien, si el prototipo de un objeto es a su vez un objeto, como hemos visto, ¿cuál es el resultado de ``o1.__proto__.__proto__`` o, dicho de otra forma, cuál es el prototipo del objeto ``protoOkapi``? Si mostramos el contenido de la expresión ``o1.__proto__.__proto__`` por la consola del navegador, veremos un objeto con una serie de métodos como ``toString``, entre otros. Estos métodos vienen del prototipo de ``Object``, es decir, ``Object.prototype``, que es el prototipo usado por defecto para los objetos para los que no se define un prototipo específico. La expresión ``Object.prototype === o1.__proto__.__proto__`` se evalúa, por tanto, a cierto.
 
 El método ``habla`` definido anteriormente se limita a imprimir siempre la misma cadena. Los métodos, sin embargo, suelen utilizar los atributos del objeto sobre el que se invocan. Como el intérprete de JavaScript se encarga de vincular ``this`` al objeto sobre el que se ejecuta un método, podemos hacer que la función ``habla`` imprima la edad del okapi con otro prototipo:
 
@@ -233,12 +237,12 @@ JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear o
 El operador ``new`` hace aquí muchas cosas:
 
 - crea un nuevo objeto;
-- asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible ``[[Prototype]]``, la misma a la que podemos acceder con ``Object.getPrototypeOf()`` o en algunos navegadores con ``__proto``) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre ``prototype`` del constructor (en este caso, ``Okapi.prototype``, objeto al que hemos añadido la función ``charla``);
+- asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible ``[[Prototype]]``, la misma a la que podemos acceder con ``Object.getPrototypeOf()`` o en algunos navegadores con ``__proto__``) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre ``prototype`` del constructor (en este caso, ``Okapi.prototype``, objeto al que hemos añadido la función ``charla``);
 - hace que ``this`` apunte al nuevo objeto;
 - ejecuta la función constructora;
 - devuelve el objeto creado (que en este caso será asignado a la variable ``o4``).
 
-Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo que inicialmente se basa en el prototipo de la clase predefinida ``Object``, esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
+Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo interno que inicialmente se basa en el prototipo de la clase predefinida ``Object``, esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
 
 En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.
 
@@ -429,7 +433,9 @@ Sin embargo, si usamos ``let`` en lugar de ``var`` en las declaraciones de ``i``
 Profundizar en JavaScript
 -------------------------
 
-JavaScript tiene obviamente muchos más elementos que los que hemos explorado en este tema. Si quieres ampliar por tu cuenta tu conocimiento del lenguaje, puedes seguir con referencias como `The Modern JavaScript Tutorial`_ o `Eloquent JavaScript`_.
+JavaScript tiene obviamente muchos más elementos que los que hemos explorado en este tema. Si quieres ampliar por tu cuenta tu conocimiento del lenguaje, puedes seguir con referencias como "`The Modern JavaScript Tutorial`_", "`JavaScript for impatient programmers`_", "`Eloquent JavaScript`_" o "`Deep JavaScript: theory and techniques`_".
 
 .. _`The Modern JavaScript Tutorial`: https://javascript.info/
+.. _`JavaScript for impatient programmers`: https://exploringjs.com/impatient-js/index.html
 .. _`Eloquent JavaScript`: https://eloquentjavascript.net/
+.. _`Deep JavaScript: theory and techniques`: https://exploringjs.com/deep-js/index.html
