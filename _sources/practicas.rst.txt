@@ -277,10 +277,17 @@ Funciones auxiliares a crear
 
 Durante la implementación de la práctica te serán de utilidad algunas funciones que puedes definir y evaluar ahora:
 
-- ``insertAsLastChild(padre,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como último hijo del nodo ``padre``.
-- ``insertAsFirstChild(padre,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como primer hijo del nodo ``padre``.
-- ``insertBeforeChild(padre,hijo,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como hijo del nodo ``padre`` inmediatamente antes del nodo ``hijo``.
-- ``removeElement(nodo)``: elimina del DOM el nodo pasado como parámetro.
+- ``insertAsLastChild(padre,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como último hijo del nodo ``padre``; esta función puede delegar en la función `append`_ directamente.
+- ``insertAsFirstChild(padre,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como primer hijo del nodo ``padre``; esta función puede delegar en `prepend`_ directamente.
+- ``insertBeforeChild(padre,hijo,nuevoHijo)``: inserta el nodo ``nuevoHijo`` como hijo del nodo ``padre`` inmediatamente antes del nodo ``hijo``; esta función usará `insertBefore`_.
+- ``removeElement(nodo)``: elimina del DOM el nodo pasado como parámetro; esta función puede delegar en `remove`_ directamente.
+
+.. _`append`: https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append
+.. _`prepend`: https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/prepend
+.. _`insertBefore`: https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore
+.. _`remove`: https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+
+No es obligatorio que definas todas las funciones anteriores. La idea es que tengas presente mientras programas una especie de *caja de herramientas* de funciones que te pueden ser útiles en uno u otro momento, pero, dado que algunas son extremadamente cortas, puedes usar las funciones adecuadas del API del navegador directamente.
 
 Además, te será de suma utilidad disponer de una función que funcione de forma similar a ``querySelector`` pero buscando el primer ancestro (en lugar de descendiente) que concuerde con el selector:
 
@@ -355,7 +362,7 @@ Escribe ahora el código para ``borraPregunta``, el manejador del evento discuti
 Incorporación automática de los botones de borrado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Crea una función ``init``, que sea invocada por el manejador del evento ``load`` y que recorra todos los elementos de clase ``.bloque`` e invoque la función ``addCruz`` (definida anteriormente) sobre cada uno de ellos. En estos momentos, al abrir tu documento, cada pregunta debería tener su icono de borrado y debería ser posible dejar el documento sin cuestionarios tras borrar todos los bloques de preguntas.
+Crea una función ``init``, que sea invocada por el manejador del evento ``DOMContentLoaded`` y que recorra todos los elementos de clase ``.bloque`` e invoque la función ``addCruz`` (definida anteriormente) sobre cada uno de ellos. En estos momentos, al abrir tu documento, cada pregunta debería tener su icono de borrado y debería ser posible dejar el documento sin cuestionarios tras borrar todos los bloques de preguntas.
 
 Adición de formularios de inserción de preguntas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
