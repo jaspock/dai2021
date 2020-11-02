@@ -1759,7 +1759,6 @@ Programar el lado del cliente
   
 
 
-
 Acceso a servicios web de terceros
 ----------------------------------
 
@@ -2114,6 +2113,107 @@ Componentes web
   .. examen enero 2020
 
 
+.. ------
+
+.. admonition:: :problema-contador-componentes:`Problema`
+  :class: problema
+
+  Dibuja cómo se muestra en el navegador el siguiente bloque de un documento HTML cuando el cursor del ratón no está situado en ninguno de los elementos con *id* ``w1`` o ``w2``, y cuando se sitúa sobre el elemento con *id* ``w2``. La imagen ``rain.png`` contiene el icono |rain| y ``sun.png`` contiene |sun|.
+
+  .. |rain| image:: https://image.flaticon.com/icons/png/128/3572/3572873.png
+    :height: 14
+    :width: 14
+
+  .. |sun| image:: https://image.flaticon.com/icons/png/128/3522/3522281.png
+    :height: 14
+    :width: 14
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <h1>El tiempo</h1>
+    <ul>
+      <li>Lunes <mysterious-element img="rain.jpg" 
+                  data-text="Chubascos a primera hora de la mañana que desaparecerán
+                  por la tarde." id="w1"></mysterious-element></li>
+      <li>Martes <mysterious-element img="sun.png" data-text="Soleado todo el día." 
+                  id="w2"></-info></li>
+    </ul>
+    <script defer src="mysterious-element.js">
+
+  El fichero ``mysterious-element.js`` define el componente web y su contenido es el siguiente:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    class MysteriousElement extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({mode: 'open'});
+        const wrapper = document.createElement('span');
+        wrapper.setAttribute('class', 'wrapper');
+
+        const icon = document.createElement('span');
+        icon.setAttribute('class', 'icon');
+        const info = document.createElement('span');
+        info.setAttribute('class', 'info');
+
+        const text = this.getAttribute('data-text');
+        info.textContent = text;
+
+        let imgUrl;
+        imgUrl = this.getAttribute('img');
+      
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        icon.appendChild(img);
+
+        const style = document.createElement('style');
+
+        style.textContent = `
+          .wrapper {
+            position: relative;
+            margin: 4px;
+          }
+
+          .info {
+            font-size: 0.8rem;
+            width: 200px;
+            display: inline-block;
+            border: 1px solid black;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            opacity: 0;
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            z-index: 3;
+          }
+
+          img {
+            width: 1.1em;
+          }
+
+          .icon:hover + .info, .icon:focus + .info {
+            opacity: 1;
+          }
+        `;
+
+        shadow.appendChild(style);
+        shadow.appendChild(wrapper);
+        wrapper.appendChild(icon);
+        wrapper.appendChild(info);
+      }
+    }
+
+    customElements.define('mysterious-element', MysteriousElement);
+
+  La propiedad de CSS ``opacity`` permite definir el grado de transparencia del contenido en una escala de 0 a 1. Un valor de 0 produce un efecto similar a ``visibility:hidden``, excepto porque esto último no consume eventos de ratón (como el clic, por ejemplo).
+
+  .. solución: https://codepen.io/jaspock/pen/VwjQqbJ
 
 Implementación de servicios web
 -------------------------------

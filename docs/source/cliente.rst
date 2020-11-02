@@ -70,6 +70,10 @@ El código que se incluye más abajo muestra *en acción*, a modo de introducci�
   :linenos:
 
 
+.. Note:: 
+
+  Observa lo que se menciona sobre ataques XSS en los comentarios del código anterior. En un entorno de producción nunca deberías integrar una subcadena no verificada (por ejemplo, un valor introducido por el usuario en un formulario o el resultado devuelto por un servidor) en una cadena que se asigna a un atributo ``innerHTML``, ya que el intérprete de JavaScript analiza e interpreta toda la cadena como HTML y podría terminar ejecutando código no deseado. La mejor recomendación es que uses ``innerHTML`` para crear rápidamente nodos, pero que cuando vayas a añadir contenido de terceros lo metas directamente como valor del atributo ``node.textContent``, donde ``node`` es el nodo donde quieres insertar el texto. El navegador no intenta interpretar el contenido de ``textContent`` como HTML, sino que lo considera como texto plano, por lo que no hay riesgos en este caso. Modifica el código anterior para que funcione de esta manera.
+
 .. _label-api-web-js:
 
 Las APIs del navegador para programar el lado del cliente
@@ -94,6 +98,8 @@ Los navegadores incluyen una serie de librerías estandarizadas para programar l
 Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en `estas otras diapositivas`_.
 
 .. _`estas otras diapositivas`: _static/slides/150-apidom-slides.html
+
+Ten en cuenta que las funciones de *callback* se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de *callback* esperando a ser llamada.
 
 
 Herramientas para desarrolladores
@@ -163,7 +169,7 @@ La definición anterior no parece seguir la notación que habíamos estudiado pa
     habla: function habla() { console.log("¡Hola!"); }
   }
 
-Y también es equivalente a:
+Y también es equivalente  a:
 
 .. code-block:: javascript
   :linenos:
@@ -178,6 +184,7 @@ Una vez tenemos nuestro prototipo, podemos crear objetos que lo usen y *hereden*
 
 .. code-block:: javascript
   :linenos:
+  :force:
 
   function creaOkapi(proto,edad) {
     let okapi= Object.create(proto);
@@ -220,6 +227,61 @@ Obviamente, si invocamos ``habla`` directamente haciendo ``protoOkapi.habla()``,
 
 Pero, al no pertenecer al prototipo, la función ``camina`` solo existe para el objeto ``o1``.
 
+.. Note::
+
+  La variable polimórifica ``this`` se revincula cada vez que se llama a una función por lo que no podremos usarla desde una función interna para referirnos al objeto ``this`` de la función externa, excepto si la función interna es una función flecha. Para ilustrarlo, considera el siguiente bloque HTML:
+  
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <div id="w">
+      <div id="x">X</div>
+    </div>
+  
+  Cuando se hace clic en la equis mayúscula, el siguiente código de JavaScript muestra por consola la cadena ``w`` excepto en el segundo caso en el que se produce una excepción por tener ``this.parentNode`` el valor ``undefined``:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    document.querySelector("#x").addEventListener("click",
+      function () {
+        console.log(this.parentNode.id);
+      });
+    document.querySelector("#x").addEventListener("click",
+      function () {
+        setTimeout(function () {
+          console.log(this.parentNode.id)
+        }, 1000);
+      });
+    document.querySelector("#x").addEventListener("click",
+      function () {
+        var this2= this;
+        setTimeout(function () {
+          console.log(this2.parentNode.id)
+        }, 2000);
+      });
+    document.querySelector("#x").addEventListener("click",
+      function () {
+        setTimeout(() => {
+          console.log(this.parentNode.id)
+        }, 3000);
+      });
+
+  Observa cómo en el tercer caso salvaguardar el ``this`` externo en la variable local ``this2`` de la función externa garantiza una clausura adecuada entre la función interna y una copia de la referencia a ``this``.
+  
+
+Una representación gráfica de la disposición en memoria de los diferentes objetos resultantes del código anterior es la siguiente:
+
+.. figure:: _static/img/okapi1.svg
+  :target: _static/img/okapi1.svg
+  :alt: objetos y prototipos en memoria
+  :figwidth: 70 %
+
+  Representación en memoria de los objetos creados en el código de la actividad.
+
+
 JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear objetos. Esta segunda forma se basa en definir una *función constructora* y utilizar la palabra reservada ``new``:
 
 .. code-block:: javascript
@@ -234,17 +296,23 @@ JavaScript tiene una sintaxis alternativa ligeramente más sencilla para crear o
   let o4= new Okapi(8);
   o4.charla();
 
-El operador ``new`` hace aquí muchas cosas:
 
-- crea un nuevo objeto;
-- asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible ``[[Prototype]]``, la misma a la que podemos acceder con ``Object.getPrototypeOf()`` o en algunos navegadores con ``__proto__``) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre ``prototype`` del constructor (en este caso, ``Okapi.prototype``, objeto al que hemos añadido la función ``charla``);
-- hace que ``this`` apunte al nuevo objeto;
-- ejecuta la función constructora;
-- devuelve el objeto creado (que en este caso será asignado a la variable ``o4``).
+.. Important::
+
+  El operador ``new`` hace aquí muchas cosas:
+
+  - crea un nuevo objeto;
+  - asigna como prototipo de este nuevo objeto (es decir, como valor de la propiedad interna e inacesible ``[[Prototype]]``, la misma a la que podemos acceder con ``Object.getPrototypeOf()`` o en algunos navegadores con ``__proto__``) el mismo objeto que el referenciado por la propiedad externa y accesible de nombre ``prototype`` del constructor (en este caso, ``Okapi.prototype``, objeto al que hemos añadido la función ``charla``);
+  - hace que ``this`` apunte al nuevo objeto;
+  - ejecuta la función constructora;
+  - devuelve el objeto creado (que en este caso será asignado a la variable ``o4``).
+
 
 Cada vez que creamos una función, el objeto que la representa recibe un atributo ``prototype``, que es un objeto con un atributo ``constructor`` que referencia a la misma función. Además, como cualquier objeto de JavaScript, el objeto de la función tiene un prototipo interno que inicialmente se basa en el prototipo de la clase predefinida ``Object``, esto es, ``Object.prototype``, que contiene una serie de métodos básicos como ``toString``. Cuando sobre el objeto creado (``o4`` en nuestro caso) invocamos una función, esta se busca en primer lugar en los atributos del objeto; si no se encuentra allí, se busca en su prototipo (allí el intérprete encontraría, por ejemplo, la función ``charla``); si no se encuentra allí, se busca en el prototipo de su prototipo (allí el intérprete se encontraría con la función ``toString``) y así sucesivamente hasta llegar al prototipo de ``Object``. Observa el paralelismo de este comportamiento con la herencia de lenguajes de programación como Java o C++, aunque su implementación es muy diferente.
 
-En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.
+.. Note::
+
+  En cualquier momento durante la ejecución del programa, podemos añadir nuevos métodos a un prototipo y todos los objetos vinculados a él (tanto los ya existentes como los nuevos que se creen) recibirán dinámicamente el nuevo método.
 
 Más recientemente, JavaScript ha incorporado la palabra reservada ``class`` que permite crear objetos y asociarles prototipos de una forma más parecida a como otros lenguajes definen clases y crean objetos. En realidad, esta otra manera de definir los objetos es lo que se conoce como *azúcar sintáctica*, porque no añade nuevas características al lenguaje, sino que el intérprete transforma la nueva notación a la clásica basada en prototipos que hemos visto:
 
@@ -427,7 +495,7 @@ Sin embargo, si usamos ``let`` en lugar de ``var`` en las declaraciones de ``i``
       m[j]();
     }
 
-  Comprueba después si tus predicciones eran correctas ejecutando el código en un intérprete de JavaScript.
+  Al usar ``let`` se crea un nuevo enlace entre la función interior y la variable del bucle en cada iteración. Comprueba después si tus predicciones eran correctas ejecutando el código en un intérprete de JavaScript.
 
 
 Profundizar en JavaScript
