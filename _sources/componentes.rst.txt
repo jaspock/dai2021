@@ -234,7 +234,13 @@ Permitamos ahora parametrizar los mensajes del componente web introducido en la 
   </html>
 
 
-Que el componente web realice siempre la multiplicación de los mismos números no tiene mucha gracia. Vamos a hacer que los valores a multiplicar se definan como atributos del elemento. Según la especificación de los componentes web, en el constructor no se puede acceder a los atributos del elemento; por ello, el acceso con el método ``this.getAttribute`` lo dejamos para el método estándar ``connectedCallback`` que será invocado por el navegador tras instanciar el componente web:
+Que el componente web realice siempre la multiplicación de los mismos números no tiene mucha gracia. Vamos a hacer que los valores a multiplicar se definan como atributos del elemento. 
+
+.. Note::
+
+  Recuerda que en HTML los atributos que no sean estándar han de tener el prefijo ``data-``.
+
+Según la especificación de los componentes web, en el constructor no se puede acceder a los atributos del elemento; por ello, el acceso con el método ``this.getAttribute`` lo dejamos para el método estándar ``connectedCallback`` que será invocado por el navegador tras instanciar el componente web:
 
 .. code-block:: html
   :linenos:
@@ -287,12 +293,12 @@ Que el componente web realice siempre la multiplicación de los mismos números 
 
       <h1>Definición de componentes web</h1>
       
-      <calcula-operaciones a="4" b="5">
+      <calcula-operaciones data-a="4" data-b="5">
         <span slot="title">Operaciones binarias</span>
         <span slot="mult">Multiplicación</span>
       </calcula-operaciones>
 
-      <calcula-operaciones a="8">
+      <calcula-operaciones data-a="8">
         <span slot="title">Binary operations</span>
         <span slot="mult">Multiplication</span>
       </calcula-operaciones>
@@ -310,8 +316,8 @@ Que el componente web realice siempre la multiplicación de los mismos números 
           }
 
           connectedCallback() {
-            this.a= this.hasAttribute('a')?this.getAttribute('a'):0;
-            this.b= this.hasAttribute('b')?this.getAttribute('b'):0;
+            this.a= this.hasAttribute('data-a')?this.getAttribute('data-a'):0;
+            this.b= this.hasAttribute('data-b')?this.getAttribute('data-b'):0;
             this.shadowRoot.querySelector('#a').textContent= this.a;
             this.slotb= this.shadowRoot.querySelector('#b');
             this.slotb.textContent= this.b;
@@ -411,8 +417,8 @@ El contenido del fichero ``calcula-operaciones.js`` es el siguiente:
       }
 
       connectedCallback() {
-        this.a= this.hasAttribute('a')?this.getAttribute('a'):0;
-        this.b= this.hasAttribute('b')?this.getAttribute('b'):0;
+        this.a= this.hasAttribute('data-a')?this.getAttribute('data-a'):0;
+        this.b= this.hasAttribute('data-b')?this.getAttribute('data-b'):0;
         this.shadowRoot.querySelector('#a').textContent= this.a;
         this.slotb= this.shadowRoot.querySelector('#b');
         this.slotb.textContent= this.b;
@@ -516,13 +522,13 @@ El `código final`_ de nuestro componente web es el siguiente:
 
       attributeChangedCallback(name,oldValue,newValue) {
         // ningún uso de this es opcional en esta función
-        if (name==='a') {
+        if (name==='data-a') {
           this.a= newValue;
           this.actualizaPrimerOperando();
           if (this.b) {
             this.actualizaResultado();
           }
-        } else if (name==='b') {
+        } else if (name==='data-b') {
           this.b= newValue;
           this.actualizaSegundoOperando();
           if (this.a) {
