@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="_static/css/estilos.css" type="text/css" />
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="6. Problemas" href="problemas.html" />
+    <link rel="next" title="6. Implementación de servicios web" href="rest.html" />
     <link rel="prev" title="4. Acceso a servicios web de terceros" href="servicios.html" /> 
 </head>
 
@@ -95,8 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#ejercicio-de-ampliacion-del-componente-web">5.4. Ejercicio de ampliación del componente web</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="problemas.html">6. Problemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="practicas.html">7. Enunciados de las prácticas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">7. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">8. Enunciados de las prácticas</a></li>
 </ul>
 
             
@@ -642,8 +643,8 @@
         <span class="p">}</span>
 
         <span class="nx">connectedCallback</span><span class="p">()</span> <span class="p">{</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
@@ -816,8 +817,8 @@
     <span class="p">}</span>
 
     <span class="nx">connectedCallback</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
@@ -1055,7 +1056,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Polygon</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span> <span class="mf">20</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Polygon</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">area</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
@@ -1087,7 +1088,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="problemas.html" class="btn btn-neutral float-right" title="6. Problemas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="rest.html" class="btn btn-neutral float-right" title="6. Implementación de servicios web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="servicios.html" class="btn btn-neutral float-left" title="4. Acceso a servicios web de terceros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

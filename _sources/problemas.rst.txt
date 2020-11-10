@@ -2134,10 +2134,10 @@ Componentes web
 
     <h1>El tiempo</h1>
     <ul>
-      <li>Lunes <mysterious-element img="rain.jpg" 
+      <li>Lunes <mysterious-element data-img="rain.jpg" 
                   data-text="Chubascos a primera hora de la mañana que desaparecerán
                   por la tarde." id="w1"></mysterious-element></li>
-      <li>Martes <mysterious-element img="sun.png" data-text="Soleado todo el día." 
+      <li>Martes <mysterious-element data-img="sun.png" data-text="Soleado todo el día." 
                   id="w2"></-info></li>
     </ul>
     <script defer src="mysterious-element.js">
@@ -2148,27 +2148,21 @@ Componentes web
     :linenos:
     :force:
 
-    class MysteriousElement extends HTMLElement {
+    class PopUpInfo extends HTMLElement {
       constructor() {
         super();
+      
         const shadow = this.attachShadow({mode: 'open'});
         const wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
 
         const icon = document.createElement('span');
         icon.setAttribute('class', 'icon');
-        const info = document.createElement('span');
-        info.setAttribute('class', 'info');
+        this.info = document.createElement('span');
+        this.info.setAttribute('class', 'info');
 
-        const text = this.getAttribute('data-text');
-        info.textContent = text;
-
-        let imgUrl;
-        imgUrl = this.getAttribute('img');
-      
-        const img = document.createElement('img');
-        img.src = imgUrl;
-        icon.appendChild(img);
+        this.img = document.createElement('img');
+        icon.appendChild(this.img);
 
         const style = document.createElement('style');
 
@@ -2205,11 +2199,18 @@ Componentes web
         shadow.appendChild(style);
         shadow.appendChild(wrapper);
         wrapper.appendChild(icon);
-        wrapper.appendChild(info);
+        wrapper.appendChild(this.info);
+      }
+      connectedCallback() {
+        let text = this.getAttribute('data-text');
+        this.info.textContent = text;
+        let imgUrl = this.getAttribute('data-img');
+        this.img.src = imgUrl;
       }
     }
 
-    customElements.define('mysterious-element', MysteriousElement);
+    customElements.define('popup-info', PopUpInfo);
+
 
   La propiedad de CSS ``opacity`` permite definir el grado de transparencia del contenido en una escala de 0 a 1. Un valor de 0 produce un efecto similar a ``visibility:hidden``, excepto porque esto último no consume eventos de ratón (como el clic, por ejemplo).
 

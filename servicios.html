@@ -96,8 +96,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="componentes.html">5. Componentes web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="problemas.html">6. Problemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="practicas.html">7. Enunciados de las prácticas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">7. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">8. Enunciados de las prácticas</a></li>
 </ul>
 
             
@@ -241,7 +242,7 @@
 <span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
-<p>Observa cómo todo el proceso puede verse como un <em>partido de tenis</em> en el que la pelota pasa del campo del código de la librería de promesas de JavaScript a nuestro código varias veces. Nuestro código <em>saca</em> creando la promesa. El constructor de la promesa crea entonces las funciones <code class="docutils literal notranslate"><span class="pre">resolve``y</span> <span class="pre">``reject</span></code> y llama la función ejecutora. Nuestra función ejecutora crea una tarea asíncrona y le asocia una función de <em>callback</em>. En otro hilo el navegador lleva a cabo la tarea asíncrona y cuando esta se complete encolará la llamada a nuestra función de <em>callback</em>. Mientras tanto, nuestro código principal se sigue ejecutando y registra los dos manejadores llamando al método <code class="docutils literal notranslate"><span class="pre">then</span></code>. Posteriormente, cuando sea desencolada por el bucle de eventos, nuestra función de <em>callback</em> comprobará si la tarea asíncrona se ha realizado con éxito o no. En base a una u otra cosa, nuestra función de <em>callback</em> llamará a <code class="docutils literal notranslate"><span class="pre">resolve``o</span> <span class="pre">``reject</span></code>. Cuando una de estas funciones se ejecute invocará una de nuestras funciones manejadoras. Nuestra función manejadora se ejecutará y realizará las acciones que correspondan según la promesa se haya cumplido o no, terminando aquí el <em>punto</em>.</p>
+<p>Observa cómo todo el proceso puede verse como un <em>partido de tenis</em> en el que la pelota pasa del campo del código de la librería de promesas de JavaScript a nuestro código varias veces. Nuestro código <em>saca</em> creando la promesa. El constructor de la promesa crea entonces las funciones <code class="docutils literal notranslate"><span class="pre">resolve</span></code> y <code class="docutils literal notranslate"><span class="pre">reject</span></code> y llama la función ejecutora. Nuestra función ejecutora crea una tarea asíncrona y le asocia una función de <em>callback</em>. En otro hilo el navegador lleva a cabo la tarea asíncrona y cuando esta se complete encolará la llamada a nuestra función de <em>callback</em>. Mientras tanto, nuestro código principal se sigue ejecutando y registra los dos manejadores llamando al método <code class="docutils literal notranslate"><span class="pre">then</span></code>. Posteriormente, cuando sea desencolada por el bucle de eventos, nuestra función de <em>callback</em> comprobará si la tarea asíncrona se ha realizado con éxito o no. En base a una u otra cosa, nuestra función de <em>callback</em> llamará a <code class="docutils literal notranslate"><span class="pre">resolve</span></code> o <code class="docutils literal notranslate"><span class="pre">reject</span></code>. Cuando una de estas funciones se ejecute invocará una de nuestras funciones manejadoras. Nuestra función manejadora se ejecutará y realizará las acciones que correspondan según la promesa se haya cumplido o no, terminando aquí el <em>punto de juego</em>.</p>
 <p>Además, observa en el código anterior cómo hemos usado <em>cadenas con plantillas</em> (<em>template strings</em>) para imprimir los mensajes por consola. Las cadenas con plantillas de JavaScript usan comillas invertidas en lugar de rectas, pueden contener variables embebidas como en el ejemplo, y pueden también ocupar más de una línea.</p>
 <div class="figure align-default" id="id3">
 <a class="reference external image-reference" href="https://www.c-sharpcorner.com/blogs/overview-of-promises-in-javascript"><img alt="diagrama de los elementos implicados en una promesa" src="https://csharpcorner-mindcrackerinc.netdna-ssl.com/UploadFile/BlogImages/01262017214716PM/Screen%20Shot%202017-01-26%20at%208.28.19%20pm.png" /></a>
@@ -660,9 +661,9 @@
 <span class="c1">// datos:</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mf">4</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Código de estado de HTTP:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="mf">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Hubo un error (&quot;</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">+</span> <span class="s2">&quot;)!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
@@ -678,7 +679,7 @@
       <span class="c1">// &quot;description&quot;: &quot;Spirited Away is an Oscar winning Japanese animated film about</span>
       <span class="c1">// a ten year old girl who wanders away from her parents...&quot;, &quot;director&quot;: &quot;Hayao</span>
       <span class="c1">// Miyazaki&quot;, ...},  {...},  {...} ]</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -723,7 +724,7 @@
   <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responseAsObject</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span> <span class="nx">responseAsObject</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">})</span>
@@ -772,8 +773,8 @@
 32
 33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">minusculas</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">promise</span><span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
       <span class="p">}</span>
       <span class="nx">resolve</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
@@ -796,7 +797,7 @@
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">minusculas</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responseAsObject</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">responseAsObject</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">resultado</span><span class="p">.</span><span class="nx">textContent</span><span class="o">+=</span> <span class="nx">responseAsObject</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="o">+</span><span class="s2">&quot;; &quot;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">})</span>
