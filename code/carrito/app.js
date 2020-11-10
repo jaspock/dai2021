@@ -3,8 +3,10 @@
 const express = require('express');
 const app = express();
 
+// carga y ejecuta config.js
 const config = require('./config.js');
 
+// objeto global que referencia a la librería Knexx.js
 var knex= null;
 
 // inicializa Knex.js para usar diferentes bases de datos según el entorno:
@@ -21,7 +23,7 @@ function conectaBD () {
       options= config.localbd;
       console.log('Usando SQLite como base de datos local');
     }
-    // Muestra la conversión a SQL de cada consulta:
+    // La siguiente opción muestra la conversión a SQL de cada consulta:
     // options.debug= true;
     knex= require('knex')(options);
   }
@@ -56,7 +58,9 @@ async function creaEsquema(res) {
 }
 
 async function numeroCarritos() {
-  return await knex('carritos').countDistinct('nombre');
+  let n= await knex('carritos').countDistinct('nombre as n');
+  // the value returned by count in this case is an array of objects like [ { n: 2 } ]
+  return n[0]['n'];
 }
 
 async function numeroItems(carrito) {
@@ -79,10 +83,10 @@ async function existeItem(item,carrito) {
 }
 
 
-// asume que el cuerpo del mensaje de la petición está en JSON:
+// convierte el cuerpo del mensaje de la petición en JSON al objeto de JavaScript req.body:
 app.use(express.json());
 
-// middleware para aceptar caracteres UTF-8 en la URL:
+// middleware para descodificar caracteres UTF-8 en la URL:
 app.use( (req, res, next) => {
   req.url = decodeURI(req.url);
   next();
@@ -101,7 +105,7 @@ app.use( (req, res, next) => {
 // tablas si no existen; en una aplicación más compleja se crearía el
 // esquema fuera del código del servidor:
 app.use( async (req, res, next) => {
-  app.locals.knex= conectaBD(app.locals.knex);
+  conectaBD();
   await creaEsquema(res);
   next();
 });
@@ -274,8 +278,6 @@ app.delete(config.app.base+'/:carrito', async (req, res) => {
 });
 
 
-const secret= '12345';
-
 // borra toda la base de datos:
 app.get(config.app.base+'/clear', async (req,res) => {
   try {
@@ -292,14 +294,13 @@ app.get(config.app.base+'/clear', async (req,res) => {
 
 const path = require('path');
 const publico = path.join(__dirname, 'public');
-// __dirname: carpeta del proyecto
+// __dirname: directorio del fichero que se está ejecutando
 
 app.get(config.app.base+'/', (req, res) => {
   res.status(200).send('API web para gestionar carritos de la compra');
 });
 
-app.get(config.app.base+'/ayuda', (req, res) => res.sendFile(path.join(publico, 'index.html'))
-);
+app.get(config.app.base+'/ayuda', (req, res) => res.sendFile(path.join(publico, 'index.html')));
 
 app.use('/', express.static(publico));
 

@@ -523,7 +523,7 @@ bastará con hacer:
 
   <section id="parís">
 
-  <encabezado-cuestionario tema="París"></encabezado-cuestionario>
+  <encabezado-cuestionario data-tema="París"></encabezado-cuestionario>
 
 Si repasas bien los contenidos sobre componentes web estudiados en clase, no te debería costar mucho implementar el componente web en un fichero ``encabezado-cuestionario.js``. Ve definiendo el componente sin eliminar hasta el final el código que ya tenías. Ten en cuenta los siguientes detalles:
 
@@ -535,11 +535,11 @@ Si repasas bien los contenidos sobre componentes web estudiados en clase, no te 
 
 .. code-block:: html
 
-  <encabezado-cuestionario tema="Berlín"></encabezado-cuestionario>
+  <encabezado-cuestionario data-tema="Berlín"></encabezado-cuestionario>
 
 funcione en ``index.html``. Cuando lo consigas, sustituye el encabezado de los cuestionarios iniciales existentes en ``index.html`` por el uso del elemento personalizado ``encabezado-cuestionario``. Ya no es necesario, tampoco, tener que añadir el texto de la Wikipedia o la imagen de Flickr a los cuestionarios preexistentes mediante código explícito en JavaScript, sino que el nuevo elemento se encargará de ello.
 
-- Repasa el tema de componentes web visto en clase antes de comenzar a escribir los componentes web. Pon el código en JavaScript que se encarga de acceder a los servicios de Flickr y Wikipedia en la función ``connectedCallback`` de la clase correspondiente y no en el constructor. Pon también en ``connectedCallback`` el acceso al atributo ``tema``.
+- Repasa el tema de componentes web visto en clase antes de comenzar a escribir los componentes web. Pon el código en JavaScript que se encarga de acceder a los servicios de Flickr y Wikipedia en la función ``connectedCallback`` de la clase correspondiente y no en el constructor. Pon también en ``connectedCallback`` el acceso al atributo ``data-tema``.
 
 - Ten en cuenta a qué apunta ``this`` en cada momento; tu código del interior del método ``then`` asociado a una promesa ``fetch`` se ejecutará (cuando el servidor devuelva su respuesta) de forma asíncrona fuera del contexto del componente web; en ese caso, ``this`` no estará apuntando al componente web, por lo que para acceder a sus propiedades tendrás que o bien usar funciones flecha o bien utilizar correctamente una clausura:
 

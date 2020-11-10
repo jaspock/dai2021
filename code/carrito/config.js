@@ -1,5 +1,8 @@
 var config = {}
 
+// da valor a algunas variables de configuración
+
+// carga variables de entorno en process.env
 require('dotenv').config();
 
 config.gae= {
