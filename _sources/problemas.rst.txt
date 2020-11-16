@@ -2332,6 +2332,56 @@ Implementación de servicios web
   .. examen julio 2020
 
 
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Considera el siguiente fragmento de un documento HTML y asume que la petición al *endpoint* indicado devuelve la cadena en JSON ``[1,2,3,4,5]``:
+
+  .. code-block:: html
+    :linenos:
+    :force:
+
+    <script>
+      async function load(url) {
+        let response = @1 fetch(url); 
+        if (response.status == 200) {
+          return response.json();
+        }
+        throw new Error(response.status);
+      }
+
+      (@2 function(){
+        let x= @3 load('https://array.org/5/');
+        console.log(JSON.stringify(x[@4]));
+      })();
+    </script>
+
+  Indica con qué sustituir ``@1``, ``@2``, ``@3`` y ``@4`` para que el código anterior muestra un ``1`` por consola.
+
+.. solución: @1=await @2=async @3=await, @4=0
+
+
+.. admonition:: :problema-contador-rest:`Problema`
+  :class: problema
+
+  Dado el siguiente código de JavaScript, indica con qué sustituir la marca ``@1`` para que se muestre un 10 por consola:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    async function w() {
+      return 10;
+    }
+
+    function f() {
+      w() @1 console.log);
+    }
+
+    f();
+  
+.. solución: @1=.then(
+
 
 Computación en la nube
 ----------------------

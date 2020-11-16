@@ -2881,6 +2881,63 @@ que está en tu varita dio otra pluma,<span class="p">&lt;/</span><span class="n
 </td></tr></table></div>
 <p>Indica con qué hay que sustituir las marcas <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> en los dos bloques anteriores para que si se intenta abrir en un navegador el URL <code class="docutils literal notranslate"><span class="pre">example.com/index</span></code>, en la consola del navegador se muestre el valor <em>42</em>. Como restricción adicional, los valores de <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> no pueden ser constantes numéricas.</p>
 </div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-rest">Problema</span></p>
+<p>Considera el siguiente fragmento de un documento HTML y asume que la petición al <em>endpoint</em> indicado devuelve la cadena en JSON <code class="docutils literal notranslate"><span class="pre">[1,2,3,4,5]</span></code>:</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">async</span> <span class="kd">function</span> <span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="err">@</span><span class="mi">1</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="p">(</span><span class="err">@</span><span class="mi">2</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">x</span><span class="o">=</span> <span class="err">@</span><span class="mi">3</span> <span class="nx">load</span><span class="p">(</span><span class="s1">&#39;https://array.org/5/&#39;</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="err">@</span><span class="mi">4</span><span class="p">]));</span>
+  <span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Indica con qué sustituir <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;2</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;3</span></code> y <code class="docutils literal notranslate"><span class="pre">&#64;4</span></code> para que el código anterior muestra un <code class="docutils literal notranslate"><span class="pre">1</span></code> por consola.</p>
+</div>
+<div class="problema admonition">
+<p class="admonition-title"><span class="problema-contador-rest">Problema</span></p>
+<p>Dado el siguiente código de JavaScript, indica con qué sustituir la marca <code class="docutils literal notranslate"><span class="pre">&#64;1</span></code> para que se muestre un 10 por consola:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">w</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">w</span><span class="p">()</span> <span class="err">@</span><span class="mi">1</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">f</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 <div class="section" id="computacion-en-la-nube">
 <h2><span class="section-number">7.7. </span>Computación en la nube<a class="headerlink" href="#computacion-en-la-nube" title="Enlazar permanentemente con este título">¶</a></h2>

@@ -189,7 +189,7 @@ El pequeño fragmento de código anterior y el código completo del servidor de 
 Async/await
 ~~~~~~~~~~~
 
-Las promesas de la API Fetch son, como hemos visto, una forma muy conveniente de gestionar peticiones a un servidor, pero cuando la llamada a un servicio web depende del resultado de una llamada anterior a otro servicio web y este anidamiento se va haciendo más y más complejo, la escritura del código puede ser muy dificultosa (especialmente a la hora de sangrarlo o de emparejar las llaves y los paréntesis). Para simplificarlo, entre otros motivos, se añadieron a JavaScript los modificadores ``async`` y ``await``. 
+Las promesas de la API Fetch son, como hemos visto, una forma muy conveniente de gestionar peticiones a un servidor, pero cuando la llamada a un servicio web depende del resultado de una llamada anterior a otro servicio web y este anidamiento se va haciendo más y más complejo, la escritura del código puede ser dificultosa y afectar negativamente a su legibilidad. Para simplificarlo, entre otros motivos, se añadieron a JavaScript los modificadores ``async`` y ``await``. 
 
 Una función anotada con ``async`` siempre devuelve una promesa. Si la función ya devuelve una promesa, el intérprete no tiene más que hacer. Si devuelve otro tipo de valor, el intérprete crea una promesa que se resuelve (se cumple) directamente con el valor devuelto. Si la función asíncrona lanza una excepción, esta se envuelve en una promesa incumplida. 
 
@@ -341,7 +341,7 @@ Prueba de la aplicación del carrito
 
 A continuación, descarga el código del cliente y del servidor de la aplicación del carrito; clona para ello el `repositorio de la asignatura`_ haciendo::
 
-  git clone https://github.com/jaspock/dai1920.git
+  git clone https://github.com/jaspock/dai2021.git
 
 Entra en el directorio ``code/carrito`` y ejecuta::
 
@@ -367,7 +367,7 @@ La primera línea instala en la carpeta ``node_modules`` todas las dependencias 
 Depuración y prueba de la aplicación
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si deseas depurar el código del servidor en modo local puedes usar el editor de texto `Visual Studio Code`_. Abre con él el fichero ``app.js`` y selecciona :guilabel:`Debug / Start debugging`. Puedes definir puntos de ruptura haciendo click en el borde de la línea de código oportuna.
+Si deseas depurar el código del servidor en modo local puedes usar el editor de texto `Visual Studio Code`_. Abre con él el fichero ``app.js`` y selecciona :guilabel:`Run / Start debugging`. Puedes definir puntos de ruptura haciendo click en el borde de la línea de código oportuna.
 
   .. _`Visual Studio Code`: https://code.visualstudio.com/
 
@@ -397,6 +397,7 @@ para ver las tablas de la base de datos o::
 
 para consultarlas.
 
+.. _label-api-cambio:
 
 Modificación de la API REST
 ---------------------------
@@ -408,6 +409,9 @@ En esta actividad, vas a realizar una pequeña modificación a la API del carrit
   Si vas a desarrollar frecuentemente con Node.js, te vendrá bien utilizar la herramienta `nodemon`_, que evita que tengas que matar y volver a lanzar el servidor local cada vez que hagas un cambio en la aplicación.
 
   .. _`nodemon`: https://www.npmjs.com/package/nodemon
+
+
+  Para utilizar ``nodemon`` mientras depuras desde Visual Studio Code, has de instalar globalmente el programa con ``npm install -g nodemon``. A continuación, abre desde el editor de texto el directorio donde se almacena la aplicación web y abre el código del servidor. En la vista de :guilabel:`Run` de la izquierda, pincha en :guilabel:`create a launch.json file` y selecciona el entorno Node.js. En el fichero ``launch.json`` que se te abre, pulsa el botón :guilabel:`Add configuration...` y selecciona :guilabel:`Node.js: Nodemon setup` y graba el fichero. Finalmente, en el menú desplegable de la parte superior de la vista :guilabel:`Run` escoge :guilabel:`nodemon` y lanza la aplicación en modo depuración desde el menú :guilabel:`Run`. 
 
 
 .. admonition:: Hazlo tú ahora
@@ -422,7 +426,7 @@ Despliegue de la aplicación web en Heroku
 ------------------------------------------
 
 Cuando tengas la aplicación lista en modo local, puedes desplegarla en la plataforma en la nube de `Heroku`_ como sigue. 
-Copia para empezar la carpeta ``dai1920/code/carrito`` en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.
+Copia para empezar la carpeta ``dai2021/code/carrito`` en otra ubicación de tu sistema. Al copiar la carpeta a una ubicación diferente haces que su contenido no esté ligado al repositorio de Github, ya que para desplegar la aplicación en Heroku necesitas vincularla a otro repositorio.
 
 Instala el cliente de línea de órdenes (CLI, por *command-line interface*) de Heroku con las `instrucciones de esta página`_. En el caso de Linux basta con descargar el fichero con los binarios, descomprimirlo y añadir la carpeta ``bin`` a la variable ``PATH`` del sistema::
 
@@ -478,7 +482,7 @@ Para verlos conforme se van produciendo::
   heroku logs --tail
 
 .. _`Node Version Manager`: https://github.com/nvm-sh/nvm
-.. _`repositorio de la asignatura`: https://github.com/jaspock/dai1920
+.. _`repositorio de la asignatura`: https://github.com/jaspock/dai2021
 .. _`instrucciones de esta página`: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 .. _`desplegar la aplicación`: https://devcenter.heroku.com/articles/git
 .. _`Heroku`: https://www.heroku.com/
@@ -497,25 +501,33 @@ Finalmente, puedes usar el `panel de control`_ de tu aplicación en Heroku para 
 .. para ligar un nuevo proyecto a una aplicación ya existente: heroku git:remote -a new-project-23116
 
 
+.. _label-cors:
 
-La política del mismo origen
-----------------------------
+La política del mismo origen y el estándar CORS
+-----------------------------------------------
 
 Todos los navegadores implementan una restricción conocida como *política del mismo origen* (en inglés, *same-origin policy*), un concepto de seguridad existente desde la época de Netscape 2.0 para peticiones basadas en XHR o en la API Fetch. Esta política impide por defecto que desde un script bajado de un determinado servidor se realicen peticiones a servicios web disponibles en un servidor con un dominio diferente. Permitir este tipo de accesos abre la puerta a toda una serie de potenciales problemas: por ejemplo, *MaliciousSite.com* usa los servicios web de la web de *MyBank.com* (en la que el usuario tiene sesión abierta en otra pestaña del navegador) para obtener información confidencial; los servicios web de *MyBank.com* devuelven la información solicitada porque el usuario está autenticado y la *cookie* de autenticación es enviada por el navegador junto con la petición; el script con origen *MaliciousSite.com* puede ahora compartir esta información con otros servidores.
 
-Si la política del mismo origen no pudiera evitarse, muchas aplicaciones web que usan servicios web *de terceros* desde el cliente no podrían existir o deberían implementar un proxy a dichos servicios web en su propio servidor. Por ello, los navegadores permiten bajo determinadas condiciones que estos accesos puedan realizarse. En particular, la técnica estándar CORS (*cross-origin resource sharing*) utiliza la cabecera *Origin* (que es añadida por el navegador y no puede modificarse desde JavaScript) en la petición para informar al servidor del origen del código que está haciendo la solicitud. El servidor puede autorizar o denegar entonces el acceso añadiendo a la respuesta un valor adecuado en la cabecera *Access-Control-Allow-Origin*; si el valor de esta última cabecera en la respuesta coincide con el valor de *Origin* en la petición o si toma un valor como `*`, entonces el navegador autoriza el acceso. En peticiones que pueden modificar datos en el servidor (como las de tipo PUT o DELETE), el navegador realiza una comunicación previa con el servidor (usando el verbo *OPTIONS*) para realizar algunas comprobaciones *pre-vuelo* (*pre-flight*) usando las cabeceras ya mencionadas.
+Si la política del mismo origen no pudiera evitarse, muchas aplicaciones web que usan servicios web *de terceros* desde el cliente no podrían existir o deberían implementar un *proxy* a dichos servicios web en su propio servidor (es decir, el cliente realizaría una petición a su servidor y desde este, donde ya no existe la restricción del mismo origen al no haber navegador ni riesgos, se realizaría la petición al servidor de terceros). Por ello, los navegadores permiten bajo determinadas condiciones que estos accesos puedan realizarse. En particular, la técnica estándar CORS (*cross-origin resource sharing*) utiliza la cabecera ``Origin`` (que es añadida por el navegador y no puede modificarse desde JavaScript) en la petición para informar al servidor del origen del código que está haciendo la solicitud. El servidor puede autorizar o denegar entonces el acceso añadiendo a la respuesta un valor adecuado en la cabecera ``Access-Control-Allow-Origin``; si el valor de esta última cabecera en la respuesta coincide con el valor de ``Origin`` en la petición o si toma un valor como `*`, entonces el navegador autoriza el acceso. 
 
-Aunque no es fácil engañar al servidor modificando el valor enviado por el navegador en la cabecera *Origin*, debe tenerse en cuenta que el propósito de CORS no es el de hacer un sitio web más seguro; si el servidor devuelve datos privados, es necesario usar *cookies* o *tokens*, por ejemplo.
+.. Note::
+
+  Para algunos tipos de peticiones, como las de tipo PUT o DELETE y, en ocasiones, dependiendo de las cabeceras empleadas, también GET o POST, el navegador realiza (no entraremos a analizar los motivos, aunque tienen que ver con no hacer que el servidor modifique su estado ante una petición que no se va a aceptar) una comunicación previa con el servidor (usando el verbo *OPTIONS*) para realizar algunas comprobaciones *pre-vuelo* (*pre-flight*). En esta petición, el navegador añade, además, de ``Origin``, la cabecera ``Access-Control-Request-Method`` con el verbo para el que se desea realizar la petición posterior y ``Access-Control-Request-Headers`` con las cabeceras que se emplearán en dicha petición. El servidor contesta incluyendo en la respuesta las cabeceras ``Access-Control-Allow-Origin``, ``Access-Control-Allow-Methods`` (verbos admitidos, en forma de lista de verbos separados por comas) y ``Access-Control-Allow-Headers`` (cabeceras de HTTP admitidas); si los valores permitidos son compatibles con la petición a realizar, esta se lleva finalmente a cabo por parte del navegador.
+
+Aunque no es fácil engañar al servidor modificando el valor enviado por el navegador en la cabecera ``Origin``, debe tenerse en cuenta que el propósito de CORS no es el de hacer un sitio web más seguro; si el servidor devuelve datos privados, es necesario usar *cookies* o *tokens de validación*, por ejemplo.
 
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  En una actividad anterior tienes un ejemplo de acceso a un servicio (el de información sobre el estudio Ghibli) que usa CORS. Estúdialo con ayuda de las herramientas para desarrolladores del navegador comprobando las cabeceras. Estudia también una petición vía Fetch a un servidor que no soporte CORS, como el de `esta API`_ de días festivos_.
+  En una actividad anterior tienes un ejemplo de acceso a un servicio (el de información sobre las películas del estudio Ghibli) que usa CORS. Estúdialo con ayuda de las herramientas para desarrolladores del navegador comprobando las cabeceras. Estudia también una petición vía Fetch a un servidor que no soporte CORS, como el de `esta API`_ de días festivos_.
 
   .. _`esta API`: https://date.nager.at/Home/Api
   .. _festivos: http://date.nager.at/api/v1/get/ES/2020
 
-Finalmente, es importante resaltar que estas restricciones afectan a los servicios web a los que se intenta acceder desde un navegador. Una aplicación de escritorio o un programa ejecutándose en un servidor no tienen estas restricciones.
+
+.. Important::
+
+  Finalmente, es importante resaltar que estas restricciones afectan a los servicios web a los que se intenta acceder desde un navegador. Una aplicación de escritorio o un programa ejecutándose en un servidor no tienen estas restricciones.
 
 
 Peticiones CORS
@@ -524,9 +536,9 @@ Peticiones CORS
 .. admonition:: Hazlo tú ahora
   :class: hazlotu
 
-  La API REST del carrito soporta peticiones Fetch realizadas desde programas en JavaScript descargados de dominios diferentes al dominio en el que está ubicada la API. Para comprobarlo, abre el fichero ``carrito.html`` desde un servidor web local; recuerda cambiar antes la variable ``base`` de JavaScript para que apunte al *endpoint* de la API que has usado en la actividad anterior. 
+  La API REST del carrito soporta peticiones Fetch realizadas desde programas en JavaScript descargados de dominios diferentes al dominio en el que está ubicada la API. Para comprobarlo, abre el fichero ``carrito.html`` desde un servidor web local; recuerda cambiar antes la variable ``base`` de JavaScript para que apunte al correspondiente *endpoint* de la API que se está ejecutando en otro puerto u otro servidor (el de Heroku, por ejemplo). Estudia el *middleware* del código del servidor que gestiona la respuesta.
   
-Si tienes Python 2 instalado, ejecuta desde el directorio donde está ``carrito.html`` una de las dos siguientes órdenes::
+Para lanzar el cliente desde un servidor web local, si tienes Python 2 instalado, ejecuta desde el directorio donde está ``carrito.html`` una de las dos siguientes órdenes::
 
   python -m SimpleHttpServer
   python2 -m SimpleHttpServer
@@ -536,7 +548,7 @@ Si tienes Python 3 instalado en tu sistema, ejecuta desde el directorio donde es
   python -m http.server
   python3 -m http.server
 
-El servidor te informará del puerto en ``localhost`` desde el que puedes acceder al contenido del directorio. Realiza peticiones desde la aplicación web del carrito y analiza las cabeceras relacionadas con CORS de la petición y la respuesta. Observa cómo las peticiones de tipo POST, PUT o DELETE realizan una comprobación *pre-vuelo* con el verbo OPTIONS. Modifica el cliente para que envíe una cabecera adicional no convencional y observa cómo la respuesta del servidor hace que la petición falle al no devolver el servidor el nombre de la cabecera en la lista devuelta en ``Access-Control-Allow-Headers``.
+El servidor te informará del puerto en ``localhost`` desde el que puedes acceder al contenido del directorio. Realiza peticiones desde la aplicación web del carrito y analiza las cabeceras relacionadas con CORS de la petición y la respuesta. Observa cómo las peticiones de tipo GET, POST, PUT o DELETE realizan aquí una comprobación *pre-vuelo* con el verbo OPTIONS. Modifica el cliente para que envíe una cabecera adicional no convencional como ``Authorization`` y observa cómo la respuesta del servidor hace que la petición falle al no devolver el servidor el nombre de la cabecera en la lista devuelta en ``Access-Control-Allow-Headers``.
 
 
 .. _label-signin:
