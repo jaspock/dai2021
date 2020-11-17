@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 17 nov
+      - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 2. Los apartados marcados con un asterisco cuentan la cuarta parte que los otros.
     * - 24 oct
       - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 1.
     * - 24 oct
