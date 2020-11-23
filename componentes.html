@@ -96,8 +96,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rest.html">6. Implementación de servicios web</a></li>
-<li class="toctree-l1"><a class="reference internal" href="problemas.html">7. Problemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="practicas.html">8. Enunciados de las prácticas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nube.html">7. Computación en la  nube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problemas.html">8. Problemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practicas.html">9. Enunciados de las prácticas</a></li>
 </ul>
 
             
@@ -643,8 +644,8 @@
         <span class="p">}</span>
 
         <span class="nx">connectedCallback</span><span class="p">()</span> <span class="p">{</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
           <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
@@ -817,8 +818,8 @@
     <span class="p">}</span>
 
     <span class="nx">connectedCallback</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mf">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-a&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">?</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-b&#39;</span><span class="p">)</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#a&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b&#39;</span><span class="p">);</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">slotb</span><span class="p">.</span><span class="nx">textContent</span><span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
@@ -1056,7 +1057,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Polygon</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span> <span class="mf">20</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Polygon</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">area</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
