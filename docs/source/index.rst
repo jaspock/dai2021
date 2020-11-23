@@ -51,6 +51,7 @@ Novedades
 Actividades previas a las clases
 --------------------------------
 
+- Antes de la clase del 01/12/2020: sigue la actividad ":ref:`label-gcloud`", donde se muestra cómo configurar tu entorno de trabajo para poder trabajar con la nube de Google, y, a continuación, la actividad ":ref:`label-gcp`" en la que tendrás que ver unos vídeos (duración: 40 minutos), leer unos tutoriales y realizar un pequeño ejercicio. A continuación, contesta el `test sobre Google Cloud Platform`_ (plazo límite: 30/11/2020, 23:59 horas)
 - Antes de la clase del 24/11/2020: practica con lo que se comenta en las actividades siguientes: ":ref:`label-local`", ":ref:`label-prueba-carrito`", ":ref:`label-api-cambio`", ":ref:`label-heroku`" y ":ref:`label-cors`". A continuación, contesta el `test sobre despliegue de aplicaciones web`_ (plazo límite: 23/11/2020, 23:59 horas)
 - Antes de la clase del 17/11/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-curl`", ":ref:`label-cliente-rest`" y ":ref:`label-servidor-rest`"; la última incluye un vídeo con una traza de la aplicación del carrito (duración: 28 minutos; unos 20 a 1,5x). Para poder practicar con el código de esas actividades, tendrás que configurar tu entorno de trabajo como se indica en la actividad ":ref:`label-local`". A continuación, contesta el `test sobre implementación de servicios web`_ (plazo límite: 16/11/2020, 23:59 horas).
 - Antes de la clase del 10/11/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-intro-comp`", ":ref:`label-ejemplo-comp`" y ":ref:`label-avanzado-comp`". A continuación, contesta el `test sobre componentes web`_ (plazo límite: 09/11/2020, 23:59 horas).
@@ -62,6 +63,7 @@ Actividades previas a las clases
 - Antes de la clase del 29/09/2020: lee detenidamente y practica con lo discutido en las actividades siguientes: ":ref:`label-inline-css`", ":ref:`label-caja-css`" y ":ref:`label-posicionamiento-css`". A continuación, contesta el `test sobre el modelo de caja de CSS`_ (plazo límite: 28/09/2020, 23:59 horas). Recuerda utilizar tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 - Antes de la clase del 22/09/2020: estudia los vídeos y practica con la actividad ":ref:`label-intro-css`" (duración total de los vídeos: unos 35 minutos; unos 25 a velocidad 1,5x). A continuación, contesta el `test sobre la introducción a CSS`_ (plazo límite: 21/09/2020, 23:59 horas). Utiliza tu cuenta de ``gcloud.ua.es`` para acceder a todos estos materiales.
 
+.. _`test sobre Google Cloud Platform`: https://forms.gle/6cCTbvJWTekiHGLc9
 .. _`test sobre despliegue de aplicaciones web`: https://forms.gle/GUbu37fNwaYyfgPV7
 .. _`test sobre implementación de servicios web`: https://forms.gle/H3pTR3LwudaJwE4b8 
 .. _`test sobre componentes web`: https://forms.gle/DowYFoTLpv4BTCpcA
@@ -148,9 +150,8 @@ Este es el momento también en el que enfatizar la importancia de tomar apuntes 
     servicios
     componentes
     rest
+    nube
     problemas
     practicas
-
-.. nube
    
 .. >>> add new documents here
