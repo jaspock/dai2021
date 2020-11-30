@@ -177,7 +177,7 @@
 </div>
 <div class="section" id="configuracion-del-entorno-de-trabajo-para-google-cloud-platform">
 <span id="label-gcloud"></span><h2><span class="section-number">7.1. </span>Configuración del entorno de trabajo para Google Cloud Platform<a class="headerlink" href="#configuracion-del-entorno-de-trabajo-para-google-cloud-platform" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con <a class="reference external" href="https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html">dominio gcloud.ua.es</a>; asegúrate de que la tienes activada antes de seguir leyendo. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.</p>
+<p>En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con <a class="reference external" href="https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html">dominio gcloud.ua.es</a>; asegúrate de que la tienes activada antes de seguir leyendo. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Sigue las instrucciones que vienen a continuación para configurar tu entorno de trabajo para las actividades de este tema.</p>
@@ -236,13 +236,30 @@
 </div>
 </div>
 <div class="section" id="una-definicion-de-computacion-en-la-nube">
-<h2><span class="section-number">7.3. </span>Una definición de computación en la nube<a class="headerlink" href="#una-definicion-de-computacion-en-la-nube" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="label-comp-nube"></span><h2><span class="section-number">7.3. </span>Una definición de computación en la nube<a class="headerlink" href="#una-definicion-de-computacion-en-la-nube" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Después de la toma de contacto de la actividad anterior, estamos en disposición de poder caracterizar de forma más precisa a qué nos referimos con la computación en la nube.</p>
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Lee detenidamente la definición de computación en la nube dada por el National Institute of Standards and Technology en el documento «<a class="reference external" href="http://dx.doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>» y asegúrate de que entiendes cuáles son las características fundamentales de la computación en la nube, así como los diferentes modelos de servicios e implantación existentes. Lee con calma el documento ya que tiene una gran densidad terminológica y conceptual.</p>
 </div>
-<p>Los conceptos anteriores y algunos adicionales se recogen en <a class="reference external" href="_static/slides/500-cloud-slides.html">estas diapositivas</a>.</p>
+<p>Por elegir algún momento, podemos establecer el inicio de la computación en la nube en 2006 cuando Amazon lanza Amazon Web Services para explotar comercialmente la tecnología que había desarrollado para su propio portal. Comienza entonces una transición desde el <em>hosting</em> tradicional (en el  que uno compraba o alquilaba una cantidad determinada de recursos) a la computación en la nube (en la que los servicios y recursos computacionales son escalables, se ofrecen bajo demanda y se facturan, como el agua o la luz, en base al consumo real realizado).</p>
+<p>Algunas de las principales características de la computación en la nube son:</p>
+<ul class="simple">
+<li><p>Existencia de un <em>pool</em> de recursos computacionales disponible para todos los clientes.</p></li>
+<li><p>Virtualización a todos los niveles para maximizar la utilización del hardware.</p></li>
+<li><p>Escalado elástico (en ambos sentidos) e inmediato según las necesidades.</p></li>
+<li><p>Se paga por lo que se usa (por horas, minutos, GBs o MBs, por ejemplo).</p></li>
+<li><p>Reducción para el cliente de gastos de capital (CAPEX), pero en ocasiones también de gastos operativos (OPEX).</p></li>
+<li><p>Acceso automático vía APIs web o SDKs a todos los servicios.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para crear una nube privada, es decir, un sistema con hardware propio pero con el que se interactúa como con una nube pública, existen varios sistemas de código abierto como <a class="reference external" href="https://www.openstack.org/">OpenStack</a>,  <a class="reference external" href="https://cloudstack.apache.org/">CloudStack</a>, <a class="reference external" href="https://www.cloudfoundry.org/">Cloud Foundry</a> u <a class="reference external" href="https://www.openshift.com/">OpenShift</a> (los dos primeros como <em>infrastructure as a service</em> y los dos últimos como <em>platform as a service</em>).</p>
+</div>
+<div class="hazlotu admonition">
+<p class="admonition-title">Hazlo tú ahora</p>
+<p>Ve los dos primeros vídeos de la lista de reproducción de <a class="reference external" href="https://www.youtube.com/playlist?list=PLy5CQU7Pj3dNm2vn6tSfrZ58vUaZiK8Sv">centros de datos para computación en la nube</a> y toma nota de las principales ideas allí expuestas. Todos los vídeos tienen subtítulos bien transcritos como mínimo en inglés. Puedes leerlos en otros idiomas mediante traducción automática (lo que implica que habrá errores con cierta frecuencia). Ten en cuenta que la duración total de los dos primeros vídeos de la lista es de alrededor de 45 minutos.</p>
+</div>
 </div>
 <div class="section" id="publicacion-de-la-aplicacion-del-carrito-en-google-app-engine">
 <span id="label-appengine"></span><h2><span class="section-number">7.4. </span>Publicación de la aplicación del carrito en Google App Engine<a class="headerlink" href="#publicacion-de-la-aplicacion-del-carrito-en-google-app-engine" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -274,7 +291,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">databases</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">bd</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>donde <code class="docutils literal notranslate"><span class="pre">&lt;bd&gt;</span></code> es el nombre de la base de datos e <code class="docutils literal notranslate"><span class="pre">&lt;instancia&gt;</span></code> es el nombre de la instancia de Cloud SQL que creamos anteriormente. Para comprobar que usuario y base de datos han sido creados correctamente, podemos consultar los usuarios y las bases de datos existentes haciendo:</p>
+<p>donde <code class="docutils literal notranslate"><span class="pre">&lt;bd&gt;</span></code> es el nombre de la base de datos e <code class="docutils literal notranslate"><span class="pre">&lt;instancia&gt;</span></code> es el nombre de la instancia de Cloud SQL que creamos anteriormente.</p>
+<p>Para comprobar que usuario y base de datos han sido creados correctamente, podemos consultar los usuarios y las bases de datos existentes haciendo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcloud</span> <span class="n">sql</span> <span class="n">users</span> <span class="nb">list</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
 <span class="n">gcloud</span> <span class="n">sql</span> <span class="n">databases</span> <span class="nb">list</span> <span class="o">--</span><span class="n">instance</span><span class="o">=&lt;</span><span class="n">instancia</span><span class="o">&gt;</span>
 </pre></div>

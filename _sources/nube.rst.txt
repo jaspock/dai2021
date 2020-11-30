@@ -18,7 +18,7 @@ La computación en la nube se ha convertido en la manera más habitual de gestio
 Configuración del entorno de trabajo para Google Cloud Platform
 ---------------------------------------------------------------
 
-En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con `dominio gcloud.ua.es`_; asegúrate de que la tienes activada antes de seguir leyendo. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
+En las actividades de este tema vamos a usar diversos servicios de Google Cloud Platform. Aunque plataformas como Amazon Web Services, Microsoft Azure, IBM Cloud, Rackspace o Google Cloud Platform suelen ofrecer de forma gratuita un acceso limitado a algunos de sus servicios, en esta asignatura vas a a usar un proyecto en Google Cloud Platform que el profesor ya ha creado para ti y que está asignado a una cuenta de facturación para centros educativos que Google ofrece a la universidad. Tu proyecto está asociado a la cuenta que la universidad te asigna con `dominio gcloud.ua.es`_; asegúrate de que la tienes activada antes de seguir leyendo. Para no generar gastos innecesarios, recuerda eliminar los recursos que no vayas a seguir utilizando cuando acabes.
 
 .. _`dominio gcloud.ua.es`: https://si.ua.es/es/manuales/uacloud/uacloudse/servicios-externos.html
 
@@ -105,6 +105,8 @@ Para conseguir llevar a cabo la siguiente tarea, necesitarás leerte y practicar
   Lanza en una estancia de Google Compute Engine un servidor web escrito en Node.js con Express (esto se estudió en el tema anterior) que sirva una página web sencilla y ofrezca un servicio GET que realice una tarea simple, como por ejemplo, invertir una cadena de texto. La página web ha de invocar mediante la API Fetch al servicio web y, además, contener una imagen que previamente habrás subido a Google Cloud Storage. Añade a continuación en Google Cloud Functions una función en JavaScript que devuelva la cadena recibida como parámetro con las vocales eliminadas e invoca también este servicio desde la página web. Para simplificar, usa la consola web de Google Cloud Platform siempre que te sea posible. ¡Elimina todos los recursos reservados cuando acabes!
 
 
+.. _label-comp-nube:
+
 Una definición de computación en la nube
 ----------------------------------------
 
@@ -117,11 +119,37 @@ Después de la toma de contacto de la actividad anterior, estamos en disposició
 
   .. _`The NIST Definition of Cloud Computing`: http://dx.doi.org/10.6028/NIST.SP.800-145
 
-Los conceptos anteriores y algunos adicionales se recogen en `estas diapositivas`_.
 
-.. _`estas diapositivas`: _static/slides/500-cloud-slides.html
+Por elegir algún momento, podemos establecer el inicio de la computación en la nube en 2006 cuando Amazon lanza Amazon Web Services para explotar comercialmente la tecnología que había desarrollado para su propio portal. Comienza entonces una transición desde el *hosting* tradicional (en el  que uno compraba o alquilaba una cantidad determinada de recursos) a la computación en la nube (en la que los servicios y recursos computacionales son escalables, se ofrecen bajo demanda y se facturan, como el agua o la luz, en base al consumo real realizado).
 
-.. vídeo "Google Data Center Security: 6 Layers Deep": https://youtu.be/kd33UVZhnAA
+Algunas de las principales características de la computación en la nube son:
+
+- Existencia de un *pool* de recursos computacionales disponible para todos los clientes.
+- Virtualización a todos los niveles para maximizar la utilización del hardware.
+- Escalado elástico (en ambos sentidos) e inmediato según las necesidades.
+- Se paga por lo que se usa (por horas, minutos, GBs o MBs, por ejemplo).
+- Reducción para el cliente de gastos de capital (CAPEX), pero en ocasiones también de gastos operativos (OPEX).
+- Acceso automático vía APIs web o SDKs a todos los servicios.
+
+.. Note::
+
+  Para crear una nube privada, es decir, un sistema con hardware propio pero con el que se interactúa como con una nube pública, existen varios sistemas de código abierto como `OpenStack`_,  `CloudStack`_, `Cloud Foundry`_ u `OpenShift`_ (los dos primeros como *infrastructure as a service* y los dos últimos como *platform as a service*).
+
+  .. _`OpenStack`: https://www.openstack.org/
+  .. _`CloudStack`: https://cloudstack.apache.org/
+  .. _`Cloud Foundry`: https://www.cloudfoundry.org/
+  .. _`OpenShift`: https://www.openshift.com/
+
+.. admonition:: Hazlo tú ahora
+  :class: hazlotu
+
+  Ve los dos primeros vídeos de la lista de reproducción de `centros de datos para computación en la nube`_ y toma nota de las principales ideas allí expuestas. Todos los vídeos tienen subtítulos bien transcritos como mínimo en inglés. Puedes leerlos en otros idiomas mediante traducción automática (lo que implica que habrá errores con cierta frecuencia). Ten en cuenta que la duración total de los dos primeros vídeos de la lista es de alrededor de 45 minutos.
+
+  .. _`centros de datos para computación en la nube`: https://www.youtube.com/playlist?list=PLy5CQU7Pj3dNm2vn6tSfrZ58vUaZiK8Sv
+
+
+.. diapositivas antiguas: _static/slides/500-cloud-slides.html
+
 
 .. _label-appengine:
 
@@ -166,7 +194,9 @@ A continuación, creemos una base de datos en la instancia de Cloud SQL para nue
 
   gcloud sql databases create <bd> --instance=<instancia>
 
-donde ``<bd>`` es el nombre de la base de datos e ``<instancia>`` es el nombre de la instancia de Cloud SQL que creamos anteriormente. Para comprobar que usuario y base de datos han sido creados correctamente, podemos consultar los usuarios y las bases de datos existentes haciendo::
+donde ``<bd>`` es el nombre de la base de datos e ``<instancia>`` es el nombre de la instancia de Cloud SQL que creamos anteriormente. 
+
+Para comprobar que usuario y base de datos han sido creados correctamente, podemos consultar los usuarios y las bases de datos existentes haciendo::
 
   gcloud sql users list --instance=<instancia>
   gcloud sql databases list --instance=<instancia>
@@ -221,7 +251,7 @@ Y para ir viéndolos en un terminal mientras se van generando::
 
   Para *despertar* posteriormente la instancia puedes ejecutar::
 
-      gcloud sql instances patch <instancia> --activation-policy always
+    gcloud sql instances patch <instancia> --activation-policy always
 
   Es posible que de vez en cuando el profesor ejecute un script que intente mandar a dormir todas las instancias de base de datos por si hay estudiantes que han olvidado hacerlo. Despierta tu instancia si inesperadamente comienzas a recibir errores al acceder a la base de datos, porque lamentablemente con la segunda generación de instancias de MySQL de Google Cloud SQL esto no ocurre automáticamente. Evidentemente, en una aplicación real la base de datos ha de estar siempre disponible o establecerse un procedimiento automático que la despierte, pero para los propósitos de la asignatura y de cara a ahorrar costes, dormir y despertar la instancia de base de datos es razonablemente admisible.
 
