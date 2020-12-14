@@ -624,9 +624,42 @@
 <p>Ten en cuenta que las funciones de <em>callback</em> se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de <em>callback</em> esperando a ser llamada.</p>
 <div class="admonition important">
 <p class="admonition-title">Importante</p>
-<p>A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que entiendas un par de conceptos.</p>
+<p>A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que conozcas un par de conceptos.</p>
 <p>Por un lado, las listas pueden ser <em>vivas</em> o <em>estáticas</em>. Por ejemplo, las funciones <code class="docutils literal notranslate"><span class="pre">getElementsByClassName</span></code> o <code class="docutils literal notranslate"><span class="pre">getElementsByTagName</span></code> se usan para obtener una lista de elementos en base al valor del atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> o del tipo de etiqueta, respectivamente, y la lista devuelta está <em>viva</em> en tanto que si con posterioridad a la llamada a la función añadimos un nuevo nodo al DOM que cumpla con el criterio correspondiente, el <em>array</em> se ampliará para incluirlo (haz la prueba). La función <code class="docutils literal notranslate"><span class="pre">querySelectorAll</span></code>, sin embargo, devuelve una lista <em>estática</em> que permanece inalterada por mucho que se incorporen nuevos nodos al árbol (compruébalo).</p>
 <p>Por otro lado, está la distinción entre las funciones (o atributos) que devuelven <em>elementos</em> o <em>listas de elementos</em> (lo que excluye, por ejemplo, a los nodos con texto), y las que devuelven <em>nodos</em> o <em>listas de nodos</em>. Cuando hablamos de listas, las primeras se basan en el tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> y las segundas en <code class="docutils literal notranslate"><span class="pre">NodeList</span></code>. Cuando hablamos de items individuales, los tipos son <code class="docutils literal notranslate"><span class="pre">Element</span></code> y <code class="docutils literal notranslate"><span class="pre">Node</span></code>, respectivamente. Por ejemplo, atributos como <code class="docutils literal notranslate"><span class="pre">childNodes</span></code> o <code class="docutils literal notranslate"><span class="pre">nextSibling</span></code> contienen elementos, mientras que <code class="docutils literal notranslate"><span class="pre">children</span></code> o <code class="docutils literal notranslate"><span class="pre">nextElementSibling</span></code> contienen nodos. Normalmente, nos interesarán las listas de tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> porque querremos recorrer los elementos incluidos en otro elemento, pero en otras ocasiones, puede servir más a nuestro objetivo tener una lista de tipo <code class="docutils literal notranslate"><span class="pre">NodeList</span></code> que no excluye ningún nodo del árbol DOM, ni siquiera los que contienen texto o espacios en blanco.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una idea básica para comprender la gestión de eventos es el hecho de que cuando, por ejemplo, se hace clic en un pixel concreto de la ventana del navegador, es posible que este evento dispare la ejecución de más de un manejador de eventos. Considera el siguiente código en HTML:</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;prnt&quot;</span><span class="p">&gt;</span>
+  hello
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;child&quot;</span><span class="p">&gt;</span>
+    bye
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Y el siguiente código en JavaScript:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">prnt</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;parent clicked&quot;</span><span class="p">);}</span>
+<span class="kd">function</span> <span class="nx">child</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;child clicked&quot;</span><span class="p">);}</span>
+<span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;prnt&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;child&quot;</span><span class="p">);</span>
+<span class="nx">p</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="nx">prnt</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="nx">child</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Si se hace clic en la palabra <em>bye</em>, se está haciendo clic en ambos <code class="docutils literal notranslate"><span class="pre">div</span></code> y no solo en el más interno, por lo que procede ejecutar ambos manejadores, como puedes comprobar <a class="reference external" href="http://jsfiddle.net/rLv1cob7/">aquí</a>.</p>
+<p>Respecto a la existencia de las dos fases de captura y <em>burbujeo</em>, en la mayoría de los casos no será muy relevante en qué fase se ejecuta un determinado manejador. De hecho, en las primeros años de la web y antes de la estandarización de la gestión de eventos, los navegadores solían implementar una de las dos fases, pero no ambas.</p>
 </div>
 </div>
 <div class="section" id="herramientas-para-desarrolladores">

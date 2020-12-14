@@ -129,12 +129,44 @@ Ten en cuenta que las funciones de *callback* se ejecutan en el (único) hilo de
 
 .. Important::
 
-  A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que entiendas un par de conceptos. 
+  A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que conozcas un par de conceptos. 
   
   Por un lado, las listas pueden ser *vivas* o *estáticas*. Por ejemplo, las funciones ``getElementsByClassName`` o ``getElementsByTagName`` se usan para obtener una lista de elementos en base al valor del atributo ``class`` o del tipo de etiqueta, respectivamente, y la lista devuelta está *viva* en tanto que si con posterioridad a la llamada a la función añadimos un nuevo nodo al DOM que cumpla con el criterio correspondiente, el *array* se ampliará para incluirlo (haz la prueba). La función ``querySelectorAll``, sin embargo, devuelve una lista *estática* que permanece inalterada por mucho que se incorporen nuevos nodos al árbol (compruébalo).
 
   Por otro lado, está la distinción entre las funciones (o atributos) que devuelven *elementos* o *listas de elementos* (lo que excluye, por ejemplo, a los nodos con texto), y las que devuelven *nodos* o *listas de nodos*. Cuando hablamos de listas, las primeras se basan en el tipo ``HTMLCollection`` y las segundas en ``NodeList``. Cuando hablamos de items individuales, los tipos son ``Element`` y ``Node``, respectivamente. Por ejemplo, atributos como ``childNodes`` o ``nextSibling`` contienen elementos, mientras que ``children`` o ``nextElementSibling`` contienen nodos. Normalmente, nos interesarán las listas de tipo ``HTMLCollection`` porque querremos recorrer los elementos incluidos en otro elemento, pero en otras ocasiones, puede servir más a nuestro objetivo tener una lista de tipo ``NodeList`` que no excluye ningún nodo del árbol DOM, ni siquiera los que contienen texto o espacios en blanco.
 
+
+.. Note::
+
+  Una idea básica para comprender la gestión de eventos es el hecho de que cuando, por ejemplo, se hace clic en un pixel concreto de la ventana del navegador, es posible que este evento dispare la ejecución de más de un manejador de eventos. Considera el siguiente código en HTML:
+
+  .. code-block:: html
+    :linenos:
+
+    <div id="prnt">
+      hello
+      <div id="child">
+        bye
+      </div>
+    </div>
+
+  Y el siguiente código en JavaScript:
+
+  .. code-block:: javascript
+    :linenos:
+
+    function prnt() {console.log("parent clicked");}
+    function child() {console.log("child clicked");}
+    var p = document.getElementById("prnt");
+    var c = document.getElementById("child");
+    p.addEventListener("click",prnt,true);
+    c.addEventListener("click",child,true);
+
+  Si se hace clic en la palabra *bye*, se está haciendo clic en ambos ``div`` y no solo en el más interno, por lo que procede ejecutar ambos manejadores, como puedes comprobar aquí_.
+
+  .. _aquí: http://jsfiddle.net/rLv1cob7/
+
+  Respecto a la existencia de las dos fases de captura y *burbujeo*, en la mayoría de los casos no será muy relevante en qué fase se ejecuta un determinado manejador. De hecho, en las primeros años de la web y antes de la estandarización de la gestión de eventos, los navegadores solían implementar una de las dos fases, pero no ambas.
 
 Herramientas para desarrolladores
 ---------------------------------
