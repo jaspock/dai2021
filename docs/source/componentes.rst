@@ -36,7 +36,7 @@ Los componentes web permiten crear elementos de HTML reutilizables. Por ejemplo,
 
 .. _`indicador del progreso`: https://explore.fast.design/components/fast-progress-ring
 
-El componente web podría definir adicionalmente una serie de funciones (una API) para interactuar con él desde nuestro código en JavaScript. El elemento HTML creará normalmente al iniciarlo algunos nodos de HTML adicionales. Cuando el navegador inserta en el DOM el subárbol resultante, crea una especie de *barrera protectora* que impide que los estilos aplicados al documento permeen a dicho subárbol y que funciones como ``document.querySelector`` puedan encontrar sus nodos; será necesario, como veremos, buscarlos mediante ``nodo.shadowRoot.querySelector``, donde ``nodo`` es una referencia al nodo que incluye el subárbol DOM como, por ejemplo, ``fast-progress-ring`` en el caso anterior. Se permite así que los componentes web tengan su propio estilo y comportamiento diferenciado de los del resto de la aplicación.
+El componente web podría definir adicionalmente una serie de funciones (una API) para interactuar con él desde nuestro código en JavaScript. El elemento HTML creará normalmente al iniciarlo algunos nodos de HTML adicionales. Cuando el navegador inserta en el DOM el subárbol resultante, crea una especie de *barrera protectora* que impide que los estilos aplicados al documento permeen a dicho subárbol y que funciones como ``document.querySelector`` puedan encontrar sus nodos; será necesario, como veremos, buscarlos mediante ``nodo.shadowRoot.querySelector``, donde ``nodo`` es una referencia al nodo que incluye el subárbol DOM como, por ejemplo, ``fast-progress-ring`` en el caso anterior. Se facilita así que los componentes web tengan su propio estilo y comportamiento diferenciado de los del resto de la aplicación.
 
 .. ejemplo de uso del componente de indicación de progreso con la librería Fast: https://codepen.io/jaspock/pen/RwRMMqe
 
@@ -129,7 +129,21 @@ La definición del elemento personalizado se hace mediante una clase (recuerda q
 
   La referencia ``this`` en el constructor (o en cualquiera de los métodos de la clase) apunta al nodo del *shadow host* que incluirá el árbol ensombrecido, por lo que sobre ella se pueden invocar métodos como ``this.attachShadow`` o, como veremos más adelante, acceder al atributo ``this.shadowRoot`` para acceder al *shadow DOM* subyacente.
 
-El *árbol ensombrecido* se comporta como un árbol DOM normal, salvo que no es visible desde fuera: por ejemplo, el elemento ``<h1>`` del *DOM ensombrecido* no aparecerá nunca si buscamos nodos con ``document.querySelectorAll("h1")`` desde un script de fuera del componente web; además, los estilos que definamos para ``<h1>`` dentro del *shadow DOM* no afectarán a los elementos del árbol principal. Si inspeccionamos el nodo correspondiente a ``calcula-operaciones`` (el *shadow host*) con las herramientas para desarrolladores del navegador, observaremos que contiene una etiqueta ``#shadow-root`` de la que cuelgan los nodos ``h1`` y ``div`` (además de ``style`` y ``script``).
+El *árbol ensombrecido* se comporta como un árbol DOM normal, salvo que no es visible desde fuera: por ejemplo, el elemento ``<h1>`` del *DOM ensombrecido* no aparecerá nunca si buscamos nodos con ``document.querySelectorAll("h1")`` desde un script de fuera del componente web; además, los estilos que definamos para ``<h1>`` dentro del *shadow DOM* no afectarán a los elementos del árbol principal y a la inversa. Si inspeccionamos el nodo correspondiente a ``calcula-operaciones`` (el *shadow host*) con las herramientas para desarrolladores del navegador, observaremos que contiene una etiqueta ``#shadow-root`` de la que cuelgan los nodos ``h1`` y ``div`` (además de ``style`` y ``script``).
+
+
+.. Attention::
+
+  Algunos estilos definidos para el árbol *iluminado* sí que pueden afectar a los elementos del árbol *ensombrecido*. En concreto, el criterio_ es el siguiente:
+
+  1. Los estilos que se heredan desde nodos superiores también son heredados por defecto por los nodos ensombrecidos. Así, si la página principal tiene una regla de estilo como ``body {color:purple}``, el texto del interior del componente web se mostrará en principio en color púrpura (aunque este comportamiento puede sobrescribirse mediante reglas locales).
+  2. Por otro lado, los selectores de CSS aplicados en el nivel exterior no atravesarán por defecto las fronteras del árbol ensombrecido y no se emparejarán con sus nodos. Así, si la página principal tiene una regla de estilo como ``h2 {color:magenta}``, el color de los posibles encabezados de nivel 2 del componente web no se verá afectado por ella.
+
+  Para aislar el componente web de la influencia descrita en el primer elemento, se puede usar la propiedad de CSS all_ y definir dentro de los estilos locales una regla como ``* {all:initial}``.
+
+  .. _criterio: https://github.com/WICG/webcomponents/issues/314#issuecomment-137654422
+  .. _all: https://developer.mozilla.org/en-US/docs/Web/CSS/all
+
 
 .. Note::
 
@@ -140,7 +154,10 @@ El *árbol ensombrecido* se comporta como un árbol DOM normal, salvo que no es 
 
     document.querySelector("calcula-operaciones").shadowRoot.querySelector("h1");
 
-  Realmente, aunque no los verems, hay varios *trucos* que permiten acceder al árbol ensombrecido incluso aunque el atributo ``mode`` sea *falso*, por lo que se suele dejar a *verdadero*. Se espera que el código externo no interactúe más de lo estrictamente necesario con el contenido del elemento personalizado.
+  Esto, en principio, no es posible si ``mode`` vale *falso*. Realmente, aunque no los veremos, hay varios `trucos`_ que permiten acceder al árbol ensombrecido incluso aunque el atributo ``mode`` sea *falso*, por lo que se suele dejar a *verdadero*. Se espera que el código externo no interactúe más de lo estrictamente necesario con el contenido del elemento personalizado.
+
+.. _`trucos`: https://blog.revillweb.com/open-vs-closed-shadow-dom-9f3d7427d1af
+
 
 
 .. _label-avanzado-comp:
@@ -333,6 +350,14 @@ Según la especificación de los componentes web, en el constructor no se puede 
 
     </body>
   </html>
+
+
+.. Attention::
+
+  El estándar de HTML es muy claro al decir que en el constructor "the element's attributes and children must not be inspected", que "work should be deferred to ``connectedCallback`` as much as possible" y que "the constructor should be used to set up initial state and default values, and to set up event listeners and possibly a shadow root". No obstante, dependiendo del navegador y de cuándo se ejecute el código es posible que aparentemente puedas `saltarte estas restricciones`_. Ten en cuenta que el comportamiento de tu código si, por ejemplo, accedes a los atributos en el constructor puede ser muy diferente (e incluso producir errores) en otros navegadores o en versiones diferentes del mismo navegador, por lo que es más que recomendable que no lo hagas.
+
+  .. _`saltarte estas restricciones`: https://stackoverflow.com/questions/43836886/failed-to-construct-customelement-error-when-javascript-file-is-placed-in-head#answer-43837330
+
 
 Ahora vamos a modularizar y encapsular el diseño anterior para que otros puedan usar nuestro componente web sin tener que incluir todo lo anterior en su documento HTML:
 
@@ -572,6 +597,9 @@ El `código final`_ de nuestro componente web es el siguiente:
 .. Warning::
 
   Como el método de nuestro componente anterior es estático, nos podríamos referir a él como ``Operaciones.observedAttributes``. Observa que, en cualquier caso, el código que termine accediendo a ``Operaciones.observedAttributes`` en el ejemplo anterior no es nuestro sino que forma parte de la API del navegador.
+
+
+.. PENDIENTE: dilucidar por qué un console.log en un script dentro de un elemento <template> se ejecuta al insertar el árbol duplicado en el shadowRoot (como en los primeros ejemplos) de modo que la salida se ve por consola, pero no lo hace si la plantilla se define desde JavaScript con template.innerHTML (como en los últimos ejemplos).
 
 
 .. Hint::

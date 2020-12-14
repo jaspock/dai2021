@@ -424,7 +424,21 @@ El siguiente es un ejemplo típico de uso de un objeto de tipo ``XMLHttpRequest`
   client.send(null);
 
 
-Este código accede a modo de ejemplo a una `API web`_ sobre las películas del estudio Ghibli. Los datos devueltos por esta API web (y por muchas otras) están codificados en una notación independiente del lenguaje denominada JSON (por *JavaScript Object Notation*), que es muy parecida a la que se usa en JavaScript para definir literalmente un objeto, pero con algunas diferencias: principalmente, que los atributos van siempre entrecomillados, que no pueden usarse comillas simples y que no pueden incluirse valores de algunos tipos especiales de JavaScript como, por ejemplo, funciones. Como ves en el código anterior, la función ``JSON.parse`` permite convertir una cadena en formato a JSON a objeto de JavaScript; para lo opuesto, puede usarse la función ``JSON.stringify``. En APIs web más antiguas se usaba el formato XML en lugar de JSON, de ahí el nombre de ``XMLHttpRequest``.
+Este código accede a modo de ejemplo a una `API web`_ sobre las películas del estudio Ghibli. Los datos devueltos por esta API web (y por muchas otras) están codificados en una notación independiente del lenguaje denominada JSON (por *JavaScript Object Notation*), que es muy parecida a la que se usa en JavaScript para definir literalmente un objeto.
+
+
+.. Note::
+
+  Las principales diferencias entre el formato JSON y la notación literal de objetos en Javascript son que en el primer caso los atributos van siempre entrecomillados, no pueden usarse comillas simples, no pueden incluirse valores de algunos tipos especiales de JavaScript como, por ejemplo, funciones, y, finalmente, no puede haber una coma tras el último atributo. Este última característica sí que es correcta en JavaScript. Por ejemplo, la siguiente definición de un objeto es correcta en JavaScript, pero la parte de la derecha de la asignación no lo sería en JSON por múltiples motivos: 
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    var x = { a: 12, 'b': 14, "c": 16, };
+
+
+Como ves en el código anterior, la función ``JSON.parse`` permite convertir una cadena en formato a JSON a objeto de JavaScript; para lo opuesto, puede usarse la función ``JSON.stringify``. En APIs web más antiguas se usaba el formato XML en lugar de JSON, de ahí el nombre de ``XMLHttpRequest``.
 
 .. _`API web`: https://ghibliapi.herokuapp.com/
 

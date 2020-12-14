@@ -228,7 +228,7 @@ Este código define los elementos necesarios para el formulario de creación de 
 
 Date cuenta de que, en este caso, no usamos un elemento de tipo ``<form>``, sino un ``<div>`` para contener el formulario, con lo que no es necesario desactivar el envío de datos y la recarga automática de la página que ocurre con los formularios de tipo ``<form>``. 
 
-Todos los formularios de la aplicación han de permitir añadir nuevos cuestionarios o preguntas pulsando la tecla ``enter`` dentro del cuadro de texto, además de haciendo clic en el botón correspondiente.
+Todos los formularios de la aplicación han de permitir añadir nuevos cuestionarios o preguntas pulsando la tecla ``enter`` dentro del cuadro de texto, además de haciendo clic en el botón correspondiente. Tendrás que basarte para ello en el evento ``keydown`` y en propiedades como ``KeyboardEvent.key``; observa, de paso, que probablemente encontrarás mucha información en la web sobre eventos como ``keypress`` o propiedades como ``KeyboardEvent.keyCode``, pero ambas están obsoletas y desaparecerán de funcionas versiones de los navegadores. En el desarrollo web es importante que siempre te asegures de que las funciones o propiedades son las adecuadas; puedes consultar para ello webs de referencia como Mozilla Developer Network.
 
 Estilo del formulario
 ~~~~~~~~~~~~~~~~~~~~~
@@ -266,7 +266,7 @@ y lo insertará como primer hijo del nodo ``.bloque`` pasado como parámetro. El
 
 .. _`2612`: http://unicode-table.com/en/2612/
 
-El estilo de los elementos de clase ``.borra`` usará posicionamiento absoluto para situarse a 2px del extremo derecho y 1px del extremo superior de la caja del elemento ``.bloque`` que lo contiene. *Nota:* para que este posicionamiento funcione tendrás que *posicionar* el elemento ``.bloque``. Además, el cursor del ratón al pasar por encima de la cruz de borrado adoptará el estilo ``pointer``.
+El estilo de los elementos de clase ``.borra`` usará posicionamiento absoluto para situarse a 2px del extremo derecho y 1px del extremo superior de la caja del elemento ``.bloque`` que lo contiene. *Nota:* para que este posicionamiento funcione tendrás que *posicionar* el elemento ``.bloque``. Además, el cursor del ratón al pasar por encima de la cruz de borrado adoptará el estilo ``pointer``. Ten en cuenta que estos estilos (u otros de esta práctica) no se aplicarán directamente desde el código en JavaScript, sino que este se limitará a asignar determinados valores al atributo ``class`` de los elementos y será la hoja de estilo CSS la que establezca las propiedades estéticas oportunas. 
 
 Por último, añade un manejador de evento al nuevo nodo de manera que se invoque a una función ``borraPregunta`` (definida más adelante) cuando se haga clic en el elemento.
 
@@ -600,7 +600,9 @@ Comienza asegurándote de que entiendes cómo funciona la apicación del carrito
 
 .. Important::
 
-  Recuerda lo que se comenta al principio del apartado ":ref:`label-local`" sobre el hecho de que el sistema operativo *oficial* de la asignatura es Linux. El examen de prácticas se realizará sobre la versión de Linux instalada en los ordenadores de los laboratorios, por lo que es muy importante que aprendas a trabajar sobre ellos. Recuerda que puedes instalar todo el software necesario rápidamente con ayuda del fichero `dai-bundle-dev`_: descárgalo, descomprímelo, edita y luego ejecuta el script ``install.sh``. Mientras trabajas en la práctica, en los ordenadores de los laboratorios solo necesitas instalar Node.js y el SDK de Google Cloud Platform (SQLite3 ya está instalado). El día del examen solo necesitas instalar Node.js, ya que no se pedirá en el examen que implantes nada en la nube.
+  Recuerda que en Linux puedes instalar todo el software necesario rápidamente con ayuda del fichero `dai-bundle-dev`_: descárgalo, descomprímelo, edita y luego ejecuta el script ``install.sh``. 
+  
+  .. Recuerda lo que se comenta al principio del apartado ":ref:`label-local`" sobre el hecho de que el sistema operativo *oficial* de la asignatura es Linux. El examen de prácticas se realizará sobre la versión de Linux instalada en los ordenadores de los laboratorios, por lo que es muy importante que aprendas a trabajar sobre ellos. Mientras trabajas en la práctica, en los ordenadores de los laboratorios solo necesitas instalar Node.js y el SDK de Google Cloud Platform (SQLite3 ya está instalado). El día del examen solo necesitas instalar Node.js, ya que no se pedirá en el examen que implantes nada en la nube.
   
   .. _`dai-bundle-dev`: https://www.dlsi.ua.es/~japerez/cursos/dai/dai-bundle-dev-20191206.tar.gz
 
