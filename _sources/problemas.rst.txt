@@ -1284,6 +1284,13 @@ Programar el lado del cliente
     g();
     f(2);
 
+  Para resolver este tipo de problemas te puede ayudar representar un cronograma similar al siguiente donde vayas registrando el código que se está ejecutando en cada momento, así como el código asíncrono que terminará encolando una función de *callback*:
+
+  .. figure:: _static/img/cronograma.svg
+    :target: _static/img/cronograma.svg
+    :alt: cronograma
+    :figwidth: 70 %
+
   .. solución: f1,g1,f3,g2,f2,f0,f0; https://jsfiddle.net/obqj50zx/
   .. function emit(s) { function pause(milliseconds) { let dt = new Date(); while ((new Date())-dt<=milliseconds) { /* Do nothing */} } pause(1000); let dt= new Date(); let seconds= dt.getSeconds(); console.log(seconds+"': "+s); }
 
