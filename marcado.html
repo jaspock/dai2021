@@ -733,6 +733,10 @@
 <p class="admonition-title">Atención</p>
 <p>El panel <span class="guilabel">Elements</span> de las <em>Chrome DevTools</em> muestra una información potencialmente distinta de la opción <span class="guilabel">Ver código fuente la página</span> que aparece en el menú contextual de una página (atajo de teclado <kbd class="kbd docutils literal notranslate">Ctrl+U</kbd>), ya que esta última opción muestra siempre el código inicial descargado por el navegador y no el HTML dinámico que el navegador tiene en memoria en un determinado momento, que puede ser diferente al inicial por manipulaciones del árbol DOM, como veremos en posteriores temas.</p>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Durante el ciclo de desarrollo de una aplicación web es habitual realizar cambios en los ficheros de la aplicación (por ejemplo en el documento HTML, en las hojas de estilo o en el código de JavaScript) y comprobar a continuación cómo queda la aplicación tras recargarla. En algunas ocasiones el navegador puede optar, pese a la recarga, por utilizar el contenido previo almacenado en la caché lo que nos puede llevar a la falsa impresión de que nuestros cambios no tienen efecto. Dentro de la pestaña <code class="docutils literal notranslate"><span class="pre">Network</span></code> de las Chrome DevTools existe una opción <code class="docutils literal notranslate"><span class="pre">Disable</span> <span class="pre">cache</span></code> que hace que el navegador ignore el contenido de la caché, pero solo mientras las herramientas de desarrolladores estén abiertas. Es recomendable tenerla siempre marcada.</p>
+</div>
 </div>
 <div class="section" id="codificacion-de-caracteres">
 <h2><span class="section-number">1.4. </span>Codificación de caracteres<a class="headerlink" href="#codificacion-de-caracteres" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -757,7 +761,7 @@
 <h2><span class="section-number">1.6. </span>Validación de documentos HTML<a class="headerlink" href="#validacion-de-documentos-html" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con las directrices de HTML, tanto a nivel sintáctico (por ejemplo, las marcas de apertura y clausura respetan el anidamiento entre elementos) como semántico (no hay dos atributos <em>id</em> con el mismo valor o no se usan en un elemento atributos que correspondan a otros elementos). De esta manera, se allana el camino hacia la compatibilidad entre navegadores y la usabilidad de la página web; la validación, sin embargo, no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores.</p>
 <div class="hazlotu admonition">
-<p class="admonition-title">Hazlo tú ahora´</p>
+<p class="admonition-title">Hazlo tú ahora</p>
 <p>Usa el <a class="reference external" href="http://validator.w3.org/">validador del W3C</a> para validar alguna de las páginas web usadas en actividades anteriores; corrige todos los errores que te indique el validador hasta conseguir validarla. Algunas de las cosas que puedes probar son:</p>
 <ul class="simple">
 <li><p>dejar una etiqueta sin cerrar</p></li>
@@ -768,9 +772,9 @@
 <li><p>colocar un elemento de lista (<code class="docutils literal notranslate"><span class="pre">li</span></code>) fuera de la marca de lista (<code class="docutils literal notranslate"><span class="pre">ul</span></code>)</p></li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>En <a class="reference external" href="https://html.spec.whatwg.org/multipage/syntax.html#optional-tags">determinadas ocasiones</a> el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, no es necesario cerrar la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;/body&gt;</span></code> de antes de <code class="docutils literal notranslate"><span class="pre">&lt;/html&gt;</span></code>), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.</p>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>En <a class="reference external" href="https://html.spec.whatwg.org/multipage/syntax.html#optional-tags">determinadas ocasiones</a> el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, en ciertas ocasiones no es necesario cerrar la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;/body&gt;</span></code> de antes de <code class="docutils literal notranslate"><span class="pre">&lt;/html&gt;</span></code> y, aun así, el documento sigue siendo válido), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>

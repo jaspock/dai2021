@@ -44,6 +44,32 @@ Elementos más avanzados del lenguaje o las características adicionales a las q
   .. _`repl.it`: https://repl.it/
 
 
+.. Note::
+
+  A diferencia de lo que ocurre en otros lenguajes, el punto y coma actúa en JavaScript como un *separador* de instrucciones y no como un *finalizador* de ellas. El estándar establece que su uso es opcional en ciertos casos (básicamente, cuando el intérprete puede determinar dónde acaba una instrucción y empieza la siguiente), pero en ocasiones esto puede llevar a que el motor de JavaScript interprete el código de forma diferente a la que teníamos en mente. Por ejemplo, el código siguiente:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+
+    const a = 1
+    const b = 2
+    const c = a + b
+    (a + b).toString()
+
+  produce un error ``b is not a function`` porque el intérprete de JavaScript lo analiza como si estuviera escrito así:
+
+  .. code-block:: javascript
+    :linenos:
+    :force:
+    
+    const a = 1;
+    const b = 2;
+    const c = a + b(a + b).toString();
+
+  Por ello, se recomienda a los novicios del lenguaje que siempre finalicen cada instrucción con punto y coma.
+
+
 .. _label-app-web-sencilla:
 
 Una aplicación web sencilla
@@ -101,6 +127,14 @@ Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en `
 
 Ten en cuenta que las funciones de *callback* se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de *callback* esperando a ser llamada.
 
+.. Important::
+
+  A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que entiendas un par de conceptos. 
+  
+  Por un lado, las listas pueden ser *vivas* o *estáticas*. Por ejemplo, las funciones ``getElementsByClassName`` o ``getElementsByTagName`` se usan para obtener una lista de elementos en base al valor del atributo ``class`` o del tipo de etiqueta, respectivamente, y la lista devuelta está *viva* en tanto que si con posterioridad a la llamada a la función añadimos un nuevo nodo al DOM que cumpla con el criterio correspondiente, el *array* se ampliará para incluirlo (haz la prueba). La función ``querySelectorAll``, sin embargo, devuelve una lista *estática* que permanece inalterada por mucho que se incorporen nuevos nodos al árbol (compruébalo).
+
+  Por otro lado, está la distinción entre las funciones (o atributos) que devuelven *elementos* o *listas de elementos* (lo que excluye, por ejemplo, a los nodos con texto), y las que devuelven *nodos* o *listas de nodos*. Cuando hablamos de listas, las primeras se basan en el tipo ``HTMLCollection`` y las segundas en ``NodeList``. Cuando hablamos de items individuales, los tipos son ``Element`` y ``Node``, respectivamente. Por ejemplo, atributos como ``childNodes`` o ``nextSibling`` contienen elementos, mientras que ``children`` o ``nextElementSibling`` contienen nodos. Normalmente, nos interesarán las listas de tipo ``HTMLCollection`` porque querremos recorrer los elementos incluidos en otro elemento, pero en otras ocasiones, puede servir más a nuestro objetivo tener una lista de tipo ``NodeList`` que no excluye ningún nodo del árbol DOM, ni siquiera los que contienen texto o espacios en blanco.
+
 
 Herramientas para desarrolladores
 ---------------------------------
@@ -117,7 +151,17 @@ Las herramientas para desarrolladores que incorporan los navegadores permiten de
   .. _`Pause your Code with Breakpoints`: https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints
   .. _`JS Debugging Reference`: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 
+.. Note::
 
+  Otra opción para pausar la ejecución del código JavaScript en un determinado punto es añadir la instrucción ``debugger`` (recogida en el estándar de ECMAScript) en una línea. Si las herramientas de desarrolladores están abiertas, la ejecución se detendrá en esa línea como si hubiéramos definido un punto de ruptura::
+
+    function foo (x) {
+      if (x < 0) {
+        debugger;
+        return x*x;
+      }
+    }
+  
 .. _label-js-objetos:
 
 Objetos y prototipos

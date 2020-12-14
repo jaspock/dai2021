@@ -26,6 +26,10 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 14 Dic
+      - Se han habilitado dos fechas de entrega diferentes para la última práctica. La primera es la fecha de entrega original (23 de diciembre) y en ella se corregirá la parte obligatoria de la práctica, es decir, todo menos la autenticación de usuarios. Para la segunda entrega (fecha límite: 8 de enero) se corregirá únicamente la parte opcional, es decir, la de autenticación de usuarios, que permite obtener hasta dos puntos más. Aunque tu práctica de la primera entrega ya incluya la autenticación de usuarios, súbela también para la segunda entrega. Recuerda que la segunda entrega es opcional en tanto que en el examen de prácticas no se asumirá en ningún momento que has implementado la autenticación de usuarios. El servidor de prácticas del departamento permitirá la entrega (optativa) de la segunda parte unos minutos después de que se cierre la entrega de la primera parte.
+    * - 10 Dic 
+      - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 3.
     * - 17 nov
       - Ya puedes consultar en la `web del departamento`_ las notas de la práctica 2. Los apartados marcados con un asterisco cuentan la cuarta parte que los otros.
     * - 24 oct

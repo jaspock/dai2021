@@ -137,6 +137,9 @@ Los navegadores suelen incorporar de serie un conjunto de herramientas para faci
 
   El panel :guilabel:`Elements` de las *Chrome DevTools* muestra una información potencialmente distinta de la opción :guilabel:`Ver código fuente la página` que aparece en el menú contextual de una página (atajo de teclado :kbd:`Ctrl+U`), ya que esta última opción muestra siempre el código inicial descargado por el navegador y no el HTML dinámico que el navegador tiene en memoria en un determinado momento, que puede ser diferente al inicial por manipulaciones del árbol DOM, como veremos en posteriores temas.
 
+.. Important::
+  
+  Durante el ciclo de desarrollo de una aplicación web es habitual realizar cambios en los ficheros de la aplicación (por ejemplo en el documento HTML, en las hojas de estilo o en el código de JavaScript) y comprobar a continuación cómo queda la aplicación tras recargarla. En algunas ocasiones el navegador puede optar, pese a la recarga, por utilizar el contenido previo almacenado en la caché lo que nos puede llevar a la falsa impresión de que nuestros cambios no tienen efecto. Dentro de la pestaña ``Network`` de las Chrome DevTools existe una opción ``Disable cache`` que hace que el navegador ignore el contenido de la caché, pero solo mientras las herramientas de desarrolladores estén abiertas. Es recomendable tenerla siempre marcada.
 
 Codificación de caracteres
 --------------------------
@@ -174,7 +177,7 @@ Validación de documentos HTML
 
 Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con las directrices de HTML, tanto a nivel sintáctico (por ejemplo, las marcas de apertura y clausura respetan el anidamiento entre elementos) como semántico (no hay dos atributos *id* con el mismo valor o no se usan en un elemento atributos que correspondan a otros elementos). De esta manera, se allana el camino hacia la compatibilidad entre navegadores y la usabilidad de la página web; la validación, sin embargo, no asegura que el documento se vaya a ver como el desarrollador tiene en la cabeza ni que se muestre de igual manera en todos los navegadores. 
 
-.. admonition:: Hazlo tú ahora´
+.. admonition:: Hazlo tú ahora
   :class: hazlotu
 
   Usa el `validador del W3C`_ para validar alguna de las páginas web usadas en actividades anteriores; corrige todos los errores que te indique el validador hasta conseguir validarla. Algunas de las cosas que puedes probar son:
@@ -189,9 +192,9 @@ Un aspecto básico de los documentos HTML es que estos cumplan estrictamente con
   .. _`validador del W3C`: http://validator.w3.org/
 
 
-.. Note::
+.. Attention::
 
-  En `determinadas ocasiones`_ el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, no es necesario cerrar la etiqueta ``</body>`` de antes de ``</html>``), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.
+  En `determinadas ocasiones`_ el estándar de HTML permite omitir algunas etiquetas de clausura (por ejemplo, en ciertas ocasiones no es necesario cerrar la etiqueta ``</body>`` de antes de ``</html>`` y, aun así, el documento sigue siendo válido), pero son situaciones muy específicas, por lo que es más que recomendable crear siempre documentos que son válidos al margen de estas excepciones.
 
   .. _`determinadas ocasiones`: https://html.spec.whatwg.org/multipage/syntax.html#optional-tags
 

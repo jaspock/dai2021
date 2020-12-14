@@ -189,6 +189,28 @@
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Practica con los diferentes conceptos de JavaScript hasta tener claro su uso. Puedes practicar usando la consola de JavaScript de las Chrome Devtools, instalando Node.js, abriendo una <a class="reference external" href="https://jsconsole.com/">consola en línea</a> o creando un proyecto en <a class="reference external" href="https://repl.it/">repl.it</a> de tipo Node.js.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A diferencia de lo que ocurre en otros lenguajes, el punto y coma actúa en JavaScript como un <em>separador</em> de instrucciones y no como un <em>finalizador</em> de ellas. El estándar establece que su uso es opcional en ciertos casos (básicamente, cuando el intérprete puede determinar dónde acaba una instrucción y empieza la siguiente), pero en ocasiones esto puede llevar a que el motor de JavaScript interprete el código de forma diferente a la que teníamos en mente. Por ejemplo, el código siguiente:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kr">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>produce un error <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">function</span></code> porque el intérprete de JavaScript lo analiza como si estuviera escrito así:</p>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Por ello, se recomienda a los novicios del lenguaje que siempre finalicen cada instrucción con punto y coma.</p>
+</div>
 </div>
 <div class="section" id="una-aplicacion-web-sencilla">
 <span id="label-app-web-sencilla"></span><h2><span class="section-number">3.2. </span>Una aplicación web sencilla<a class="headerlink" href="#una-aplicacion-web-sencilla" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -600,6 +622,12 @@
 </div>
 <p>Los conceptos que tienes que estudiar de estas APIs se encuentran recogidos en <a class="reference external" href="_static/slides/150-apidom-slides.html">estas otras diapositivas</a>.</p>
 <p>Ten en cuenta que las funciones de <em>callback</em> se ejecutan en el (único) hilo de tu programa pero cuando les toque (se van apilando conforme están listas para ser invocadas). El navegador nunca va a interrumpir la ejecución de tu código hasta que acabe lo que esté haciendo. Por ejemplo, si se está ejecutando un manejador de evento de clic, hasta que la función manejadora no acabe, el intérprete no se irá a la cola a ver si hay alguna otra función de <em>callback</em> esperando a ser llamada.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>A la hora de usar funciones y atributos que permiten acceder a listas de nodos o elementos del árbol DOM es importante que entiendas un par de conceptos.</p>
+<p>Por un lado, las listas pueden ser <em>vivas</em> o <em>estáticas</em>. Por ejemplo, las funciones <code class="docutils literal notranslate"><span class="pre">getElementsByClassName</span></code> o <code class="docutils literal notranslate"><span class="pre">getElementsByTagName</span></code> se usan para obtener una lista de elementos en base al valor del atributo <code class="docutils literal notranslate"><span class="pre">class</span></code> o del tipo de etiqueta, respectivamente, y la lista devuelta está <em>viva</em> en tanto que si con posterioridad a la llamada a la función añadimos un nuevo nodo al DOM que cumpla con el criterio correspondiente, el <em>array</em> se ampliará para incluirlo (haz la prueba). La función <code class="docutils literal notranslate"><span class="pre">querySelectorAll</span></code>, sin embargo, devuelve una lista <em>estática</em> que permanece inalterada por mucho que se incorporen nuevos nodos al árbol (compruébalo).</p>
+<p>Por otro lado, está la distinción entre las funciones (o atributos) que devuelven <em>elementos</em> o <em>listas de elementos</em> (lo que excluye, por ejemplo, a los nodos con texto), y las que devuelven <em>nodos</em> o <em>listas de nodos</em>. Cuando hablamos de listas, las primeras se basan en el tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> y las segundas en <code class="docutils literal notranslate"><span class="pre">NodeList</span></code>. Cuando hablamos de items individuales, los tipos son <code class="docutils literal notranslate"><span class="pre">Element</span></code> y <code class="docutils literal notranslate"><span class="pre">Node</span></code>, respectivamente. Por ejemplo, atributos como <code class="docutils literal notranslate"><span class="pre">childNodes</span></code> o <code class="docutils literal notranslate"><span class="pre">nextSibling</span></code> contienen elementos, mientras que <code class="docutils literal notranslate"><span class="pre">children</span></code> o <code class="docutils literal notranslate"><span class="pre">nextElementSibling</span></code> contienen nodos. Normalmente, nos interesarán las listas de tipo <code class="docutils literal notranslate"><span class="pre">HTMLCollection</span></code> porque querremos recorrer los elementos incluidos en otro elemento, pero en otras ocasiones, puede servir más a nuestro objetivo tener una lista de tipo <code class="docutils literal notranslate"><span class="pre">NodeList</span></code> que no excluye ningún nodo del árbol DOM, ni siquiera los que contienen texto o espacios en blanco.</p>
+</div>
 </div>
 <div class="section" id="herramientas-para-desarrolladores">
 <h2><span class="section-number">3.4. </span>Herramientas para desarrolladores<a class="headerlink" href="#herramientas-para-desarrolladores" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -607,6 +635,18 @@
 <div class="hazlotu admonition">
 <p class="admonition-title">Hazlo tú ahora</p>
 <p>Familiarízate con las opciones de depuración de JavaScript de las pestañas <span class="guilabel">Console</span> y <span class="guilabel">Sources</span> del entorno de las Chrome DevTools siguiendo estas páginas de su documentación: <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/console">Console Overview</a> , <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript">Get Started</a>, <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Pause your Code with Breakpoints</a> y <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">JS Debugging Reference</a>. Practica las distintas posibilidades en DevTools con una aplicación web como la de la primera actividad de este tema.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Otra opción para pausar la ejecución del código JavaScript en un determinado punto es añadir la instrucción <code class="docutils literal notranslate"><span class="pre">debugger</span></code> (recogida en el estándar de ECMAScript) en una línea. Si las herramientas de desarrolladores están abiertas, la ejecución se detendrá en esa línea como si hubiéramos definido un punto de ruptura:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">foo</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">debugger</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="objetos-y-prototipos">
