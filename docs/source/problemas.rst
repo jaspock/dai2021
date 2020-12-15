@@ -2410,3 +2410,56 @@ Computación en la nube
   .. solución: @1=instancia de máquina virtual,@2=platform
   .. examen enero 2020
 
+.. ------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta.
+  
+  1. Google App Engine no es adecuado para aplicaciones cuya carga en cada momento es difícil de predecir.
+  2. Cuando usamos Google App Engine no nos tenemos que preocupar de gestionar los servidores que ejecutan nuestro código, pero es posible que tengamos que configurar los servidores de las bases de datos.
+  3. Las aplicaciones alojadas en Google App Engine escalan sus recursos automáticamente en base a la demanda.
+  4. La plataforma Google App Engine es gratuita siempre que la aplicación no use ninguna base de datos.
+  
+  .. solución: 2,3
+
+.. ------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta.
+
+  1. Las aplicaciones de Google App Engine pueden hacer llamadas a servicios externos usando sus APIs.
+  2. Google App Engine realiza automáticamente el balanceo de carga de la aplicación.
+  3. Una aplicación de Google App Engine puede usar Google Cloud Storage para almacenar archivos en línea.
+  4. Las aplicaciones de Google App Engine pueden ser escritas en diferentes lenguajes de programación.
+
+  .. solución: 1,2,3,4
+
+.. ------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica cuál o cuáles de las siguientes afirmaciones son ciertas. Si ninguna lo es, pon *ninguna* como respuesta.
+
+  1. Las instancias interrumpibles (*preemptible* en inglés) de Google Compute Engine pueden ser interrumpidas en cualquier momento sin nuestra autorización.
+  2. Las instancias interrumpibles de Google Compute Engine no son adecuadas para tareas computacionalmente intensas cuya ejecución puede detenerse y reanudarse posteriormente.
+  3. A la hora de decidir en qué región lanzamos una instancia de Google Compute Engine solo tenemos que fijarnos en el coste, ya que la latencia será la misma para los usuarios independientemente de la región.
+  4. Dada una instancia detenida de Google Compute Engine, podemos cambiar la cantidad de memoria RAM de la que dispondrá cuando vuelva a lanzarse.
+
+  .. solución: 1,4
+
+.. ------
+
+.. admonition:: :problema-contador-nube:`Problema`
+  :class: problema
+
+  Indica con qué sustituir las marcas ``@1`` y ``@2`` en el siguiente texto para que sea correcto: "Las funciones de Google Cloud Functions pueden ser escritas en al menos estos dos lenguajes de programación: ``@1`` y ``@2``".
+
+  .. solución: JavaScript, Java
+
+
+.. PENDIENTE: añadir problemas más elaborados del tipo cada oveja con su pareja, por ejemplo.
