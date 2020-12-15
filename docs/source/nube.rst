@@ -131,6 +131,16 @@ Algunas de las principales características de la computación en la nube son:
 - Reducción para el cliente de gastos de capital (CAPEX), pero en ocasiones también de gastos operativos (OPEX).
 - Acceso automático vía APIs web o SDKs a todos los servicios.
 
+La siguiente gráfica muestra cómo con la computación en la nube los gastos se ajustan en cada momento a la demanda a diferencia de lo que ocurría con el *hosting* tradicional:
+
+.. figure:: https://cloudkul.com/blog/wp-content/uploads/2015/11/graph.jpg
+  :target: https://cloudkul.com/blog/traditional-hosting-vs-cloud-hosting/
+  :alt: coste de un hosting tradicional y de la nube 
+  :figwidth: 70 %
+
+  Comparación entre el coste con un servicio de *hosting* tradicional y con la computación en la nube.
+
+
 .. Note::
 
   Para crear una nube privada, es decir, un sistema con hardware propio pero con el que se interactúa como con una nube pública, existen varios sistemas de código abierto como `OpenStack`_,  `CloudStack`_, `Cloud Foundry`_ u `OpenShift`_ (los dos primeros como *infrastructure as a service* y los dos últimos como *platform as a service*).
