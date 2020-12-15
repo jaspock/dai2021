@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 15 Dic
+      - El examen de enero se realizará presencialmente en las instalaciones de la Universidad de Alicante, salvo nueva disposición en contra que pueda aparecer antes de su celebración. El examen teórico y el práctico se realizarán en el mismo lugar, en la fecha y laboratorios que se indica en la `guía docente`_. El examen de teoría tendrá lugar de 9.00 a 10.40 aproximadamente. El examen de prácticas tendrá lugar de 11.00 a 13.00 aproximadamente. El único material que puedes llevar al examen de teoría es un documento identificativo, un boligrafo y una hoja de tamaño ISO/DIN A5 (nunca mayor, por tanto, a 148 x 210 mm) en la que puedes escribir o imprimir toda la información que consideres útil. El único material que puedes llevar al examen de prácticas es un documento identificativo y un portátil en el que tengas instaladas las herramientas de desarrollo y tu código de la última práctica. Si no puedes llevar tu propio portátil, podrás usar los ordenadores del laboratorio, pero es recomendable que hables antes con el profesor para que te aconseje acerca de cómo configurar rápidamente el entorno de trabajo el día del examen.
     * - 14 Dic
       - Se han habilitado dos fechas de entrega diferentes para la última práctica. La primera es la fecha de entrega original (23 de diciembre) y en ella se corregirá la parte obligatoria de la práctica, es decir, todo menos la autenticación de usuarios. Para la segunda entrega (fecha límite: 8 de enero) se corregirá únicamente la parte opcional, es decir, la de autenticación de usuarios, que permite obtener hasta dos puntos más. Aunque tu práctica de la primera entrega ya incluya la autenticación de usuarios, súbela también para la segunda entrega. Recuerda que la segunda entrega es opcional en tanto que en el examen de prácticas no se asumirá en ningún momento que has implementado la autenticación de usuarios. El servidor de prácticas del departamento permitirá la entrega (optativa) de la segunda parte unos minutos después de que se cierre la entrega de la primera parte.
     * - 10 Dic 
@@ -125,11 +127,13 @@ Si quieres que el profesor pueda ayudarte con algún código que estás desarrol
 - Accede a la web de `repl.it`_ con tu usuario. 
 - Clica en el botón para añadir un nuevo espacio, elige :guilabel:`HTML,CSS,JS` o :guilabel:`Node.js` dependiendo de si tu aplicación es solo para el navegador o también incluye la parte del servidor, y clica en :guilabel:`Create repl`.
 - Arrastra desde el explorador de archivos tus ficheros sobre la zona :guilabel:`Files`.
+- Si tu aplicación incluye la parte del servidor programada con Express bajo Node.js, será más sencillo si copias el código del servidor (que probablemente tendrás en el fichero ``app.js``) en ``index.js`` y editas el código para que la aplicación se lance en el puerto 3000, ya que repl.it espera esta configuración. Como ejemplo, aquí puedes probar la aplicación del `carrito`_ que estudiamos en clase.
 - Puedes lanzar tu aplicación con el botón :guilabel:`Run`.
 - Clica en el botón :guilabel:`Share` y manda el enlace al profesor.
 - Si no es necesario que el profesor edite tu código, también puedes mandarle simplemente el URL de tu código; para ello, tienes que haber creado el espacio como público.
 
 .. _`repl.it`: https://repl.it/
+.. _carrito: https://repl.it/@jaspock/Carrito
 
 
 Recomendaciones
