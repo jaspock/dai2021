@@ -176,7 +176,7 @@ Vamos a ver cómo desplegar la aplicación del carrito del tema anterior en Goog
 
 Para crear la instancia de Cloud SQL desde el terminal es necesario ejecutar desde la línea de órdenes::
 
-  gcloud sql instances create <instancia> --tier=db‑f1‑micro --region=europe-west3 --root-password=<contraseñaAdmin>
+  gcloud sql instances create <instancia> --tier=db-f1-micro --region=europe-west3 --root-password=<contraseñaAdmin>
 
 donde ``<instancia>`` es el nombre la instancia de base de datos y ``<contraseñaAdmin>`` la contraseña que queremos para el administrador de la instancia. 
 
@@ -255,7 +255,7 @@ Y para ir viéndolos en un terminal mientras se van generando::
 
 .. Important::
 
-  Las instancias de Cloud SQL tienen un coste relativamente alto, por lo que tenemos que hacer un uso moderado de ellas para no agotar los créditos disponibles. En primer lugar, asegúrate de que, como se dice más arriba, indicas el tipo de instancia de base de datos ``db‑f1‑micro`` (el más `barato`_) y ningún otro al crear la instancia. Además, acostúmbrate a *dormir* tu instancia de base de datos cuando no vayas a trabajar en las siguientes horas con ella (no es necesario que lo hagas constantemente mientras estás desarrollando, pero sí cuando vayas a dejar de hacerlo) ejecutando::
+  Las instancias de Cloud SQL tienen un coste relativamente alto, por lo que tenemos que hacer un uso moderado de ellas para no agotar los créditos disponibles. En primer lugar, asegúrate de que, como se dice más arriba, indicas el tipo de instancia de base de datos ``db-f1-micro`` (el más `barato`_) y ningún otro al crear la instancia. Además, acostúmbrate a *dormir* tu instancia de base de datos cuando no vayas a trabajar en las siguientes horas con ella (no es necesario que lo hagas constantemente mientras estás desarrollando, pero sí cuando vayas a dejar de hacerlo) ejecutando::
 
     gcloud sql instances patch <instancia> --activation-policy never
 
