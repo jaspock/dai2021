@@ -86,7 +86,7 @@ Pero a la hora de hacer una petición en la que el nombre del item forme parte d
 
   curl --request PUT --data '{"cantidad":5}' --header 'content-type:application/json' $endpoint/$carrito/productos/jam%C3%B3n
 
-En JavaScript tenemos funciones como ``decodeURIComponent`` y ``encodeURIComponent`` que se encargan del trabajo de conversión. Para codificar un símbolo para el programa ``curl`` que se ejecuta en la línea de órdenes podemos usar `herramientas en línea`_.
+En JavaScript tenemos funciones como ``decodeURIComponent``, ``decodeURI``, ``encodeURIComponent`` y ``encodeURI`` que se encargan del trabajo de conversión. Para codificar un símbolo para el programa ``curl`` que se ejecuta en la línea de órdenes podemos usar `herramientas en línea`_.
 
 .. _`codificación por ciento`: https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding
 .. _`herramientas en línea`: https://meyerweb.com/eric/tools/dencoder/
@@ -396,6 +396,8 @@ para ver las tablas de la base de datos o::
   select * from productos;
 
 para consultarlas.
+
+Por último, si añades a la inicialización de Knex.js la propiedad ``debug:true`` se mostrará el equivalente en SQL de cada operación realizada con la librería.
 
 .. _label-api-cambio:
 
