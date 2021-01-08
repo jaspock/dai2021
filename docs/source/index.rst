@@ -26,6 +26,8 @@ Novedades
     :header-rows: 0
     :class: tablita
 
+    * - 08 Ene
+      - La Universidad ha permitido a los coordinadores de asignaturas `decidir unilateralmente`_ si los exámenes de enero de sus asignaturas se realizan de forma presencial u online. En el caso de esta asignatura, tanto el examen de teoría como el de prácticas se realizarán *online* en la misma fecha y hora que ya conocíamos. Esta fecha y hora se indican desde hace tiempo en la `guía docente`_; aunque allí siga apareciendo el listado original de laboratorios donde se iba a realizar en principio el examen, este no será, como se ha comentado, presencial sino online. La sala virtual a la que conectarse el día del examen se puede consultar en un anuncio que se acaba de publicar en UACloud. En los días previos al examen puede que aparezca aquí o en los anuncios de UACloud alguna información adicional.
     * - 15 Dic
       - El examen de enero se realizará presencialmente en las instalaciones de la Universidad de Alicante, salvo nueva disposición en contra que pueda aparecer antes de su celebración. El examen teórico y el práctico se realizarán en el mismo lugar, en la fecha y laboratorios que se indica en la `guía docente`_. El examen de teoría tendrá lugar de 9.00 a 10.40 aproximadamente. El examen de prácticas tendrá lugar de 11.00 a 13.00 aproximadamente. El único material que puedes llevar al examen de teoría es un documento identificativo, un boligrafo y una hoja de tamaño ISO/DIN A5 (nunca mayor, por tanto, a 148 x 210 mm) en la que puedes escribir o imprimir toda la información que consideres útil. El único material que puedes llevar al examen de prácticas es un documento identificativo y un portátil en el que tengas instaladas las herramientas de desarrollo y tu código de la última práctica. Si no puedes llevar tu propio portátil, podrás usar los ordenadores del laboratorio, pero es recomendable que hables antes con el profesor para que te aconseje acerca de cómo configurar rápidamente el entorno de trabajo el día del examen.
     * - 14 Dic
@@ -50,7 +52,7 @@ Novedades
       - Ya está publicado el enunciado de la primera práctica. Las clases de teoría y prácticas comienzan el día 15 de septiembre.
 
 .. _`web del departamento`: https://www.dlsi.ua.es/alumnes/index.cgi?id=val
-
+.. _`decidir unilateralmente`: https://web.ua.es/es/vr-estudis/indicaciones/indicaciones-e-informacion-de-interes-sobre-la-modalidad-de-examen-en-la-convocatoria-c2.html
 
 .. _label-actividades:
 
