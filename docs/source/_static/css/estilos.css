@@ -80,3 +80,9 @@ table.tablita td p {
 table.tablita td, table.tablita th {
     white-space: normal;
 }
+
+
+.strike {
+    text-decoration: line-through;
+}
+
