@@ -217,7 +217,7 @@ Lenguajes de estilo
     número 4 de @1 Privet Drive @2, estaban orgullosos de decir 
     que eran muy normales, afortunadamente.</p>
 
-  .. solución: @1=<span class="b destaca" id="c"> / @1=<span class="destaca"><span class="b" id="c">, @2=</span>
+  .. solución: @1=<span class="b"><span class="destaca" id="c">, @2=</span></span>
 
 .. ------
 
@@ -1931,7 +1931,7 @@ Acceso a servicios web de terceros
       ]
     }
 
-  .. solución: "age", "true,", "male"
+  .. solución: "age", coma detrás de true, "male"
 
 .. ------
 
